@@ -77,8 +77,8 @@ $(document).ready(function () {
         radioClass: 'iradio_square-blue'
     });
     $.toast({
-        heading: 'Welcome back Emily',
-        text: 'A simple and easy to use bootstrap admin template',
+        heading: '欢迎回来，王玲',
+        text: '欢迎来到尼罗河呼叫中心，快点开展今天的工作吧！',
         position: 'top-right',
         loaderBg: '#fff',
         icon: 'success',
