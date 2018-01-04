@@ -1138,12 +1138,12 @@ Top bar styles
 
 .admin-logo {
   display: block;
-  margin-left: -15px;
+  /* margin-left: -15px; */
   float: left;
-  width: 220px;
+  /* width: 220px; */
   text-align: center;
   padding-left: 0px;
-  height: 60px;
+  /* height: 60px; */
   line-height: 60px;
 }
 .admin-logo h1 {
