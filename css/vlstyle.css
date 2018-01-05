@@ -1,0 +1,83 @@
+.aliceblue {
+    background: aliceblue;
+}
+
+.softphone-bar {
+    /* width: 100%;
+    padding-left: 30px ;
+    margin-left: 30px ; */
+
+    float: left;
+    position: relative;
+    left: 30px;
+    top: 13px;
+}
+
+.vl-input {
+    position: relative;
+    top: 2px;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.state_time {
+    font-size: 24px;
+    position: relative;
+    top: 5px;
+}
+
+.state_time,
+.state {
+    margin: 0 8px;
+}
+
+
+/* 工单页面 */
+
+.form-group {
+    margin: 10px auto;
+}
+
+.hr-page-container {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.vl-hr-form {
+    width: 100%;
+    position: relative;
+    padding: 10px
+}
+
+.vl-half-group {
+    float: right;
+    width: 50%;
+    text-align: right;
+    margin: 0;
+}
+
+.vl-half-group .date {
+    width: 70%;
+}
+
+.vl-submit {
+    margin-top: 20px;
+    position: absolute;
+    right: 0;
+}
+
+.vl-submit button {
+    min-width: 200px;
+}
+
+.phone-bar-left {
+    
+}

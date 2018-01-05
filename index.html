@@ -22,6 +22,7 @@
         <link href="css/jquery.toast.min.css" rel="stylesheet">
         <!--template css-->
         <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/vlstyle.css">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -35,7 +36,7 @@
         <div class="top-bar light-top-bar"><!--by default top bar is dark, add .light-top-bar class to make it light-->
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-xs-6">
+                    <div class="col-xs-10">
                         <a href="index.html" class="admin-logo">
                             <h1><img src="picture/logo-dark.png" alt=""></h1>
                         </a>
@@ -49,13 +50,59 @@
                         <!--start search form-->
                         <div class="search-form hidden-xs">
                             <form>
-                                <input type="text" class="form-control" placeholder="搜索">
+                                <input type="text"  id="dialout_input" onkeydown="if(event.keyCode==13){softphonebar_dialout($('#dialout_input').val());}" class="form-control" placeholder="输入电话号码">
                                 <button type="button" class="btn-search"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
+
+                        <!-- 电话条开始 -->
+                        <div id="icc_event"></div>
+ 
+                        <div id="softphone-bar" class="softphone-bar ">	
+                            <div id="phone_bar"> 
+                                <div class="phone-bar-left">
+                                <input type="button" id="dialoutEnable" class="btn btn-success"  onclick="softphonebar_dialout($('#dialout_input').val());" value="呼叫" />
+                                <input type="button" id="dialoutDisable"  style="display:none" class="btn btn-info glyphicon glyphicon-headphones"   disabled value="呼叫" />
+                                <input type="button" id="hangupEnable"  class="btn btn-success"  style="display: none" onclick="phone_hangup();" value="挂机" />
+                                <input type="button" id="holdEnable" class="btn btn-success"  style="display: none;" onclick="phone_hold();" value="保持" />
+                                <input type="button" id="holdDisable" class="btn btn-info"  style="" disabled value="保持" />
+                                <input type="button" id="recoverEnable" class="btn btn-success"  style="display: none" onclick="phone_unhold();" value="恢复" />
+                                <input type="button" id="transferEnable" class="btn btn-success"  style="display: none"   onclick="transfer()" value="转接" />
+                                <input type="button" id="transferDisable" class="btn btn-info"  disabled  value="转接" />
+                                <input type="button" id="transfercancel" class="btn btn-success"  style="display: none" onclick="transfercancel()" value="取消转接" />
+                                <input type="button" id="consultEnable"  class="btn btn-success"  style="display: none" onclick="Consult()" value="咨询" />
+                                <input type="button" id="consultDisable"  class="btn btn-info"  style="display:none;" disabled  value="咨询" />
+                                <input type="button" id="stopConsultEnable" class="btn btn-success"  style="display: none;" onclick="phone_stopConsult();"  value="结束咨询"/>
+                                <input type="button" id="consultThreeWayCallEnable" class="btn btn-success"  style="display: none" onclick="phone_threewaycall('912345');"  value="三方" />
+                                <input type="button" id="threewayEnable"  class="btn btn-info"   style="display: none "   value="三方" />
+                                <input type="button" id="threewayDisable" class="btn btn-info"  style="" disabled  value="三方" /> 
+                                <span id="softphone_timer" class="fr state_time">00:00:00</span>
+                                <span id="softphone_dropdown" class="fr state_dropdown"></span>
+                                <span id="softphone_phonestate" class="fr state" style="cursor:pointer; display:none" onclick="javascript:$('#softphone_dropdown_caret').click()">失效</span>
+                                </div>
+                                
+                                <!-- peer_state -->
+                                <!--
+                                <input type="button" id="btnRestDisable" class="btn btn-info"  disabled  value="小休" />
+                                <input type="button" id="btnBusyDisable" class="btn btn-info"  disabled  value="忙碌" />
+                                <input type="button" id="btnRestDisable" class="btn btn-info"  disabled  value="小休" />
+                                <input type="button" id="btnLogoutDisable" class="btn btn-info"   disabled  value="签出" />
+                                <input type="button" id="btnRest"   class="btn btn-success"     onclick="rest();" style="display: none;"  value="小休" />
+                                <input type="button" id="btnNoRest"  class="btn btn-success"   onclick="rest();" value="取消小休" />
+                                <input type="button" id="btnBusy"  class="btn btn-success"     onclick="busy();"  value="忙碌" />
+                                <input type="button" id="btnNoBusy"  class="btn btn-success"   onclick="busy();"  style="display: none;"  value="取消忙碌" />
+                                <input type="button" id="btnLogout"  class="btn btn-success"   onclick="logout();" value="签出" /> -->
+                                
+                            </div>       
+                        </div>
+
+                  
+                        
+ 
+                        <!-- 电话条结束 -->
                         <!--end search form-->
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-xs-2  fr">
                         <ul class="list-inline top-right-nav">
                             <li class="dropdown hidden-xs icon-dropdown">
                                
@@ -407,19 +454,18 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="javascript: void(0);" aria-expanded="true"><i class="icon-grid"></i> 工作台（坐席） <span class="fa arrow"></span></a>
+                            <a href="javascript: void(0);" aria-expanded="true"><i class="icon-grid"></i> 工作台 <span class="fa arrow"></span></a>
                             <ul class="nav-second-level nav" aria-expanded="true">
                                 <li><a href="#">我的工作台</a></li>
-                                <li><a href="#">待办任务（展示形式1）</a></li>
-                                <li><a href="#">待办任务（展示形式2）</a></li>
+                                <li><a href="#">待办任务</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="javascript: void(0);" aria-expanded="true"><i class="icon-bar-chart"></i> 报表统计 <span class="fa arrow"></span></a>
                             <ul class="nav-second-level nav" aria-expanded="true">
                                 <li><a href="#">报表统计</a></li>
-                                <li><a href="#">我的报表（坐席）</a></li>
-                                <li><a href="#">录音查询（区分权限）</a></li>
+                                <li><a href="#">我的报表</a></li>
+                                <li><a href="#">录音查询</a></li>
                             </ul>
                         </li>
                         <li>
@@ -432,10 +478,8 @@
                         <li>
                             <a href="javascript: void(0);" aria-expanded="true"><i class="icon-layers"></i> 流程管理 <span class="fa arrow"></span></a>
                             <ul class="nav-second-level nav" aria-expanded="false">
-                                <li><a href="#">角色管理</a></li>
-                                <li><a href="#">权限管理</a></li>
-                                <li><a href="#">坐席管理</a></li>
-                                <li><a href="#">坐席工单记录</a></li>
+                                <li><a href="#">角色与权限管理</a></li>
+                                <li><a href="#">用户管理</a></li>
                                 <li><a href="#">组织架构</a></li>
                             </ul>
                         </li>
@@ -771,5 +815,6 @@
         <script src="js/datatables.responsive.min.js"></script>
         <script src="js/jquery.toast.min.js"></script>
         <script src="js/dashboard-alpha.js"></script>
+        <script src="js/phonebar.js"></script>
     </body>
 </html>
