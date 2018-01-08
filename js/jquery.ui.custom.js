@@ -276,4 +276,4 @@ $( function() {
      $( "#progressbar6" ).progressbar({
       value: 55
     });
-  });
+});
