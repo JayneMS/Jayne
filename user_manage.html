@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>角色与权限管理</title>
+        <title>用户管理</title>
         
         <!-- Common plugins -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -32,27 +32,35 @@
     <body>
 
         <!--modal create-role start-->
-        <div class="modal fade" data-backdrop="static"  id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal">
+        <div class="modal fade" data-backdrop="static" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>
-                        <h3 class="modal-title" id="myModalLabel">新建角色</h3>
+                        <h3 class="modal-title" id="myModalLabel">新建用户</h3>
                     </div>
                     <div class="modal-body">
                         <div class="modal-form">
                             <form role="form">
                                 <div class="form-group">
-	                                <label>角色名称</label>
+	                                <label>用户名</label>
                                     <input type="email" class="form-control" placeholder="">
                                 </div>
                                 <div class="form-group">
-	                                <label>角色别名</label>
-                                    <input type="password" class="form-control" placeholder="">
+	                                <label>角色</label>
+	                                <select name="" class="form-control" >
+	                                	<option value="">超级管理员</option>
+	                                	<option value="">管理员</option>
+	                                	<option value="">部门管理员</option>
+	                                	<option value="">坐席</option>
+	                                </select>
                                 </div>
                                 <div class="form-group">
-	                                <label>角色标志</label>
-                                    <input type="password" class="form-control" placeholder="">
+	                                <label>组织架构</label>
+	                                <select name="" class="form-control" >
+	                                	<option value="">架构一</option>
+	                                	<option value="">架构二</option>
+	                                </select>
                                 </div>
                                 <div class="clearfix">
                                     <button type="button" class="btn  btn-primary pull-right">创建</button>
@@ -70,25 +78,33 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>
-                        <h3 class="modal-title" id="myModalLabel">修改角色</h3>
+                        <h3 class="modal-title" id="myModalLabel">修改用户</h3>
                     </div>
                     <div class="modal-body">
                         <div class="modal-form">
                             <form role="form">
                                 <div class="form-group">
-	                                <label>角色名称</label>
+	                                <label>用户名</label>
                                     <input type="email" class="form-control" placeholder="管理员">
                                 </div>
                                 <div class="form-group">
-	                                <label>角色别名</label>
-                                    <input type="password" class="form-control" placeholder="管理">
+	                                <label>角色</label>
+	                                <select name="" class="form-control" >
+	                                	<option value="">超级管理员</option>
+	                                	<option value="">管理员</option>
+	                                	<option value="">部门管理员</option>
+	                                	<option value="">坐席</option>
+	                                </select>
                                 </div>
                                 <div class="form-group">
-	                                <label>角色标志</label>
-                                    <input type="password" class="form-control" placeholder="GLY">
+	                                <label>组织架构</label>
+	                                <select name="" class="form-control" >
+	                                	<option value="">架构一</option>
+	                                	<option value="">架构二</option>
+	                                </select>
                                 </div>
                                 <div class="clearfix">
-                                    <button type="button" class="btn  btn-primary pull-right">创建</button>
+                                    <button type="button" class="btn  btn-primary pull-right">提交</button>
                                 </div>
                             </form>
                         </div>
@@ -97,47 +113,6 @@
             </div>
         </div>
         <!--modal update-role end-->
-        <!--modal set-role start-->
-        <div class="modal fade" data-backdrop="static" id="setModal" tabindex="-1" role="dialog" aria-labelledby="setModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>
-                        <h3 class="modal-title" id="myModalLabel">设置权限</h3>
-                    </div>
-                    <div class="modal-body flex-center">
-                        <div class="modal-form flex-center">
-	                        <div class="panel-body flex-center flex-column">
-	                            <div id="checkTree">
-	                                <ul>
-	                                    <li data-jstree='{"type":"file"}'>首页</li>
-	                                    <li data-jstree='{"opened":true}'>客户信息管理
-	                                        <ul>
-	                                            <li data-jstree='{"type":"file"}'>数据录入</li>
-	                                            <li data-jstree='{"type":"file"}'>数据公海</li>
-	                                            <li data-jstree='{"type":"file"}'>我的公海</li>
-	                                            <li data-jstree='{"type":"file"}'>预测外呼</li>
-	                                            <li data-jstree='{"type":"file"}'>垃圾箱</li>
-	                                        </ul>
-	                                    </li>
-                                        <li data-jstree='{"opened":true}'>工作台
-                                            <ul>
-                                                <li data-jstree='{"type":"file"}'>我的工作台</li>
-                                                <li data-jstree='{"type":"file"}'>被叫页面</li>
-                                                <li data-jstree='{"type":"file"}'>待办任务</li>
-                                            </ul>
-                                        </li>
-	                                </ul>
-	                            </div>
-	                            <hr />
-	                            <button type="button" class="btn  btn-primary pull-right">创建</button>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div><!--end row-->
-            </div>
-        </div>
-        <!--modal set-role end-->
 
         <!--modal delete-->
         <div class="modal fade modal-delete" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -145,10 +120,10 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>-->
-                        <h4 class="modal-title" id="mySmallModalLabel">删除角色</h4>
+                        <h4 class="modal-title" id="mySmallModalLabel">删除用户</h4>
                     </div>
                     <div class="modal-body">
-                    	您确定要删除此角色吗？
+                    	您确定要删除此用户吗？
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -166,17 +141,17 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6 flex-align-center">
-                        <h4>角色与权限管理</h4>
+                        <h4>用户管理</h4>
                         &nbsp;&nbsp;&nbsp;&nbsp;          
                         <div class="col-sm-3 text-center">
-                            <a href="#" class="btn btn-default btn-primary" data-toggle="modal" data-target="#createModal" style="margin:5px;">新建角色</a>
+                            <a href="#" class="btn btn-default btn-primary" data-toggle="modal" data-target="#createModal" style="margin:5px;">添加</a>
                         </div>
                     </div>
                     <div class="col-sm-6 text-right">
                         <ol class="breadcrumb">
                             <li><a href="javascript: void(0);"><i class="fa fa-home"></i></a></li>
                             <li>流程管理</li>
-                            <li>角色与权限管理</li>
+                            <li>用户管理</li>
                         </ol>
                     </div>
                 </div>
@@ -189,60 +164,66 @@
                 <div class="col-md-12">
                     <div class="panel panel-default collapsed">
                         <div class="panel-heading">
-                          	角色与权限
+                          	用户设置
                         </div>
                         <div class="panel-body">
                             <table id="datatable" class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
-                                        <th>角色名称</th>
-                                        <th>角色别名</th>
-                                        <th>角色标识</th>
-                                        <th>人数</th>
+                                        <th>用户ID</th>
+                                        <th>姓名</th>
+                                        <th>用户角色</th>
+                                        <th>所属部门</th>
+                                        <th>部门管理员</th>
+                                        <th>其他信息</th>
                                         <th>操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
+                                    	<td>w5e45s8d5</td>
+                                    	<td>周敏</td>
                                         <td>超级管理员</td>
-                                        <td>超管</td>
-                                        <td>CJGLY</td>
-                                        <td>1</td>
+                                        <td>移动部门</td>
+                                        <td>周敏</td>
+                                        <td>...</td>
                                         <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#setModal" style="margin:5px;">设置权限</a>
                             				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
                             				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
                                         </td>
                                     </tr>
                                     <tr>
+                                    	<td>w55sw9851</td>
+                                    	<td>王林</td>
                                         <td>管理员</td>
-                                        <td>管理</td>
-                                        <td>GLY</td>
-                                        <td>2</td>
+                                        <td>移动部门</td>
+                                        <td>周敏</td>
+                                        <td>...</td>
                                         <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#setModal" style="margin:5px;">设置权限</a>
                             				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
                             				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>部门管理员</td>
-                                        <td>部管</td>
-                                        <td>BMGLY</td>
-                                        <td>4</td>
+                                    	<td>wwq95d5</td>
+                                    	<td>李毅</td>
+                                        <td>坐席</td>
+                                        <td>移动部门</td>
+                                        <td>王林</td>
+                                        <td>...</td>
                                         <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#setModal" style="margin:5px;">设置权限</a>
                             				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
                             				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>坐席</td>
-                                        <td>坐席</td>
-                                        <td>ZX</td>
-                                        <td>100</td>
+                                    	<td>w54e5s8d5</td>
+                                    	<td>周敏</td>
+                                        <td>管理员</td>
+                                        <td>信息化部门</td>
+                                        <td>刘洋</td>
+                                        <td>...</td>
                                         <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#setModal" style="margin:5px;">设置权限</a>
                             				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
                             				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
                                         </td>
@@ -299,7 +280,7 @@
                     'types': {
                         'default': {
                             'icon': 'fa fa-folder'
-                        },
+                        },	
                         'file': {
                             'icon': 'fa fa-file'
                         }

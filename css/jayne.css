@@ -8,6 +8,8 @@
 .flex-align-center{
 	display: flex;
 	align-items: center;
+	max-width:100%;
+	flex-direction: row;
 }
 
 .flex-justify-center{
