@@ -8,6 +8,8 @@ https://ey8mhu.axshare.com/    （随时更新）
 @少宁，你可以在这里查看已完成的页面，随时去代码
 - page-login.html
 - index.html
+- competence_manage
+- user_manage
 
 #### 可开发模块
 - 工作台（坐席）
