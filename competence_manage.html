@@ -36,8 +36,8 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>
-                        <h3 class="modal-title" id="myModalLabel">新建角色</h3>
+                        <button type="button" class="close inline" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>
+                        <h3 class="modal-title inline" id="myModalLabel">新建角色</h3>
                     </div>
                     <div class="modal-body">
                         <div class="modal-form">
@@ -166,11 +166,9 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6 flex-align-center">
-                        <h4>角色与权限管理</h4>
+                        <h4 class="inline">角色与权限管理</h4>
                         &nbsp;&nbsp;&nbsp;&nbsp;          
-                        <div class="col-sm-3 text-center">
-                            <a href="#" class="btn btn-default btn-primary" data-toggle="modal" data-target="#createModal" style="margin:5px;">新建角色</a>
-                        </div>
+                        <a href="#" class="btn btn-default btn-primary " data-toggle="modal" data-target="#createModal" style="margin:5px;">新建角色</a>
                     </div>
                     <div class="col-sm-6 text-right">
                         <ol class="breadcrumb">
@@ -192,7 +190,8 @@
                           	角色与权限
                         </div>
                         <div class="panel-body">
-                            <table id="datatable" class="table table-striped dt-responsive nowrap">
+                            <table id="" class="table table-striped dt-responsive nowrap">
+                            <!--<table id="datatable" class="table table-striped dt-responsive nowrap">-->
                                 <thead>
                                     <tr>
                                         <th>角色名称</th>
@@ -286,6 +285,7 @@
         <script src="js/jquery.ui.custom.js"></script>
         <script src="js/jayne.js"></script>        
         <script src="js/jstree.min.js"></script>
+        <script src="js/flexibility.js"></script>
         <script>
             
             $(document).ready(function () {

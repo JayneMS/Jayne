@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>我的工作台</title>
+        <title>被叫中心</title>
         
         <!-- Common plugins -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -29,6 +29,11 @@
     </head>
     <body>
 
+
+        <!--main content start-->
+        <section class="main-content">
+
+
         <!--modal recycle-->
         <div class="modal fade modal-recycle" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
             <div class="modal-dialog modal-sm" role="document">
@@ -51,22 +56,17 @@
         </div>
         <!--end recycle modal-->
 
-        <!--main content start-->
-        <section class="main-content">
-
-
-
             <!--page header start-->
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4>我的工作台</h4>
+                        <h4>被叫中心</h4>
                     </div>
                     <div class="col-sm-6 text-right">
                         <ol class="breadcrumb">
                             <li><a href="javascript: void(0);"><i class="fa fa-home"></i></a></li>
                             <li>工作台</li>
-                            <li>我的工作台</li>
+                            <li>被叫中心</li>
                         </ol>
                     </div>
                 </div>
@@ -79,129 +79,47 @@
                 <div class="col-md-12">
                     <div class="panel panel-default collapsed">
                         <div class="panel-heading">
-                          	坐席待呼数据
+                          	呼入用户详情
                         </div>
                         <div class="panel-body">
-                            <table id="datatable" class="table table-striped dt-responsive nowrap">
-                                <thead>
-                                    <tr>
-                                        <th>外呼按键</th>
-                                        <th>套餐类型</th>
-                                        <th>区县</th>
-                                        <th>号码</th>
-                                        <th>品牌</th>
-                                        <th>月结日</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <tr>
-                                        <td>外呼</td>
-                                        <td>10元100M国内流量</td>
-                                        <td>市南区</td>
-                                        <td>18266654843</td>
-                                        <td>中国移动</td>
-                                        <td>25</td>
-                                    </tr>
-                                    <tr>
-                                        <td>外呼</td>
-                                        <td>10元100M国内流量</td>
-                                        <td>市北区</td>
-                                        <td>18124578545</td>
-                                        <td>中国移动</td>
-                                        <td>15</td>
-                                    </tr>
-                                    <tr>
-                                        <td>外呼</td>
-                                        <td>10元100M国内流量</td>
-                                        <td>市南区</td>
-                                        <td>18451245743</td>
-                                        <td>中国联通</td>
-                                        <td>15</td>
-                                    </tr>
-                                    <tr>
-                                        <td>外呼</td>
-                                        <td>50元1000M国内流量</td>
-                                        <td>崂山区</td>
-                                        <td>13124875544</td>
-                                        <td>中国电信</td>
-                                        <td>17</td>
-                                    </tr>
-                                    <tr>
-                                        <td>外呼</td>
-                                        <td>10元100M国内流量</td>
-                                        <td>市南区</td>
-                                        <td>18478554843</td>
-                                        <td>中国移动</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>外呼</td>
-                                        <td>30元300M国内流量</td>
-                                        <td>李沧区</td>
-                                        <td>15321554843</td>
-                                        <td>中国移动</td>
-                                        <td>17</td>
-                                    </tr>
-                                    <tr>
-                                        <td>外呼</td>
-                                        <td>10元100M国内流量</td>
-                                        <td>市南区</td>
-                                        <td>17521582543</td>
-                                        <td>中国电信</td>
-                                        <td>18</td>
-                                    </tr>
-                                    <tr>
-                                        <td>外呼</td>
-                                        <td>10元100M国内流量</td>
-                                        <td>市南区</td>
-                                        <td>11245421884</td>
-                                        <td>中国移动</td>
-                                        <td>2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>外呼</td>
-                                        <td>20元200M国内流量</td>
-                                        <td>崂山区</td>
-                                        <td>18145278546</td>
-                                        <td>中国联通</td>
-                                        <td>1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>外呼</td>
-                                        <td>10元100M国内流量</td>
-                                        <td>市南区</td>
-                                        <td>16578513684</td>
-                                        <td>中国移动</td>
-                                        <td>25</td>
-                                    </tr>
-                                    <tr>
-                                        <td>外呼</td>
-                                        <td>50元1000M国内流量</td>
-                                        <td>市南区</td>
-                                        <td>16578542358</td>
-                                        <td>中国移动</td>
-                                        <td>25</td>
-                                    </tr>
-                                    <tr>
-                                        <td>外呼</td>
-                                        <td>10元100M国内流量</td>
-                                        <td>市南区</td>
-                                        <td>13526425785</td>
-                                        <td>中国电信</td>
-                                        <td>10</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        	<div class="col-900">
+                        		<div class="inline col-500">
+                        			手机号：135498764211
+                        		</div>
+                        		<div class="inline">
+                        			姓名：王明
+                        		</div>
+                        	</div>
+                        	<div class="col-900">
+                        		<div class="inline col-500">
+                        			地址：山东省青岛市
+                        		</div>
+                        		<div class="inline">
+                        			性别：女
+                        		</div>
+                        	</div>
+                        	<div class="col-900">
+                        		<div class="inline col-500">
+                        			套餐：10元包100M
+                        		</div>
+                        		<div class="inline">
+                        			家庭电话：0532-12542235
+                        		</div>
+                        	</div>
+                        	<div class="col-900">
+                        		<div class="inline col-500">
+                        			其他信息：其他信息
+                        		</div>
+                        		<div class="inline">
+                        			其他信息：其他信息
+                        		</div>
+                        	</div>
                         </div>
                     </div>
                 </div>
             </div><!--end row-->
            
             <div class="panel panel-default">
-                <!--<div class="panel-heading">
-                    Default Style
-                </div>-->
                 <div class="panel-body">
                     <div class="tabs">
                         <!-- Nav tabs -->
@@ -241,10 +159,10 @@
                                 <label class="col-sm-2 control-label">是否办理</label>
                                 <div class="col-sm-10">
                                     <div class="radio">
-                                        <input id="optionsRadios1" type="radio" name="optionsRadios" value="option1" checked="">是
+                                        <input id="optionsRadios1" type="radio" name="optionsRadios" value="option1">是
                                     </div>
                                     <div class="radio">
-                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2">否
+                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" checked="">否
                                     </div>
                                 </div>
                             </div>
@@ -296,7 +214,6 @@
                     </form>
                 </div>
             </div>
-            
             <!--end page content-->
 
 
@@ -306,6 +223,7 @@
             </footer>
             <!--end footer-->
 
+        
         </section>
         <!--end main content-->
 
@@ -322,12 +240,14 @@
         <script src="js/float-custom.js"></script>
 
 
+
         <!--page script-->
         <script src="js/jquery.datatables.min.js"></script>
         <script src="js/datatables.responsive.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/jquery.ui.custom.js"></script>
         <script src="js/jayne.js"></script>
+        <script src="js/jstree.min.js"></script>
         <script>
             $(document).ready(function () {
                 $('#datatable').dataTable();
