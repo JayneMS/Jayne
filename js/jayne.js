@@ -1,19 +1,19 @@
 
 $('input:radio[id="optionsRadios2"]').change(function(){  
-         if($(this).is(":checked")){  
-            $("#to-manage").css("display","block");
-            $("#recycle").css("display","block");
-         }else{  
-          }  
-      });  
+    if($(this).is(":checked")){  
+       $("#to-manage").css("display","block");
+       $("#recycle").css("display","block");
+    }else{  
+    }  
+});  
       
 $('input:radio[id="optionsRadios1"]').change(function(){  
-         if($(this).is(":checked")){  
-            $("#to-manage").css("display","none");
-            $("#recycle").css("display","none");
-         }else{   
-          }  
-      });  
+    if($(this).is(":checked")){  
+       $("#to-manage").css("display","none");
+       $("#recycle").css("display","none");
+    }else{   
+    }  
+});  
       
 
 $(function () {
@@ -39,6 +39,7 @@ $(function () {
  
 $(document).ready(function () {
     $('#datatable').DataTable({
+        searching: false ,
         language: {
             "sProcessing": "处理中...",
             "sLengthMenu": "显示 _MENU_ 项结果",
