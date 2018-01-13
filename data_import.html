@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>数据导入</title>
+        
+        <!-- Common plugins -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/simple-line-icons.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/pace.css" rel="stylesheet"><link href="css/jasny-bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/nanoscroller.css">
+        <link rel="stylesheet" href="css/metismenu.min.css">
+        <!-- dataTables -->
+        <link href="css/jquery-ui.css" rel="stylesheet">
+        <link href="css/dropzone.css" rel="stylesheet">
+        <!-- Treeview css -->
+        <link href="css/style_1.css" rel="stylesheet" type="text/css" />
+        <!--template css-->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/jayne.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="js/html5shiv.min.js"></script>
+          <script src="js/respond.min.js"></script>
+        <![endif]-->
+        <style>
+            .vl-fieldset {
+                margin-bottom: 0!important;
+            }
+            .vl-data-import-p {
+ 
+                font-size: 15px;
+                color: #333 ;
+ 
+            }
+            .vl-cloud-upload {
+                font-size: 120px ;
+                color: #23b7e5;
+            }
+            .vl-unupload-container {
+                margin: 50px auto 0 auto ;
+                text-align: center;
+            }
+            .vl-upload-btn {
+                position: absolute ;
+                bottom: 20px ;
+                right: 20px ;
+            }
+        </style>
+    </head>
+    <body>
+
+ 
+        
+        <!--main content start-->
+        <section class="main-content">
+
+            <!--page header start-->
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-6 flex-align-center">
+                        <h4 class="inline">数据导入</h4>
+                        
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <ol class="breadcrumb">
+                            <li><a href="javascript: void(0);"><i class="fa fa-home"></i></a></li>
+                            <li>客户信息管理</li>
+                            <li>数据导入</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!--page header end-->
+
+            <!--start page content-->
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                          
+                        <fieldset class="jquery-Ui-fieldset vl-fieldset">
+                            <label for="simple">请选择公海</label>
+                            <select name="simple" id="simple">
+                                <option>移动数据</option>
+                                <option>联通数据</option>
+                                <option selected="selected">建设银行数据</option>
+                                <option>海尔信息化事业部</option>
+                            </select>
+                        </fieldset>
+
+                        </div>
+                        <div class="panel-body">
+                        
+                            <form id="my-awesome-dropzone" action="#" class="dropzone">
+                                <div class="vl-unupload-container">
+                                    <i class="fa fa-cloud-upload vl-cloud-upload"> </i>
+                                    <p class="vl-data-import-p">请点击或拖拽上传Excel文件，格式为XLS、XLSX</p>
+                                </div>
+                                <button type="submit" class="btn btn-primary rounded pull-right vl-upload-btn">确定</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!--end page content-->
+
+
+            <!--Start footer-->
+            <footer class="footer">
+                <span>Copyright &copy; </span>
+            </footer>
+            <!--end footer-->
+
+        </section>
+        <!--end main content-->
+
+        <!--Common plugins-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/pace.min.js"></script>
+        <script src="js/jasny-bootstrap.min.js"></script>
+        <script src="js/jquery.slimscroll.min.js"></script>
+        <script src="js/jquery.nanoscroller.min.js"></script>
+        <script src="js/metismenu.min.js"></script>
+        <script src="js/float-custom.js"></script>
+        <!-- DROPZONE -->
+        <script src="js/dropzone.js"></script>
+
+        <!--page script-->
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/jquery.ui.custom.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                Dropzone.options.myAwesomeDropzone = {
+                    url: '/file', //少宁，这里请注意填写上传地址
+                    method: 'POST',
+                    autoProcessQueue: false,
+                    uploadMultiple: true,
+                    parallelUploads: 100,
+                    maxFiles: 100,
+                    acceptedFiles: ".xls,.xlsx",
+                    init: function() {
+                        this.on('dragleave', function(file){
+                            console.log('dragleave')
+                            $('.vl-unupload-container').css({'display':'none'})
+                        })
+                        this.on("addedfile", function(file) { 
+                            console.log('file added!')
+                            $('.vl-unupload-container').css({'display':'none'})
+                        });
+                        this.on('success', function(file){
+                            console.log('file success!')
+                        });
+                        this.on('uploadprogress', function(res, percent) {
+                            console.log('file uploadprogress')
+                            console.log(percent)
+                        });
+                        this.on('error', function(res, percent) {
+                            console.log('file error!')
+                            console.log(percent)
+                        });
+                    }
+                };
+            });
+        </script>
+
+
+
+
+
+
+    </body>
+</html>
