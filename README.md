@@ -4,7 +4,7 @@
 https://ey8mhu.axshare.com/    （随时更新）
 
 #### version
-- 2018年01月13日 更新sidebr.html @少宁，请注意同步 
+- 2018年01月13日 更新sidebar in index.html @少宁，请注意同步 
 
 #### 已完成页面
 @少宁，你可以在这里查看已完成的页面，随时去代码
