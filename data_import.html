@@ -22,6 +22,8 @@
         <!--template css-->
         <link href="css/style.css" rel="stylesheet">
         <link href="css/jayne.css" rel="stylesheet">
+        <link href="css/sweet-alert.css" rel="stylesheet">
+     
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -77,6 +79,15 @@
                 </div>
             </div>
             <!--page header end-->
+
+
+            <!-- @少宁，此处代码不需要在页面显示，只作为给你提供弹框效果参考 -->
+            <div class="row">
+                <button class="btn btn-info" id="info-alert">导入中</button>
+                <button class="btn btn-success " id="success-alert">导入成功</button>
+                <button class="btn btn-warning " id="warning-alert">导入警告</button>
+                <button class="btn btn-danger " id="danger-alert">导入失败</button>
+            </div>
 
             <!--start page content-->
 
@@ -137,9 +148,14 @@
         <!--page script-->
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/jquery.ui.custom.js"></script>
+        <!--sweet alerts-->
+        <script src="js/sweet-alert.min.js"></script>
 
         <script>
             $(document).ready(function () {
+                /* Dropzone Documents
+                 * http://www.dropzonejs.com/#
+                 */
                 Dropzone.options.myAwesomeDropzone = {
                     url: '/file', //少宁，这里请注意填写上传地址
                     method: 'POST',
@@ -170,6 +186,68 @@
                         });
                     }
                 };
+
+               /*
+                * sweet-alert : http://mishengqiang.com/sweetalert/
+                */
+
+                //Info
+                $('#info-alert').click(function () {
+                    swal({
+                        title: "正在导入数据",
+                        text: "正在检查必填字段，合并重复数据，请耐心等待",
+                        type: "info",
+                        icon:"loading",
+                        showCancelButton: false,
+                        showConfirmButton: false
+                    });
+
+                    setTimeout(function(){ 
+                        swal.close()
+                    }, 2000);
+                });
+
+                //Success
+                $('#success-alert').click(function () {
+                    swal({
+                        title: "导入成功",
+                        text: "本次共导入1002条数据，成功999条，失败3条批次为：移动-0903233",
+                        type: "success",
+                        showCancelButton: true,
+                        cancelButtonClass: 'btn-secondary ',
+                        confirmButtonClass: 'btn-success  ',
+                        confirmButtonText: '查看',
+                        cancelButtonText: '取消'
+                    }, function(){
+                        alert('点击了查看，请跳转到公海页面')
+                    })
+                   
+                });
+
+                //Warning
+                $('#warning-alert').click(function () {
+                    swal({
+                        title: "导入警告",
+                        text: "请关联必填字段",
+                        type: "warning",
+                        showConfirmButton: true,
+                        confirmButtonText: '确认',
+                    });
+                });
+
+                //Danger
+                $('#danger-alert').click(function () {
+                    swal({
+                        title: "导入失败",
+                        text: "导入失败，请xxxx（失败原因）",
+                        type: "error",
+                        showCancelButton: true,
+                        cancelButtonClass: 'btn-secondary',
+                        confirmButtonClass: 'btn-danger',
+                        confirmButtonText: '重新上传',
+                        cancelButtonText:'取消'
+                    });
+                });
             });
         </script>
 
