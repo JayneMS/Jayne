@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>我的工作台</title>
+        
+        <!-- Common plugins -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/simple-line-icons.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/pace.css" rel="stylesheet"><link href="css/jasny-bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/nanoscroller.css">
+        <link rel="stylesheet" href="css/metismenu.min.css">
+        <!-- dataTables -->
+        <link href="css/jquery.datatables.min.css" rel="stylesheet" type="text/css">
+        <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
+        <!--template css-->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/jayne.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="js/html5shiv.min.js"></script>
+          <script src="js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <!--main content start-->
+        <section class="main-content">
+
+
+
+            <!--page header start-->
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>数据公海</h4>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <ol class="breadcrumb">
+                            <li><a href="javascript: void(0);"><i class="fa fa-home"></i></a></li>
+                            <li>客户信息管理</li>
+                            <li>数据公海</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!--page header end-->
+
+            <!--start page content-->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default collapsed">
+                        <div class="panel-heading">
+                               <p>当前批次： 移动数据-20180102122</p>
+                               <div class="buttons">
+                               
+                                <a href="javascript: void(0);" class="btn btn-primary">批量分配</a>
+                                <a href="javascript: void(0);" class="btn btn-teal">导入xx外呼</a>
+                                <a href="javascript: void(0);" class="btn btn-teal">导入预测外呼</a>
+                                <a href="javascript: void(0);" class="btn btn-danger">批量删除</a>
+                                
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table id="datatable" class="table table-striped dt-responsive nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>数据id</th>
+                                        <th>所属公海</th>
+                                        <th>批次</th>
+                                        <th>当前状态</th>
+                                        <th>导入时间</th>
+                                        <th>最后操作时间</th>
+                                        <th>导入者</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end row-->
+           
+     
+            
+            <!--end page content-->
+
+
+            <!--Start footer-->
+            <footer class="footer">
+                <span>Copyright &copy; </span>
+            </footer>
+            <!--end footer-->
+
+        </section>
+        <!--end main content-->
+
+
+
+        <!--Common plugins-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/pace.min.js"></script>
+        <script src="js/jasny-bootstrap.min.js"></script>
+        <script src="js/jquery.slimscroll.min.js"></script>
+        <script src="js/jquery.nanoscroller.min.js"></script>
+        <script src="js/metismenu.min.js"></script>
+        <script src="js/float-custom.js"></script>
+
+
+        <!--page script-->
+        <script src="js/jquery.datatables.min.js"></script>
+        <script src="js/datatables.responsive.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/jquery.ui.custom.js"></script>
+        <script src="js/jayne.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#datatable').dataTable();
+            });
+        </script>
+
+    </body>
+</html>

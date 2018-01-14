@@ -1,17 +1,20 @@
 # nile-crm-html
 
-### 工作材料
 #### 原型图
 https://ey8mhu.axshare.com/    （随时更新）
+
+#### version
+- 2018年01月13日 更新sidebar in index.html @少宁，请注意同步 
 
 #### 已完成页面
 @少宁，你可以在这里查看已完成的页面，随时去代码
 - page-login.html	登录
 - index.html		主页
--called.html		被叫中心
--compentence_manage.html 角色与权限管理
--my_workspace.html	我的工作台
--user_manage.html	用户管理
+- called.html		被叫中心
+- compentence_manage.html 角色与权限管理
+- my_workspace.html	我的工作台
+- user_manage.html	用户管理
+- data_import.html  数据导入
 
 
 #### 可开发模块
