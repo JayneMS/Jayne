@@ -1,9 +1,7 @@
-
 $('input:radio[id="optionsRadios2"]').change(function(){  
     if($(this).is(":checked")){  
        $("#to-manage").css("display","block");
        $("#recycle").css("display","block");
-    }else{  
     }  
 });  
       
@@ -11,11 +9,9 @@ $('input:radio[id="optionsRadios1"]').change(function(){
     if($(this).is(":checked")){  
        $("#to-manage").css("display","none");
        $("#recycle").css("display","none");
-    }else{   
     }  
 });  
       
-
 $(function () {
     "use strict";
     
