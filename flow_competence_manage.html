@@ -19,6 +19,8 @@
         <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
         <!-- Treeview css -->
         <link href="css/style_1.css" rel="stylesheet" type="text/css" />
+        <!-- sweet alert css -->
+        <link href="css/sweet-alert.css" rel="stylesheet">
         <!--template css-->
         <link href="css/style.css" rel="stylesheet">
         <link href="css/jayne.css" rel="stylesheet">
@@ -44,18 +46,19 @@
                             <form role="form">
                                 <div class="form-group">
 	                                <label>角色名称</label>
-                                    <input type="email" class="form-control" placeholder="">
+                                    <input id="role-name" type="text" class="form-control" placeholder="" required="">
                                 </div>
                                 <div class="form-group">
 	                                <label>角色别名</label>
-                                    <input type="password" class="form-control" placeholder="">
+                                    <input id="role-nickname" type="text" class="form-control" placeholder="">
                                 </div>
                                 <div class="form-group">
 	                                <label>角色标志</label>
-                                    <input type="password" class="form-control" placeholder="">
+                                    <input id="role-symbol" type="text" class="form-control" placeholder="">
                                 </div>
+                                
                                 <div class="clearfix">
-                                    <button type="button" class="btn  btn-primary pull-right">创建</button>
+                                    <button type="submit" class="btn  btn-primary pull-right">创建</button>
                                 </div>
                             </form>
                         </div>
@@ -77,18 +80,19 @@
                             <form role="form">
                                 <div class="form-group">
 	                                <label>角色名称</label>
-                                    <input type="email" class="form-control" placeholder="管理员">
+                                    <input id="role-name" type="text" class="form-control" required="">
                                 </div>
                                 <div class="form-group">
 	                                <label>角色别名</label>
-                                    <input type="password" class="form-control" placeholder="管理">
+                                    <input id="role-nickname" type="text" class="form-control" >
                                 </div>
                                 <div class="form-group">
 	                                <label>角色标志</label>
-                                    <input type="password" class="form-control" placeholder="GLY">
+                                    <input id="role-symbol" type="text" class="form-control" >
                                 </div>
+                                
                                 <div class="clearfix">
-                                    <button type="button" class="btn  btn-primary pull-right">创建</button>
+                                    <button type="submit" class="btn  btn-primary pull-right">创建</button>
                                 </div>
                             </form>
                         </div>
@@ -100,15 +104,15 @@
         <!--modal set-role start-->
         <div class="modal fade" data-backdrop="static" id="setModal" tabindex="-1" role="dialog" aria-labelledby="setModal">
             <div class="modal-dialog" role="document">
-                <div class="modal-content">
+                <div class="modal-content height-400">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>
                         <h3 class="modal-title" id="myModalLabel">设置权限</h3>
                     </div>
-                    <div class="modal-body flex-center">
+                    <div class="modal-body flex-center scroll-div">
                         <div class="modal-form flex-center">
-	                        <div class="panel-body flex-center flex-column">
-	                            <div id="checkTree">
+	                        <div class="panel-body flex-center flex-column set-div">
+	                            <div class="checkTree">
 	                                <ul>
 	                                    <li data-jstree='{"type":"file"}'>首页</li>
 	                                    <li data-jstree='{"opened":true}'>客户信息管理
@@ -138,6 +142,92 @@
             </div>
         </div>
         <!--modal set-role end-->
+        <!--right side bar panel-->
+        <nav id="right-sidebar-toggle" class="right_sidebar">
+            <div class="nano">
+                <div class="nano-content">
+                	<div >
+	                	<ul class="list-inline nav-tab-panel clearfix center-block" role="tablist">
+	                        <li role="presentation" class="active center-block"><a href="#" aria-controls="projects" role="tab" data-toggle="tab">设置权限</a></li>
+	                   </ul>
+	                    <div class="checkTree">
+	                        <ul>
+	                            <li data-jstree='{"type":"file"}'>首页</li>
+	                            <li data-jstree='{"opened":true}'>客户信息管理
+	                                <ul>
+	                                    <li data-jstree='{"type":"file"}'>数据录入</li>
+	                                    <li data-jstree='{"type":"file"}'>数据公海</li>
+	                                    <li data-jstree='{"type":"file"}'>我的公海</li>
+	                                    <li data-jstree='{"type":"file"}'>预测外呼</li>
+	                                    <li data-jstree='{"type":"file"}'>垃圾箱</li>
+	                                </ul>
+	                            </li>
+	                            <li data-jstree='{"opened":true}'>工作台
+	                                <ul>
+	                                    <li data-jstree='{"type":"file"}'>我的工作台</li>
+	                                    <li data-jstree='{"type":"file"}'>被叫页面</li>
+	                                    <li data-jstree='{"type":"file"}'>待办任务</li>
+	                                </ul>
+	                            </li>
+	                        </ul>
+	                        <ul>
+	                            <li data-jstree='{"type":"file"}'>首页</li>
+	                            <li data-jstree='{"opened":true}'>客户信息管理
+	                                <ul>
+	                                    <li data-jstree='{"type":"file"}'>数据录入</li>
+	                                    <li data-jstree='{"type":"file"}'>数据公海</li>
+	                                    <li data-jstree='{"type":"file"}'>我的公海</li>
+	                                    <li data-jstree='{"type":"file"}'>预测外呼</li>
+	                                    <li data-jstree='{"type":"file"}'>垃圾箱</li>
+	                                </ul>
+	                            </li>
+	                            <li data-jstree='{"opened":true}'>工作台
+	                                <ul>
+	                                    <li data-jstree='{"type":"file"}'>我的工作台</li>
+	                                    <li data-jstree='{"type":"file"}'>被叫页面</li>
+	                                    <li data-jstree='{"type":"file"}'>待办任务</li>
+	                                </ul>
+	                            </li>
+	                        </ul>
+	                        <ul>
+	                            <li data-jstree='{"type":"file"}'>首页</li>
+	                            <li data-jstree='{"opened":true}'>客户信息管理
+	                                <ul>
+	                                    <li data-jstree='{"type":"file"}'>数据录入</li>
+	                                    <li data-jstree='{"type":"file"}'>数据公海</li>
+	                                    <li data-jstree='{"type":"file"}'>我的公海</li>
+	                                    <li data-jstree='{"type":"file"}'>预测外呼</li>
+	                                    <li data-jstree='{"type":"file"}'>垃圾箱</li>
+	                                </ul>
+	                            </li>
+	                            <li data-jstree='{"opened":true}'>工作台
+	                                <ul>
+	                                    <li data-jstree='{"type":"file"}'>我的工作台</li>
+	                                    <li data-jstree='{"type":"file"}'>被叫页面</li>
+	                                    <li data-jstree='{"type":"file"}'>待办任务</li>
+	                                </ul>
+	                            </li>
+	                        </ul>
+	                        <ul>
+	                            <li data-jstree='{"type":"file"}'>首页</li>
+	                            <li data-jstree='{"opened":true}'>客户信息管理
+	                                <ul>
+	                                    <li data-jstree='{"type":"file"}'>数据录入</li>
+	                                    <li data-jstree='{"type":"file"}'>数据公海</li>
+	                                    <li data-jstree='{"type":"file"}'>我的公海</li>
+	                                    <li data-jstree='{"type":"file"}'>预测外呼</li>
+	                                    <li data-jstree='{"type":"file"}'>垃圾箱</li>
+	                                </ul>
+	                            </li>
+	                        </ul>
+	                    </div>
+	                    <button type="button" class="btn  btn-primary center-block">创建</button>
+                	</div>
+                </div>
+            </div>
+        </nav>
+        <!--end right side bar panel-->
+
 
         <!--modal delete-->
         <div class="modal fade modal-delete" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -208,7 +298,8 @@
                                         <td>CJGLY</td>
                                         <td>1</td>
                                         <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#setModal" style="margin:5px;">设置权限</a>
+				                            <a href="javascript: void(0);" class="right-sidebar-toggle">设置权限a</a>
+                            				<!--<a href="#" class="" data-toggle="modal" data-target="#setModal" style="margin:5px;">设置权限</a>-->
                             				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
                             				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
                                         </td>
@@ -286,11 +377,14 @@
         <script src="js/jayne.js"></script>        
         <script src="js/jstree.min.js"></script>
         <script src="js/flexibility.js"></script>
+        <!--sweet alerts-->
+        <script src="js/sweet-alert.min.js"></script>
+        
         <script>
             
             $(document).ready(function () {
                 //checkbox
-                $('#checkTree').jstree({
+                $('.checkTree').jstree({
                     'core': {
                         'themes': {
                             'responsive': false
@@ -307,7 +401,7 @@
                     'plugins': ['types', 'checkbox']
                 });
             });
-
+			
         </script>
 
     </body>
