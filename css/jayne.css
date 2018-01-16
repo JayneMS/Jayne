@@ -14,6 +14,11 @@
 	margin: 0 auto;
 }
 
+.inline-50{
+	display: inline-block;
+	width: 50px;
+}
+
 .col-500{
 	margin: 0 auto;
 	width: 500px;
@@ -67,4 +72,22 @@
 
 .no-border{
 	border: 0px;
+}
+
+#recycle-reason{
+	height: 100px;
+	text-align: left;
+}
+
+.set-div{
+	margin-top: 55px;
+}
+
+.height-400{
+	height: 400px;
+}
+
+.scroll-div{
+	height: 320px;
+	overflow: scroll;
 }
