@@ -10,11 +10,14 @@ https://ey8mhu.axshare.com/    （随时更新）
 @少宁，你可以在这里查看已完成的页面，随时去代码
 - page-login.html	登录
 - index.html		主页
-- called.html		被叫中心
-- compentence_manage.html 角色与权限管理
-- my_workspace.html	我的工作台
-- user_manage.html	用户管理
+- workspace_called.html		工作台/被叫中心
+- flow_compentence_manage.html 流程管理/角色与权限管理
+- workspace_my_workspace.html	工作台/我的工作台
+- flow_user_manage.html	流程管理/用户管理
 - data_import.html  数据导入
+- system_caliber.html  系统设置/口径录入
+- system_field.html  系统设置/字段模板设置
+- system_highsea.html  系统设置/公海管理
 
 
 #### 可开发模块
