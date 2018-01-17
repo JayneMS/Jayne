@@ -23,6 +23,10 @@
         <!--template css-->
         <link href="css/style.css" rel="stylesheet">
         <link href="css/jayne.css" rel="stylesheet">
+        <!--timeliner css-->
+		<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="css/responsive.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="css/colorbox.css" type="text/css" media="screen">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -202,7 +206,7 @@
                             <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">沟通主线</a></li>
                         </ul>
                         <!-- Tab panes -->
-                        <div class="tab-content scrollDiv">
+                        <div class="tab-content scroll-div">
                             <div role="tabpanel" class="tab-pane active" id="home">
 								1.您好XXX先生，这里是XXXX
                                 <br>
@@ -229,26 +233,55 @@
                                 <br>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="profile">
-								2017年7月31日---拨打电话未接听
-                                <br>
-								2017年8月31日---拨打电话未接听
-                                <br>
-								2017年9月31日---与客户沟通XXX，客户XXXX
-                                <br>
-                                2017年7月31日---拨打电话未接听
-                                <br>
-								2017年8月31日---拨打电话未接听
-                                <br>
-								2017年9月31日---与客户沟通XXX，客户XXXX
-                                <br>
-								2017年7月31日---拨打电话未接听
-                                <br>
-								2017年8月31日---拨打电话未接听
-                                <br>
-								2017年9月31日---与客户沟通XXX，客户XXXX
-                                <br>
-								2017年7月31日---拨打电话未接听
-                                <br>
+                            	<div id="timelineContainer" class="timelineContainer">
+									<div class="timelineToggle"><p><a class="expandAll">+ 展开全部</a></p></div>
+						
+									<br class="clear">
+						
+									<div class="timelineMajor">
+										<h2 class="timelineMajorMarker"><span>2017年7月31日</span></h2>
+										<dl class="timelineMinor">
+											<dt id="20170731"><a>
+												拨打电话未接听</a></dt>
+											<dd class="timelineEvent" id="20170731EX" style="display:none;">
+												<h3>2017年7月31日</h3>
+												<p>
+													2017年7月31日---拨打电话未接听
+												</p>
+												<br class="clear">
+											</dd><!-- /.timelineEvent -->
+										</dl><!-- /.timelineMinor -->
+									</div><!-- /.timelineMajor -->
+						
+									<div class="timelineMajor">
+										<h2 class="timelineMajorMarker"><span>2017年8月31日</span></h2>
+										<dl class="timelineMinor">
+											<dt id="20170831"><a>拨打电话未接听</a></dt>
+											<dd class="timelineEvent" id="20170831EX" style="display:none;">
+												<h3>2017年8月31日</h3>
+												<p>
+													2017年8月31日---拨打电话未接听
+												</p>
+												<br class="clear">
+											</dd><!-- /.timelineEvent -->
+										</dl><!-- /.timelineMinor -->
+									</div><!-- /.timelineMajor -->
+						
+									<div class="timelineMajor">
+										<h2 class="timelineMajorMarker"><span>2017年9月31日</span></h2>
+										<dl class="timelineMinor">
+											<dt id="20170931"><a>与客户沟通XXX，客户XXXX</a></dt>
+											<dd class="timelineEvent" id="20170931EX" style="display:none;">
+												<h3>2017年9月31日</h3>
+												<p>
+													与客户沟通XXX，客户XXXX
+												</p>
+												<br class="clear">
+											</dd><!-- /.timelineEvent -->
+										</dl><!-- /.timelineMinor -->
+									</div><!-- /.timelineMajor -->
+									<br class="clear">
+								</div><!-- /#timelineContainer -->
                             </div>
                         </div>
                     </div>
@@ -357,11 +390,22 @@
         <script src="js/datatables.responsive.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/jquery.ui.custom.js"></script>
+        <script src="js/moment-with-locales.js"></script>
+        <script src="js/bootstrap-datetimepicker.min.js"></script>
         <script src="js/jayne.js"></script>
+        <script type="text/javascript" src="js/colorbox.js"></script>
+        <script type="text/javascript" src="js/timeliner.min.js"></script>
         <script>
-            $(document).ready(function () {
-                $('#datatable').dataTable();
-            });
+			$(function() {
+				$.timeliner({
+					startOpen:['#20170831EX','#20170931EX']
+				});
+   
+                $('#datetimepicker1').datetimepicker();
+	            $('#datetimepicker11').datetimepicker({
+	                daysOfWeekDisabled: [0, 6]
+	            });
+			});
         </script>
 
     </body>

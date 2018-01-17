@@ -43,10 +43,10 @@
                 fontClosed: options['fontClosed'] || '1em', // value: any valid CSS
                 // font-size value, defaults to 1em; sets the font
                 // size of an event after it is closed
-                expandAllText: options ['expandAllText'] || '+ expand all', // value:
+                expandAllText: options ['expandAllText'] || '+ 展开全部', // value:
                 // string, sets the text of the expandAll selector
                 // after the timeline is fully collapsed
-                collapseAllText: options['collapseAllText'] || '- collapse all' // // value:
+                collapseAllText: options['collapseAllText'] || '- 折叠全部' // // value:
                 // string, sets the text of the expandAll selector
                 // after the timeline is fully expanded
             };
