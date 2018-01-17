@@ -1,21 +1,20 @@
-
 $('input:radio[id="optionsRadios2"]').change(function(){  
     if($(this).is(":checked")){  
-       $("#to-manage").css("display","block");
-       $("#recycle").css("display","block");
-    }else{  
-    }  
+       $(".to-manage").css("display","inline-block");
+       $("#recycle").css("display","inline-block");
+       $(".to-remove").css("display","block");
+    }
 });  
       
 $('input:radio[id="optionsRadios1"]').change(function(){  
     if($(this).is(":checked")){  
-       $("#to-manage").css("display","none");
+       $(".to-manage").css("display","none");
        $("#recycle").css("display","none");
-    }else{   
-    }  
+       $(".to-remove").css("display","none");
+       $(".to-center").css({"text-align":"center","width":"100%"});
+    }
 });  
       
-
 $(function () {
     "use strict";
     

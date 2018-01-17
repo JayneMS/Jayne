@@ -32,7 +32,7 @@
     <body>
 
         <!--modal create-role start-->
-        <div class="modal fade" data-backdrop="static" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal">
+        <div class="modal fade height-500" data-backdrop="static" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -44,7 +44,7 @@
                             <form role="form">
                                 <div class="form-group">
 	                                <label>用户名</label>
-                                    <input type="email" class="form-control" placeholder="">
+                                    <input type="email" class="form-control" placeholder="" required="">
                                 </div>
                                 <div class="form-group">
 	                                <label>角色</label>
@@ -57,13 +57,13 @@
                                 </div>
                                 <div class="form-group">
 	                                <label>组织架构</label>
-	                                <select name="" class="form-control" >
+	                                <select name="" class="form-control">
 	                                	<option value="">架构一</option>
 	                                	<option value="">架构二</option>
 	                                </select>
                                 </div>
                                 <div class="clearfix">
-                                    <button type="button" class="btn  btn-primary pull-right">创建</button>
+                                    <button type="submit" class="btn  btn-primary pull-right">创建</button>
                                 </div>
                             </form>
                         </div>
@@ -85,7 +85,7 @@
                             <form role="form">
                                 <div class="form-group">
 	                                <label>用户名</label>
-                                    <input type="email" class="form-control" placeholder="管理员">
+                                    <input type="email" class="form-control" placeholder="管理员" required="">
                                 </div>
                                 <div class="form-group">
 	                                <label>角色</label>
@@ -104,7 +104,7 @@
 	                                </select>
                                 </div>
                                 <div class="clearfix">
-                                    <button type="button" class="btn  btn-primary pull-right">提交</button>
+                                    <button type="submit" class="btn  btn-primary pull-right">创建</button>
                                 </div>
                             </form>
                         </div>
@@ -244,9 +244,7 @@
 
         </section>
         <!--end main content-->
-
-
-
+        
         <!--Common plugins-->
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -257,7 +255,6 @@
         <script src="js/metismenu.min.js"></script>
         <script src="js/float-custom.js"></script>
 
-
         <!--page script-->
         <script src="js/jquery.datatables.min.js"></script>
         <script src="js/datatables.responsive.min.js"></script>
@@ -266,7 +263,6 @@
         <script src="js/jayne.js"></script>        
         <script src="js/jstree.min.js"></script>
         <script>
-            
             $(document).ready(function () {
                 //checkbox
                 $('#checkTree').jstree({
@@ -284,9 +280,36 @@
                         }
                     },
                     'plugins': ['types', 'checkbox']
-                });
+                }); 
+			    $('#datatable').DataTable({
+			    	destroy:true,
+			        searching: true ,
+			        language: {
+			            "sProcessing": "处理中...",
+			            "sLengthMenu": "显示 _MENU_ 项结果",
+			            "sZeroRecords": "没有匹配结果",
+			            "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+			            "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+			            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+			            "sInfoPostFix": "",
+			            "sSearch": "搜索:",
+			            "sUrl": "",
+			            "sEmptyTable": "表中数据为空",
+			            "sLoadingRecords": "载入中...",
+			            "sInfoThousands": ",",
+			            "oPaginate": {
+			                "sFirst": "首页",
+			                "sPrevious": "上页",
+			                "sNext": "下页",
+			                "sLast": "末页"
+			            },
+			            "oAria": {
+			                "sSortAscending": ": 以升序排列此列",
+			                "sSortDescending": ": 以降序排列此列"
+			            }
+			        }
+			    });
             });
-
         </script>
 
     </body>

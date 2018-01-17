@@ -11,15 +11,22 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/simple-line-icons.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/pace.css" rel="stylesheet"><link href="css/jasny-bootstrap.min.css" rel="stylesheet">
+        <link href="css/pace.css" rel="stylesheet">
+        <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/nanoscroller.css">
         <link rel="stylesheet" href="css/metismenu.min.css">
+        <!-- datePicker -->
+        <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
         <!-- dataTables -->
         <link href="css/jquery.datatables.min.css" rel="stylesheet" type="text/css">
         <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
         <!--template css-->
         <link href="css/style.css" rel="stylesheet">
         <link href="css/jayne.css" rel="stylesheet">
+        <!--timeliner css-->
+		<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="css/responsive.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="css/colorbox.css" type="text/css" media="screen">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -28,11 +35,8 @@
         <![endif]-->
     </head>
     <body>
-
-
         <!--main content start-->
         <section class="main-content">
-
 
         <!--modal recycle-->
         <div class="modal fade modal-recycle" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -43,9 +47,7 @@
                     </div>
                     <div class="modal-body">
                     	请详细描述回收原因
-	                    <textarea name="" rows="" cols="">
-	                    	
-	                    </textarea>
+	                    <textarea id="recycle-reason" rows="10" cols="10"></textarea>
                     </div>
                     <div class="modal-footer no-border">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -74,7 +76,6 @@
             <!--page header end-->
 
             <!--start page content-->
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default collapsed">
@@ -118,7 +119,6 @@
                     </div>
                 </div>
             </div><!--end row-->
-           
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="tabs">
@@ -128,26 +128,87 @@
                             <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">沟通主线</a></li>
                         </ul>
                         <!-- Tab panes -->
-                        <div class="tab-content">
+                        <div class="tab-content scroll-div">
                             <div role="tabpanel" class="tab-pane active" id="home">
 								1.您好XXX先生，这里是XXXX
                                 <br>
                                 2.请问您是否XXXX
+                                <br>1.您好XXX先生，这里是XXXX
+                                <br>
+                                2.请问您是否XXXX
+                                <br>1.您好XXX先生，这里是XXXX
+                                <br>
+                                2.请问您是否XXXX
+                                <br>1.您好XXX先生，这里是XXXX
+                                <br>
+                                2.请问您是否XXXX
+                                <br>1.您好XXX先生，这里是XXXX
+                                <br>
+                                2.请问您是否XXXX
+                                <br>1.您好XXX先生，这里是XXXX
+                                <br>
+                                2.请问您是否XXXX
+                                <br>1.您好XXX先生，这里是XXXX
+                                <br>
+                                2.请问您是否XXXX
+                                <br>1.您好XXX先生，这里是XXXX
                                 <br>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="profile">
-								2017年7月31日---拨打电话未接听
-                                <br>
-								2017年8月31日---拨打电话未接听
-                                <br>
-								2017年9月31日---与客户沟通XXX，客户XXXX
-                                <br>
+                            	<div id="timelineContainer" class="timelineContainer">
+									<div class="timelineToggle"><p><a class="expandAll">+ expand all</a></p></div>
+						
+									<br class="clear">
+						
+									<div class="timelineMajor">
+										<h2 class="timelineMajorMarker"><span>2017年7月31日</span></h2>
+										<dl class="timelineMinor">
+											<dt id="20170731"><a>
+												拨打电话未接听</a></dt>
+											<dd class="timelineEvent" id="20170731EX" style="display:none;">
+												<h3>2017年7月31日</h3>
+												<p>
+													2017年7月31日---拨打电话未接听
+												</p>
+												<br class="clear">
+											</dd><!-- /.timelineEvent -->
+										</dl><!-- /.timelineMinor -->
+									</div><!-- /.timelineMajor -->
+						
+									<div class="timelineMajor">
+										<h2 class="timelineMajorMarker"><span>2017年8月31日</span></h2>
+										<dl class="timelineMinor">
+											<dt id="20170831"><a>拨打电话未接听</a></dt>
+											<dd class="timelineEvent" id="20170831EX" style="display:none;">
+												<h3>2017年8月31日</h3>
+												<p>
+													2017年8月31日---拨打电话未接听
+												</p>
+												<br class="clear">
+											</dd><!-- /.timelineEvent -->
+										</dl><!-- /.timelineMinor -->
+									</div><!-- /.timelineMajor -->
+						
+									<div class="timelineMajor">
+										<h2 class="timelineMajorMarker"><span>2017年9月31日</span></h2>
+										<dl class="timelineMinor">
+											<dt id="20170931"><a>与客户沟通XXX，客户XXXX</a></dt>
+											<dd class="timelineEvent" id="20170931EX" style="display:none;">
+												<h3>2017年9月31日</h3>
+												<p>
+													与客户沟通XXX，客户XXXX
+												</p>
+												<br class="clear">
+											</dd><!-- /.timelineEvent -->
+										</dl><!-- /.timelineMinor -->
+									</div><!-- /.timelineMajor -->
+									<br class="clear">
+								</div><!-- /#timelineContainer -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
             <div class="panel panel-default">
                 <div class="panel-heading">
                 	结果录入
@@ -156,22 +217,18 @@
                     <form method="get" action="/" class="form-horizontal">
                         <fieldset>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">是否办理</label>
-                                <div class="col-sm-10">
-                                    <div class="radio">
+                                <label class="col-sm-2 control-label inline">是否办理</label>
+                                <div class="col-sm-2 inline">
+                                    <div class="radio inline-50">
                                         <input id="optionsRadios1" type="radio" name="optionsRadios" value="option1">是
                                     </div>
-                                    <div class="radio">
+                                    <div class="radio inline-50">
                                         <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" checked="">否
                                     </div>
                                 </div>
-                            </div>
-                        </fieldset>
-                        <fieldset class="last-child">
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">处理状态</label>
-                                <div class="col-sm-10">
-                                    <select name="account" class="form-control m-b">
+                            	<label class="col-sm-2 control-label inline"  for="handle-status">处理状态</label>
+                                <div class="col-sm-2 inline">
+                                    <select name="handle-status" id="handle-status" class="form-control m-b">
                                         <option>未执行</option>
                                         <option>执行完毕</option>
                                         <option>停空错</option>
@@ -186,27 +243,40 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">服务描述</label>
                                 <div class="col-sm-10">
-                                    <textarea type="text" class="form-control"></textarea>
+                                    <textarea type="text" class="form-control" required=""></textarea>
                                 </div>
                             </div>
                         </fieldset>
-                        <fieldset id="to-manage">
+                        <fieldset class="to-remove">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">添加待办</label>
-                                <div class="col-sm-10">
+                               <label class="col-sm-2 control-label to-manage">添加待办</label>
+                                <div class="col-sm-10 to-manage">
                                     <textarea type="text" class="form-control"></textarea>
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset>
                             <div class="form-group">
-                                <label class="col-lg-2 control-label"></label>
-                                <div class="flex-row space-around width-60">
-                                    <p class="form-control-static">截止时间:2018-02-15</p>
-                                    <div class="flex-row">
-                            			<a id="recycle" href="#" class="btn btn-default" data-toggle="modal" data-target=".modal-recycle" >提交回收</a>
-		                                &nbsp; &nbsp; &nbsp; &nbsp;
-		                                <button id="submit" type="submit" class="btn btn-sm btn-primary">&nbsp;提&nbsp;&nbsp;&nbsp;&nbsp;交&nbsp;</button>
+                                <label class="col-sm-2 control-label to-manage">待办截止时间</label>
+		                        <div class="flex-row">
+					                <div class="col-md-6 to-manage">
+				                        <div class="panel-body">
+				                            <div class="form-group">
+				                                <div class='input-group date' id='datetimepicker1'>
+				                                    <input type='text' class="form-control" />
+				                                    <span class="input-group-addon">
+				                                        <span class="glyphicon glyphicon-calendar"></span>
+				                                    </span>
+				                                </div>
+				                            </div>
+				                        </div>
+					                </div>
+	                                <div class="vl-submit panel-body to-center">
+	                                    <div class="center-block">
+	                            			<a id="recycle" href="#" class="btn btn-default" data-toggle="modal" data-target=".modal-recycle" >提交回收</a>
+			                                &nbsp; &nbsp; &nbsp; &nbsp;
+			                                <button id="submit" type="submit" class="btn btn-sm btn-primary">&nbsp;提&nbsp;&nbsp;&nbsp;&nbsp;交&nbsp;</button>
+	                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -216,18 +286,15 @@
             </div>
             <!--end page content-->
 
-
             <!--Start footer-->
             <footer class="footer">
                 <span>Copyright &copy; </span>
             </footer>
             <!--end footer-->
-
+            	
         
         </section>
         <!--end main content-->
-
-
 
         <!--Common plugins-->
         <script src="js/jquery.min.js"></script>
@@ -239,19 +306,41 @@
         <script src="js/metismenu.min.js"></script>
         <script src="js/float-custom.js"></script>
 
-
-
         <!--page script-->
         <script src="js/jquery.datatables.min.js"></script>
         <script src="js/datatables.responsive.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/jquery.ui.custom.js"></script>
-        <script src="js/jayne.js"></script>
         <script src="js/jstree.min.js"></script>
+        <script src="js/moment-with-locales.js"></script>
+        <script src="js/bootstrap-datetimepicker.min.js"></script>
+        <script src="js/jayne.js"></script>
+        <!-- <script src="js/jquery.min.js"></script> -->
+        <script type="text/javascript" src="js/colorbox.js"></script>
+        <script type="text/javascript" src="js/timeliner.min.js"></script>
         <script>
-            $(document).ready(function () {
-                $('#datatable').dataTable();
-            });
+			$(function() {
+				$.timeliner({
+					startOpen:['#20170831EX','#20170931EX']
+				});
+//              $('#datatable').dataTable();
+   
+                $('#datetimepicker1').datetimepicker();
+	            $('#datetimepicker11').datetimepicker({
+	                daysOfWeekDisabled: [0, 6]
+	            });
+			});
+//          $(document).ready(function () {
+//              $('#datatable').dataTable();
+//          });
+//          $(function () {
+//              $('#datetimepicker1').datetimepicker();
+//          });
+//          $(function () {
+//	            $('#datetimepicker11').datetimepicker({
+//	                daysOfWeekDisabled: [0, 6]
+//	            });
+//      	});
         </script>
 
     </body>
