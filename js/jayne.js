@@ -1,5 +1,5 @@
 $('input:radio[id="optionsRadios2"]').change(function(){  
-    if($(this).is(":checked")){  
+    if($(this).is(":checked")){
        $(".to-manage").css("display","inline-block");
        $("#recycle").css("display","inline-block");
        $(".to-remove").css("display","block");
