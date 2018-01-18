@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>我的工作台</title>
+        <title>数据公海</title>
         
         <!-- Common plugins -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -18,8 +18,11 @@
         <link href="css/jquery.datatables.min.css" rel="stylesheet" type="text/css">
         <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
         <!--template css-->
+        <link href="css/jquery-ui.css" rel="stylesheet">
+        <link href="css/daterangepicker.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
         <link href="css/jayne.css" rel="stylesheet">
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -51,6 +54,75 @@
             </div>
             <!--page header end-->
 
+            <!--page filter start-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default collapsed">
+                        <div class="panel-heading">
+                                查询条件
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <fieldset class="jquery-Ui-fieldset">
+                                        <label for="simple">请选择数据公海</label>
+                                        <select name="simple" id="simple">
+                                            <option selected="selected">全部公海</option>
+                                            <option>移动公海</option>
+                                            <option>五十五中</option>
+                                            <option>建行公海</option>
+                                            <option>联通公海</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <fieldset class="jquery-Ui-fieldset">
+                                        <label for="batch">请选择批次</label>
+                                        <select name="batch" id="batch">
+                                            <option selected="selected">全部批次</option>
+                                            <option>20180902122</option>
+                                            <option>20180902122</option>
+                                            <option>20180902122</option>
+                                            <option>20180902122</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <fieldset class="jquery-Ui-fieldset">
+                                        <label for="status">请选择状态</label>
+                                        <select name="status" id="status">
+                                            <option selected="selected">全部状态</option>
+                                            <option>已分配</option>
+                                            <option>未分配</option>
+                                            <option>已处理</option>
+                                            <option>再分配</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-3">
+                                   
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <fieldset class="jquery-Ui-fieldset">
+                                        <label for="status">请选择导入数据起止时间</label>
+                                        <input name="daterange" type="text">
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--page filter end-->
+
             <!--start page content-->
 
             <div class="row">
@@ -61,12 +133,18 @@
                                <div class="buttons">
                                
                                 <a href="javascript: void(0);" class="btn btn-primary">批量分配</a>
-                                <a href="javascript: void(0);" class="btn btn-teal">导入xx外呼</a>
-                                <a href="javascript: void(0);" class="btn btn-teal">导入预测外呼</a>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-teal dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown <span class="caret"></span></button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">导入预测外呼</a></li>
+                                        <li><a href="#">导入自动外呼</a></li>
+                                    </ul>
+                                </div>
                                 <a href="javascript: void(0);" class="btn btn-danger">批量删除</a>
                                 
                             </div>
                         </div>
+                  
                         <div class="panel-body">
                             <table id="datatable" class="table table-striped dt-responsive nowrap">
                                 <thead>
@@ -123,10 +201,56 @@
         <script src="js/datatables.responsive.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/jquery.ui.custom.js"></script>
+        <script src="js/moment.min.js"></script>
+        <script src="js/daterangepicker.js"></script>
         <script src="js/jayne.js"></script>
         <script>
             $(document).ready(function () {
                 $('#datatable').dataTable();
+                $("#batch").selectmenu();
+                $("#status").selectmenu();
+
+                $('input[name="daterange"]').daterangepicker(
+                {
+                    locale: {
+                        format: 'YYYY-MM-DD' ,
+                        cancelLabel: '取消',
+                        applyLabel: '选择',
+                        "fromLabel": "从",
+                        "toLabel": "至",
+                        "customRangeLabel": "Custom",
+                        "weekLabel": "周",
+                        "daysOfWeek": [
+                            "日",
+                            "一",
+                            "二",
+                            "三",
+                            "四",
+                            "五",
+                            "六"
+                        ],
+                        "monthNames": [
+                            "一月",
+                            "二月",
+                            "三月",
+                            "四月",
+                            "五月",
+                            "六月",
+                            "七月",
+                            "八月",
+                            "九月",
+                            "十月",
+                            "十一月",
+                            "十二月"
+                        ],
+                        "firstDay": 1
+                    },
+                    startDate: '2018-01-01',
+                    endDate: moment()
+                }, 
+                function(start, end, label) {
+                   
+                });
             });
         </script>
 
