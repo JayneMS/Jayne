@@ -264,12 +264,12 @@
 			    
 			    $('#addRow').on( 'click', function () {
 			        table.row.add( [
-			        	'<input class="fieldname'+counter+'">',
-			        	'<select class="fieldtype'+counter+'"><option value="普通文本">普通文本</option vlaue="电话文本"><option>电话文本</option><option vlaue="下拉菜单">下拉菜单</option><option> vlaue="单选按钮"单选按钮</option><option vlaue="多选按钮">多选按钮</option><option vlaue="是否">是否</option><option vlaue="日期类型">日期类型</option></select>',
-			        	'<input class="fieldrelated'+counter+'">',
+			        	'<input class="fieldname'+counter+'" style="width:100px">',
+			        	'<select class="fieldtype'+counter+'" style="width:100px"><option value="普通文本">普通文本</option vlaue="电话文本"><option>电话文本</option><option vlaue="下拉菜单">下拉菜单</option><option vlaue="单选按钮">单选按钮</option><option vlaue="多选按钮">多选按钮</option><option vlaue="是否">是否</option><option vlaue="日期类型">日期类型</option></select>',
+			        	'<input class="fieldrelated'+counter+'" style="width:100px">',
 			        	'<select class="isrequired'+counter+'"><option value="1">是</option><option value="0">否</option></select>',
 			        	'<select class="issearched'+counter+'"><option value="1">是</option><option value="0">否</option></select>',
-			        	'<input class="sort'+counter+'">',
+			        	'<input class="sort'+counter+'" style="width:100px">',
 			        	'<a href="">修改</a>&nbsp;<a href="">删除</a>'
 			        ] ).draw();
 			        counter++;
