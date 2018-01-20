@@ -259,7 +259,13 @@
 			        	'<select class="issearched'+counter+'"><option value="1">是</option><option value="0">否</option></select>',
 			        	'<input class="sort'+counter+'" style="width:100px">',
 			        	'<a onclick="delete_row()">删除</a>'
-			        ] ).draw();
+                    ] ).draw();
+                    
+                    $('.fieldname' + counter).focus()
+                    $('.fieldname' + counter).click(function(){
+                        this.focus()
+                    })
+
 			        counter++;
 			    } );
 			 
