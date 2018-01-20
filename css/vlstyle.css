@@ -78,6 +78,10 @@
     min-width: 200px;
 }
 
-.phone-bar-left {
-    
+.vl-i-checks-inline {
+    display: inline-block;
+    max-width: 120px ;
+}
+.m-r-10 {
+    margin-right: 10px;
 }

@@ -260,6 +260,12 @@
 			        	'<input class="sort'+counter+'" style="width:100px">',
 			        	'<a href="#" class="sort'+counter+'" onclick="delete_r(this)" style="margin:5px;">删除</a>'
 			        ] ).draw();
+                    
+                    $('.fieldname' + counter).focus()
+                    $('.fieldname' + counter).click(function(){
+                        this.focus()
+                    })
+
 			        counter++;
 			    } );
 			 
