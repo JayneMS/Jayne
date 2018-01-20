@@ -22,6 +22,8 @@
         <!--template css-->
         <link href="css/style.css" rel="stylesheet">
         <link href="css/jayne.css" rel="stylesheet">
+        <!--sweetalert css-->
+        <link href="css/sweet-alert.css" rel="stylesheet">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -70,7 +72,6 @@
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>-->
                         <h4 class="modal-title" id="mySmallModalLabel">删除数据来源</h4>
                     </div>
                     <div class="modal-body">
@@ -78,7 +79,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary">确定</button>
+			        	<button class="btn btn-primary" onclick="delete_r(this)" >确定</button>
+                        <!--<button type="button" class="btn btn-primary">确定</button>-->
                     </div>
                 </div>
             </div>
@@ -136,7 +138,6 @@
                                         <td>是</td>
                                         <td>1</td>
                                         <td>
-                            				<!--<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>-->
                             				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
                                         </td>
                                     </tr>
@@ -148,7 +149,6 @@
                                         <td>是</td>
                                         <td>2</td>
                                         <td>
-                            				<!--<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>-->
                             				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
                                         </td>
                                     </tr>
@@ -160,7 +160,6 @@
                                         <td>是</td>
                                         <td>3</td>
                                         <td>
-                            				<!--<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>-->
                             				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
                                         </td>
                                     </tr>
@@ -172,7 +171,6 @@
                                         <td>否</td>
                                         <td>4</td>
                                         <td>
-                            				<!--<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>-->
                             				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
                                         </td>
                                     </tr>
@@ -182,11 +180,11 @@
                     </div>
                 </div>
             </div><!--end row-->
-            <span class="tip red">*如需设置字段关联值，请用';'隔开</span>
-            <a href="#" id="savefield" class="btn btn-default btn-primary  pull-right" data-toggle="modal" data-target="#createModal" style="margin:5px;">创建并应用</a>
+            <span class="tip red">*如字段类型为下拉菜单、单选按钮、多选按钮，需设置字段关联值，请用';'隔开</span>
+            <a href="#" id="savefield" class="btn btn-default btn-primary  pull-right" data-toggle="modal" data-target="#createModal" style="margin-top:-10px;">创建并应用</a>
             <!--end page content-->
             <!--Start footer-->
-            <footer class="footer">
+            <footer class="footer" class="margin-tb-10">
                 <span>Copyright &copy; </span>
             </footer>
             <!--end footer-->
@@ -214,6 +212,8 @@
         <script src="js/jquery.ui.custom.js"></script>
         <script src="js/jayne.js"></script>        
         <script src="js/jstree.min.js"></script>
+        <!--sweet alerts-->
+        <script src="js/sweet-alert.min.js"></script>
         <script>
 			var counter = 0;
         
@@ -258,7 +258,7 @@
 			        	'<select class="isrequired'+counter+'"><option value="1">是</option><option value="0">否</option></select>',
 			        	'<select class="issearched'+counter+'"><option value="1">是</option><option value="0">否</option></select>',
 			        	'<input class="sort'+counter+'" style="width:100px">',
-			        	'<a onclick="delete_row()">删除</a>'
+			        	'<a href="#" class="sort'+counter+'" onclick="delete_r(this)" style="margin:5px;">删除</a>'
 			        ] ).draw();
 			        counter++;
 			    } );
@@ -285,9 +285,26 @@
                 });
             });
             
-            function delete_row(){
-            	var del = $(this).parents('tr').attr('display','none');
-//          	del.attr('display','none');
+            
+            function delete_r(othis){
+            	swal({    
+            		title: "确定删除该字段吗？",    
+            		type: "warning",   
+            		showCancelButton: true,    
+            		confirmButtonColor: "#DD6B55",   
+            		confirmButtonText: "确定删除！",
+            		cancelButtonText:'取消',
+            		closeOnConfirm: false 
+            	}
+            	, 
+            	function(){   
+            		swal(
+            			"删除！", "该字段已经被删除。",
+            			"success"
+            		);
+            		$(othis).parents("tr").css("display","none");
+            	});
+            	
             }
             
 			function createhighsea(){
@@ -299,8 +316,21 @@
 				var sort = new Array();
 				var field = new Array();
 				for(var i = 0;i < counter;i++){
+					var name = $('.fieldname'+i+'').val();
+					var type = $('.fieldtype'+i+'').val();
+					var related = $('.fieldrelated'+i+'').val();
+					if(type=='下拉菜单'||type=='多选按钮'||type=='单选按钮'){
+						if(related==''||related==undefined){
+                            swal(
+                            	"Cancelled", 
+                            	"字段为需要填写字段关联值", 
+                            	"error"
+                            	);
+                        	return;
+						}
+					}
 					fieldname.push($('.fieldname'+i+'').val());
-					fieldtype.push($('.fieldtype'+i+'').val());
+					type = fieldtype.push($('.fieldtype'+i+'').val());
 					fieldrelated.push($('.fieldrelated'+i+'').val());
 					isrequired.push($('.isrequired'+i+'').val());
 					issearched.push($('.issearched'+i+'').val());
@@ -313,6 +343,7 @@
 				field.push(issearched);
 				field.push(sort);
 				alert(field);
+//				此处为获取所有字段值的方法，可作参考
 			}
         </script>
 
