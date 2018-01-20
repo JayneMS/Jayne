@@ -301,8 +301,7 @@
             		confirmButtonText: "确定删除！",
             		cancelButtonText:'取消',
             		closeOnConfirm: false 
-            	}
-            	, 
+            	}, 
             	function(){   
             		swal(
             			"删除！", "该字段已经被删除。",
@@ -321,18 +320,16 @@
 				var issearched = new Array();
 				var sort = new Array();
 				var field = new Array();
+				var errorflag = 0;
 				for(var i = 0;i < counter;i++){
 					var name = $('.fieldname'+i+'').val();
 					var type = $('.fieldtype'+i+'').val();
 					var related = $('.fieldrelated'+i+'').val();
+					console.log(i);
 					if(type=='下拉菜单'||type=='多选按钮'||type=='单选按钮'){
-						if(related==''||related==undefined){
-                            swal(
-                            	"Cancelled", 
-                            	"字段为需要填写字段关联值", 
-                            	"error"
-                            	);
-                        	return;
+						if(related==''||(typeof related == 'undefined')){
+                            errorflag=1;
+                            break;
 						}
 					}
 					fieldname.push($('.fieldname'+i+'').val());
@@ -348,7 +345,27 @@
 				field.push(isrequired);
 				field.push(issearched);
 				field.push(sort);
-				alert(field);
+				if(errorflag==1){
+					//如果有错误就不传值
+					
+	            	swal({    
+	            		title: ""+name+"字段为"+type+"需要填写字段关联值",    
+	            		type: "warning",
+	            		showCancelButton: true,    
+	            		confirmButtonColor: "#DD6B55",   
+	            		confirmButtonText: "确定删除！",
+	            		cancelButtonText:'取消',
+	            		closeOnConfirm: false 
+	            	},function(){
+	            		swal(
+	            			"删除！", "该字段已经被删除。",
+	            			"success"
+	            		);
+	            	})
+				}else{
+					//如果没有错误就传值制表
+					alert(field);
+				}
 //				此处为获取所有字段值的方法，可作参考
 			}
         </script>
