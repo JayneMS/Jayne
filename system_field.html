@@ -64,48 +64,6 @@
             </div>
         </div>
         <!--modal create-role end-->
-        <!--modal update-role start-->
-        <div class="modal fade" data-backdrop="static" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>
-                        <h3 class="modal-title" id="myModalLabel">修改数据来源</h3>
-                    </div>
-                    <div class="modal-body">
-                        <div class="modal-form">
-                            <form role="form">
-                                <div class="form-group">
-	                                <label>来源名称</label>
-                                    <input type="email" class="form-control" placeholder="管理员">
-                                </div>
-                                <div class="form-group">
-	                                <label>分配规则</label>
-	                                <select name="" class="form-control" >
-	                                	<option value="">平均规则</option>
-	                                	<option value="">坐席分配规则</option>
-	                                </select>
-                                </div>
-                                <div class="form-group">
-	                                <label>关联口径</label>
-	                                <select name="" class="form-control" >
-	                                	<option value="">移动口径1</option>
-	                                	<option value="">移动口径2</option>
-	                                	<option value="">联通口径1</option>
-	                                	<option value="">建行口径1</option>
-	                                </select>
-                                </div>
-                                <div class="clearfix modal-footer no-border">
-                        			<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="button" class="btn  btn-primary pull-right">提交</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--modal update-role end-->
 
         <!--modal delete-->
         <div class="modal fade modal-delete" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -178,7 +136,7 @@
                                         <td>是</td>
                                         <td>1</td>
                                         <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
+                            				<!--<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>-->
                             				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
                                         </td>
                                     </tr>
@@ -190,7 +148,7 @@
                                         <td>是</td>
                                         <td>2</td>
                                         <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
+                            				<!--<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>-->
                             				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
                                         </td>
                                     </tr>
@@ -202,7 +160,7 @@
                                         <td>是</td>
                                         <td>3</td>
                                         <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
+                            				<!--<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>-->
                             				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
                                         </td>
                                     </tr>
@@ -214,7 +172,7 @@
                                         <td>否</td>
                                         <td>4</td>
                                         <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
+                            				<!--<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>-->
                             				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
                                         </td>
                                     </tr>
@@ -224,8 +182,9 @@
                     </div>
                 </div>
             </div><!--end row-->
+            <span class="tip red">*如需设置字段关联值，请用';'隔开</span>
+            <a href="#" id="savefield" class="btn btn-default btn-primary  pull-right" data-toggle="modal" data-target="#createModal" style="margin:5px;">创建并应用</a>
             <!--end page content-->
-            <a href="#" id="savefield" class="btn btn-default btn-primary" data-toggle="modal" data-target="#createModal" style="margin:5px;">创建并应用</a>
             <!--Start footer-->
             <footer class="footer">
                 <span>Copyright &copy; </span>
@@ -256,9 +215,38 @@
         <script src="js/jayne.js"></script>        
         <script src="js/jstree.min.js"></script>
         <script>
-		var counter = 0;
+			var counter = 0;
         
             $(document).ready(function () {
+            	
+			    $('#datatable').DataTable({
+			    	destroy:true,
+			    	ordering: false ,
+			        language: {
+			            "sProcessing": "处理中...",
+			            "sLengthMenu": "显示 _MENU_ 项结果",
+			            "sZeroRecords": "没有匹配结果",
+			            "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+			            "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+			            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+			            "sInfoPostFix": "",
+			            "sSearch": "搜索:",
+			            "sUrl": "",
+			            "sEmptyTable": "表中数据为空",
+			            "sLoadingRecords": "载入中...",
+			            "sInfoThousands": ",",
+			            "oPaginate": {
+			                "sFirst": "首页",
+			                "sPrevious": "上页",
+			                "sNext": "下页",
+			                "sLast": "末页"
+			            },
+			            "oAria": {
+			                "sSortAscending": ": 以升序排列此列",
+			                "sSortDescending": ": 以降序排列此列"
+			            }
+			        }
+			    });
 				//add row
 			    var table = $('#datatable').DataTable();
 			    
@@ -270,39 +258,13 @@
 			        	'<select class="isrequired'+counter+'"><option value="1">是</option><option value="0">否</option></select>',
 			        	'<select class="issearched'+counter+'"><option value="1">是</option><option value="0">否</option></select>',
 			        	'<input class="sort'+counter+'" style="width:100px">',
-			        	'<a href="">修改</a>&nbsp;<a href="">删除</a>'
+			        	'<a onclick="delete_row()">删除</a>'
 			        ] ).draw();
 			        counter++;
 			    } );
 			 
 			    // Automatically add a first row of data
 //			    $('#addRow').click();
-
-			$('#savefield').on('click',function () {
-
-				var fieldname = new Array();
-				var fieldtype = new Array();
-				var fieldrelated = new Array();
-				var isrequired = new Array();
-				var issearched = new Array();
-				var sort = new Array();
-				var field = new Array();
-				for(var i = 0;i < counter;i++){
-					fieldname.push($('.fieldname'+i+'').val());
-					fieldtype.push($('.fieldtype'+i+'').val());
-					fieldrelated.push($('.fieldrelated'+i+'').val());
-					isrequired.push($('.isrequired'+i+'').val());
-					issearched.push($('.issearched'+i+'').val());
-					sort.push($('.sort'+i+'').val());
-				}
-				field.push(fieldname);
-				field.push(fieldtype);
-				field.push(fieldrelated);
-				field.push(isrequired);
-				field.push(issearched);
-				field.push(sort);
-				alert(field);
-			})
 
                 //checkbox
                 $('#checkTree').jstree({
@@ -322,6 +284,11 @@
                     'plugins': ['types', 'checkbox']
                 });
             });
+            
+            function delete_row(){
+            	var del = $(this).parents('tr').attr('display','none');
+//          	del.attr('display','none');
+            }
             
 			function createhighsea(){
 				var fieldname = new Array();
