@@ -20,8 +20,10 @@
         <!--template css-->
         <link href="css/jquery-ui.css" rel="stylesheet">
         <link href="css/daterangepicker.css" rel="stylesheet">
+        <link href="css/blue.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
         <link href="css/jayne.css" rel="stylesheet">
+        <link href="css/vlstyle.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,6 +31,7 @@
           <script src="js/html5shiv.min.js"></script>
           <script src="js/respond.min.js"></script>
         <![endif]-->
+        
     </head>
     <body>
 
@@ -115,6 +118,17 @@
                                         <input name="daterange" type="text">
                                     </fieldset>
                                 </div>
+
+                                <div class="col-sm-4">
+                                    <fieldset class="jquery-Ui-fieldset">
+                                            <label for="status">快速筛选时间</label>
+                                            <div class="i-checks vl-i-checks-inline m-r-10"><label> <input type="radio" value="todayOnly" name="a"> <i></i> 仅今日导入 </label></div>
+                                            <div class="i-checks vl-i-checks-inline"><label> <input type="radio" checked="" value="weekLatest" name="a"> <i></i> 近一周导入 </label></div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-1">
+                                    
+                                </div>
                             </div>
                         </div>
 
@@ -134,10 +148,10 @@
                                
                                 <a href="javascript: void(0);" class="btn btn-primary">批量分配</a>
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-teal dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown <span class="caret"></span></button>
+                                    <button type="button" class="btn btn-teal dropdown-toggle" data-toggle="dropdown" aria-expanded="false">导入外呼 <span class="caret"></span></button>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">导入预测外呼</a></li>
-                                        <li><a href="#">导入自动外呼</a></li>
+                                        <li><a href="#">预测外呼</a></li>
+                                        <li><a href="#">自动外呼</a></li>
                                     </ul>
                                 </div>
                                 <a href="javascript: void(0);" class="btn btn-danger">批量删除</a>
@@ -204,12 +218,18 @@
         <script src="js/moment.min.js"></script>
         <script src="js/daterangepicker.js"></script>
         <script src="js/jayne.js"></script>
+        <!-- iCheck for radio and checkboxes -->
+        <script src="js/icheck.min.js"></script>
         <script>
             $(document).ready(function () {
-                $('#datatable').dataTable();
-                $("#batch").selectmenu();
+                $('#datatable').dataTable();  
+                $("#batch").selectmenu(); //下拉菜单初始化
                 $("#status").selectmenu();
-
+                // radio添加class
+                $('.i-checks').iCheck({
+                    checkboxClass: 'icheckbox_square-blue',
+                    radioClass: 'iradio_square-blue'
+                });
                 $('input[name="daterange"]').daterangepicker(
                 {
                     locale: {
