@@ -19,6 +19,7 @@
     <!-- dataTables -->
     <link href="css/jquery.datatables.min.css" rel="stylesheet" type="text/css">
     <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap-drawer.min.css" rel="stylesheet">
     <!--template css-->
     <link href="css/jquery-ui.css" rel="stylesheet">
     <link href="css/daterangepicker.css" rel="stylesheet">
@@ -36,19 +37,42 @@
 
 </head>
 
-<body>
-
-
+<body class="has-drawer">
+    <div id="drawerExample" class="drawer  drawer-right dw-xs-10 dw-sm-6 dw-md-4 fold" aria-labelledby="drawerExample">
+        <div class="drawer-controls">
+           
+        </div>
+        <div class="drawer-contents">
+            <div class="drawer-heading">
+                <h2 class="drawer-title"></h2>
+                <a href="#drawerExample" 
+                   data-toggle="drawer" 
+                   aria-foldedopen="false" 
+                   aria-controls="drawerExample">
+                    返回
+                </a>
+            </div>
+            <div class="drawer-body">
+               
+            </div>
+            <ul class="drawer-nav">
+                
+            </ul>
+            <div class="drawer-footer">
+               
+            </div>
+        </div>
+    </div>
     <!--modal delete-->
     <div class="modal fade modal-delete" id="deleteModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>-->
-                    <h4 class="modal-title" id="mySmallModalLabel">删除角色</h4>
+                    <h4 class="modal-title" id="mySmallModalLabel">删除数据</h4>
                 </div>
                 <div class="modal-body">
-                    您确定要删除此角色吗？
+                    删除的数据，可以再垃圾箱中查看。您确定要删除吗？
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -58,6 +82,7 @@
         </div>
     </div>
     <!--end delete modal-->
+
 
     <!--main content start-->
     <section class="main-content">
@@ -225,8 +250,8 @@
                                     <td>李小龙</td>
                                     <td class="td_operation">
                                         <a href="#" class="" data-toggle="modal" data-target="#publishModal" style="margin:5px;">分配</a>
-                                        <a href="#" class="" data-toggle="modal" data-target="#viewModal" style="margin:5px;">查看</a>
-                                        <a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
+                                        <a href="#drawerExample" data-toggle="drawer" aria-foldedopen="false" aria-controls="drawerExample" >查看</a>
+
                                         <a href="#" class="" data-toggle="modal" data-target="#deleteModal" style="margin:5px;">删除</a>
                                     </td>
                                 </tr>
@@ -240,8 +265,8 @@
                                     <td>李小龙</td>
                                     <td class="td_operation">
                                         <a href="#" class="" data-toggle="modal" data-target="#publishModal" style="margin:5px;">分配</a>
-                                        <a href="#" class="" data-toggle="modal" data-target="#viewModal" style="margin:5px;">查看</a>
-                                        <a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
+                                        <a href="#drawerExample" data-toggle="drawer" aria-foldedopen="false" aria-controls="drawerExample" >查看</a>
+
                                         <a href="#" class="" data-toggle="modal" data-target="#deleteModal" style="margin:5px;">删除</a>
                                     </td>
                                 </tr>
@@ -255,8 +280,8 @@
                                     <td>李小龙</td>
                                     <td>
                                         <a href="#" class="" data-toggle="modal" data-target="#publishModal" style="margin:5px;">分配</a>
-                                        <a href="#" class="" data-toggle="modal" data-target="#viewModal" style="margin:5px;">查看</a>
-                                        <a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
+                                        <a href="#drawerExample" data-toggle="drawer" aria-foldedopen="false" aria-controls="drawerExample" >查看</a>
+                                     
                                         <a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
                                     </td>
                                 </tr>
@@ -302,6 +327,7 @@
     <script src="js/jquery.ui.custom.js"></script>
     <script src="js/moment.min.js"></script>
     <script src="js/daterangepicker.js"></script>
+    <script src="js/drawer.min.js"></script>
     <script src="js/jayne.js"></script>
     <!-- iCheck for radio and checkboxes -->
     <script src="js/icheck.min.js"></script>
@@ -312,7 +338,7 @@
 
             // 选择当前行，排除对于操作列的click监听
             $('#datatable tbody').on('click', "tr td:not('.td_operation')", function () {
-         
+
                 var $parent = $(this).parent()
 
                 var id = $parent.id || $($parent).index()  // id 从server端获取
@@ -334,26 +360,26 @@
             });
 
             // 全选与取消全选
-            $('#selectAllBtn').click(function(){
+            $('#selectAllBtn').click(function () {
 
                 // flag 也可以用server选中后的id list 判断，同时在单条选中所有后，更新button状态
-                var flag = $('#selectAllBtn').text() == '全选' ? true : false  
-                    flag ? 
-                        $('#selectAllBtn').text('取消全选')
-                        : $('#selectAllBtn').text('全选')
+                var flag = $('#selectAllBtn').text() == '全选' ? true : false
+                flag ?
+                    $('#selectAllBtn').text('取消全选')
+                    : $('#selectAllBtn').text('全选')
 
-                $('#datatable tbody tr').each(function(i){
-                    flag ? 
+                $('#datatable tbody tr').each(function (i) {
+                    flag ?
                         $(this).addClass('selected')
-                        : $(this).removeClass('selected') 
+                        : $(this).removeClass('selected')
                 })
 
-            }) 
+            })
 
             function btnOnSelected() {
                 if ($('tbody tr').not('.selected').length == 0) {
                     $('#selectAllBtn').text('取消全选')
-                }else {
+                } else {
                     $('#selectAllBtn').text('全选')
                 }
             }
@@ -407,7 +433,26 @@
 
                 });
 
-           
+                // $("body").not($('.drawer')).on('click', function(){
+                //     console.log('not')
+                    
+                //     $('.drawer').drawer('hide')
+                
+                   
+                // })
+
+                // $("html, body").click(function(e) {
+                //     if ($(e.target).hasClass('drawer')) {
+                //         return false;
+                //     }
+                //     console.log('d');
+                // });
+
+            //     $('#myDrawer').drawer({
+                    //     toggle: false
+                    // });
+
+
         });
     </script>
 
