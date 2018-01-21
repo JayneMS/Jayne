@@ -294,18 +294,17 @@
             
             function delete_r(othis){
             	swal({    
-            		title: "确定删除该字段吗？",    
+            		title: "确定吗？",    
             		type: "warning",   
             		showCancelButton: true,    
             		confirmButtonColor: "#DD6B55",   
-            		confirmButtonText: "确定删除！",
+            		confirmButtonText: "确定！",
             		cancelButtonText:'取消',
             		closeOnConfirm: false 
             	}, 
             	function(){   
             		swal(
-            			"删除！", "该字段已经被删除。",
-            			"success"
+            			"删除！", "该字段已经被删除。","success"
             		);
             		$(othis).parents("tr").css("display","none");
             	});
