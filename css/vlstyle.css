@@ -85,3 +85,9 @@
 .m-r-10 {
     margin-right: 10px;
 }
+
+/* table selected */
+tr.odd.selected,
+tr.even.selected {
+    background-color: #abb9d3!important;
+}
