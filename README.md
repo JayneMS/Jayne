@@ -17,6 +17,8 @@ https://ey8mhu.axshare.com/    （随时更新）
 - data_import.html  数据导入
 - system_field.html  系统设置/字段模板设置
 - system_password.html  系统设置/密码管理
+- system_highsea.html  系统设置/公海管理
+- system_caliber.html  系统设置/口径录入
 
 
 #### 可开发模块

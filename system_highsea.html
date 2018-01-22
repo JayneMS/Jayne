@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>公海管理</title>
+        
+        <!-- Common plugins -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/simple-line-icons.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/pace.css" rel="stylesheet"><link href="css/jasny-bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/nanoscroller.css">
+        <link rel="stylesheet" href="css/metismenu.min.css">
+        <!-- dataTables -->
+        <link href="css/jquery.datatables.min.css" rel="stylesheet" type="text/css">
+        <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
+        <!-- Treeview css -->
+        <link href="css/style_1.css" rel="stylesheet" type="text/css" />
+        <!--template css-->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/jayne.css" rel="stylesheet">
+        <!--sweetalert css-->
+        <link href="css/sweet-alert.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="js/html5shiv.min.js"></script>
+          <script src="js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <!--modal create-role start-->
+        <div class="modal fade" data-backdrop="static" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>
+                        <h3 class="modal-title" id="myModalLabel">新建数据来源</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-form">
+                            <form role="form">
+                                <div class="form-group">
+	                                <label>来源名称</label>
+                                    <input type="text" class="form-control" placeholder="" required="">
+                                </div>
+                                <div class="form-group">
+	                                <label>分配规则</label>
+	                                <select name="" class="form-control" >
+	                                	<option value="">平均规则</option>
+	                                	<option value="">坐席分配规则</option>
+	                                </select>
+                                </div>
+                                <div class="form-group">
+	                                <label>关联口径</label>
+	                                <select name="" class="form-control" >
+	                                	<option value="">移动口径1</option>
+	                                	<option value="">移动口径2</option>
+	                                	<option value="">联通口径1</option>
+	                                	<option value="">建行口径1</option>
+	                                </select>
+                                </div>
+                                <div class="clearfix modal-footer no-border">
+                        			<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="submit" class="btn  btn-primary pull-right">创建</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--modal create-role end-->
+        <!--modal update-role start-->
+        <div class="modal fade" data-backdrop="static" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>
+                        <h3 class="modal-title" id="myModalLabel">修改数据来源</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-form">
+                            <form role="form">
+                                <div class="form-group">
+	                                <label>来源名称</label>
+                                    <input type="email" class="form-control" placeholder="管理员">
+                                </div>
+                                <div class="form-group">
+	                                <label>分配规则</label>
+	                                <select name="" class="form-control" >
+	                                	<option value="">平均规则</option>
+	                                	<option value="">坐席分配规则</option>
+	                                </select>
+                                </div>
+                                <div class="form-group">
+	                                <label>关联口径</label>
+	                                <select name="" class="form-control" >
+	                                	<option value="">移动口径1</option>
+	                                	<option value="">移动口径2</option>
+	                                	<option value="">联通口径1</option>
+	                                	<option value="">建行口径1</option>
+	                                </select>
+                                </div>
+                                <div class="clearfix modal-footer no-border">
+                        			<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="submit" class="btn  btn-primary pull-right">提交</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--modal update-role end-->
+
+        <!--main content start-->
+        <section class="main-content">
+
+            <!--page header start-->
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-6 flex-align-center">
+                        <h4 class="inline">公海管理</h4>
+                        &nbsp;&nbsp;&nbsp;&nbsp;          
+                        <a href="#" class="btn btn-default btn-primary" data-toggle="modal" data-target="#createModal" style="margin:5px;">创建公海</a>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <ol class="breadcrumb">
+                            <li><a href="javascript: void(0);"><i class="fa fa-home"></i></a></li>
+                            <li>系统设置</li>
+                            <li>公海管理</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!--page header end-->
+
+            <!--start page content-->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default collapsed">
+                        <div class="panel-heading">
+                          	公海设置
+                        </div>
+                        <div class="panel-body">
+                            <table id="datatable" class="table table-striped dt-responsive nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>公海</th>
+                                        <th>批次数</th>
+                                        <th>数据总数</th>
+                                        <th>有效数据总数</th>
+                                        <th>字段模板</th>
+                                        <th>口径库</th>
+                                        <th>分配规则</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    	<td>移动套餐业务</td>
+                                    	<td>29次</td>
+                                        <td>5123</td>
+                                        <td>4578</td>
+                                        <td>标准模板/特殊模板/省市模板</td>
+                                        <td>移动基础口径1</td>
+                                        <td>平均规则</td>
+                                        <td>
+                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
+                            				<a href="#" class="" data-toggle="modal" onclick="delete_r(this)" style="margin:5px;">删除</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>联通套餐业务</td>
+                                    	<td>30次</td>
+                                        <td>5244</td>
+                                        <td>4578</td>
+                                        <td>标准模板/特殊模板/省市模板</td>
+                                        <td>移动基础口径1/移动亲情口径</td>
+                                        <td>平均规则</td>
+                                        <td>
+                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
+                            				<a href="#" class="" data-toggle="modal" onclick="delete_r(this)" style="margin:5px;">删除</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>海尔XX部门</td>
+                                    	<td>31次</td>
+                                        <td>5123</td>
+                                        <td>4588</td>
+                                        <td>标准模板/特殊模板/省市模板</td>
+                                        <td>移动基础口径1</td>
+                                        <td>平均规则</td>
+                                        <td>
+                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
+                            				<a href="#" class="" data-toggle="modal" onclick="delete_r(this)" style="margin:5px;">删除</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    	<td>移动套餐业务</td>
+                                    	<td>32次</td>
+                                        <td>5120</td>
+                                        <td>4578</td>
+                                        <td>标准模板/特殊模板/省市模板</td>
+                                        <td>移动基础口径1</td>
+                                        <td>平均规则</td>
+                                        <td>
+                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
+                            				<a href="#" class="" data-toggle="modal" onclick="delete_r(this)" style="margin:5px;">删除</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end row-->
+            
+            <!--end page content-->
+
+
+            <!--Start footer-->
+            <footer class="footer">
+                <span>Copyright &copy; </span>
+            </footer>
+            <!--end footer-->
+
+        </section>
+        <!--end main content-->
+
+
+
+        <!--Common plugins-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/pace.min.js"></script>
+        <script src="js/jasny-bootstrap.min.js"></script>
+        <script src="js/jquery.slimscroll.min.js"></script>
+        <script src="js/jquery.nanoscroller.min.js"></script>
+        <script src="js/metismenu.min.js"></script>
+        <script src="js/float-custom.js"></script>
+
+
+        <!--page script-->
+        <script src="js/jquery.datatables.min.js"></script>
+        <script src="js/datatables.responsive.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/jquery.ui.custom.js"></script>
+        <script src="js/jayne.js"></script>        
+        <script src="js/jstree.min.js"></script>
+        <!--sweet alerts-->
+        <script src="js/sweet-alert.min.js"></script>
+        <script>
+            
+            $(document).ready(function () {
+                //checkbox
+                $('#checkTree').jstree({
+                    'core': {
+                        'themes': {
+                            'responsive': false
+                        }
+                    },
+                    'types': {
+                        'default': {
+                            'icon': 'fa fa-folder'
+                        },	
+                        'file': {
+                            'icon': 'fa fa-file'
+                        }
+                    },
+                    'plugins': ['types', 'checkbox']
+                });
+            });
+
+            function delete_r(othis){
+            	swal({    
+            		title: "确定删除吗？",    
+            		type: "warning",   
+            		showCancelButton: true,    
+            		confirmButtonColor: "#DD6B55",   
+            		confirmButtonText: "确定！",
+            		cancelButtonText:'取消',
+            		closeOnConfirm: false 
+            	}, 
+            	function(){   
+            		swal(
+            			"删除！", "该公海已经被删除。","success"
+            		);
+            		$(othis).parents("tr").css("display","none");
+            	});
+            	
+            }
+            
+        </script>
+
+    </body>
+</html>
