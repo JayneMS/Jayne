@@ -23,10 +23,6 @@
         <!--template css-->
         <link href="css/style.css" rel="stylesheet">
         <link href="css/jayne.css" rel="stylesheet">
-        <!--timeliner css-->
-		<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="css/responsive.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="css/colorbox.css" type="text/css" media="screen">
 		<!-- datapicker css-->
     	<link href="css/daterangepicker.css" rel="stylesheet">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -64,7 +60,7 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4>我的待办任务</h4>
+                        <h4 class="inline">我的待办任务</h4>
                     </div>
                     <div class="col-sm-6 text-right">
                         <ol class="breadcrumb">
@@ -81,32 +77,47 @@
                 <div class="col-md-12">
                     <div class="panel panel-default collapsed">
                         <div class="panel-body">
-		                    <form method="get" action="/" class="form-horizontal">
-		                        <!--<fieldset>-->
-	                            <div class="col-sm-4 form-group left-30p ">
-	                                <div class="inline">
-	                                    <div class="radio inline-75p">
-	                                        <input id="optionsRadios1" type="radio" name="optionsRadios" value="option1" checked="">全部任务
-	                                    </div>
-	                                    <div class="radio inline-75p">
-	                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" >已完成
-	                                    </div>
-	                                    <div class="radio inline-75p">
-	                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" >未完成
-	                                    </div>
-	                                    <div class="radio inline-75p">
-	                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" >进行中
-	                                    </div>
-	                                </div>
-	                            </div>
-		                    </form>
-		                        <!--</fieldset>-->
-	                            <div class="col-sm-4">
-	                                <fieldset class="jquery-Ui-fieldset">
-	                                    <label for="status">请选择导入数据起止时间</label>
-	                                    <input name="daterange" type="text">
-	                                </fieldset>
-	                            </div>
+                        	<div class="width-100">
+                        		<div class="width-60 inline">
+				                    <form method="get" action="/" class="form-horizontal">
+			                            <div class=" form-group left-30p">
+			                                <div class="inline">
+			                                    <div class="radio inline-75p">
+			                                        <input id="optionsRadios1" type="radio" name="optionsRadios" value="option1" checked="">全部任务
+			                                    </div>
+			                                    <div class="radio inline-75p">
+			                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" >已完成
+			                                    </div>
+			                                    <div class="radio inline-75p">
+			                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" >未完成
+			                                    </div>
+			                                    <div class="radio inline-75p">
+			                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" >进行中
+			                                    </div>
+			                                </div>
+			                            </div>
+				                    </form>
+		                            <div>
+		                                <fieldset class="jquery-Ui-fieldset">
+		                                	<div class="inline width-33">
+			                                    <label for="status">请选择导入数据起止时间</label>
+			                                    <input class="" name="daterange" type="text">
+		                                	</div>	
+			                                <div class="inline left-30p">
+			                                    <div class="radio inline-75p">
+			                                        <input id="optionsRadios1" type="radio" name="optionsRadios" value="option1" checked="">全部任务
+			                                    </div>
+			                                    <div class="radio inline-75p">
+			                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" >已完成
+			                                    </div>
+			                                </div>
+		                                </fieldset>
+		                            </div>
+                        		</div>          
+	                            <a href="#" class="btn btn-default btn-primary top-button left-button" data-toggle="modal" data-target="#createModal">筛选</a>
+	                            <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+	                            <a href="#" class="btn btn-default btn-primary top-button right-button" data-toggle="modal" data-target="#createModal">日历视角</a>
+                        	</div>
                             <table id="datatable" class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>

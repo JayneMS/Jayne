@@ -19,6 +19,7 @@ https://ey8mhu.axshare.com/    （随时更新）
 - system_password.html  系统设置/密码管理
 - system_highsea.html  系统设置/公海管理
 - system_caliber.html  系统设置/口径录入
+- flow_department.html  流程管理/部门管理
 
 
 #### 可开发模块

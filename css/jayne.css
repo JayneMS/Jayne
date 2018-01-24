@@ -24,7 +24,7 @@
 	width: 75px;
 }
 
-form .left-30p{
+.panel-body .left-30p{
 	margin-left: 30px;
 }
 
@@ -75,11 +75,37 @@ form .left-30p{
 	justify-content: space-around;
 }
 
+.top-button{
+	margin: 0px;
+	margin-top: -130px;
+}
+
+.left-button{
+	margin-left: -200px;	
+}
+
+.right-button{
+	margin-left: 300px;	
+	padding: 13px;
+	padding-left: 23px;
+	padding-right: 23px;
+	font-size: 14px;
+	border-radius: 7px;
+}
+
 .width-60{
 	width: 60%;
 }
 
+.width-100{
+	width: 100%;
+}
+
 .width-33{
+	width: 33%;
+}
+
+.jquery-Ui-fieldset .width-33{
 	width: 33%;
 }
 
