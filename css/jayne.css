@@ -19,6 +19,15 @@
 	width: 50px;
 }
 
+.inline-75p{
+	display: inline-block;
+	width: 75px;
+}
+
+form .left-30p{
+	margin-left: 30px;
+}
+
 .col-500{
 	margin: 0 auto;
 	width: 500px;

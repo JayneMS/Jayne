@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>我的待办任务</title>
+        
+        <!-- Common plugins -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/simple-line-icons.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/pace.css" rel="stylesheet">
+        <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/nanoscroller.css">
+        <link rel="stylesheet" href="css/metismenu.min.css">
+        <!-- datePicker -->
+        <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        <!-- dataTables -->
+        <link href="css/jquery.datatables.min.css" rel="stylesheet" type="text/css">
+        <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
+        <!--template css-->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/jayne.css" rel="stylesheet">
+        <!--timeliner css-->
+		<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="css/responsive.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="css/colorbox.css" type="text/css" media="screen">
+		<!-- datapicker css-->
+    	<link href="css/daterangepicker.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="js/html5shiv.min.js"></script>
+          <script src="js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <!--modal recycle-->
+        <div class="modal fade modal-recycle" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="mySmallModalLabel">提交回收</h4>
+                    </div>
+                    <div class="modal-body">
+                    	请详细描述回收原因
+	                    <textarea id="recycle-reason" rows="10" cols="10"></textarea>
+                    </div>
+                    <div class="modal-footer no-border">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end recycle modal-->
+
+        <!--main content start-->
+        <section class="main-content">
+            <!--page header start-->
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>我的待办任务</h4>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <ol class="breadcrumb">
+                            <li><a href="javascript: void(0);"><i class="fa fa-home"></i></a></li>
+                            <li>工作台</li>
+                            <li>我的待办任务</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!--page header end-->
+            <!--start page content-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default collapsed">
+                        <div class="panel-body">
+		                    <form method="get" action="/" class="form-horizontal">
+		                        <!--<fieldset>-->
+	                            <div class="col-sm-4 form-group left-30p ">
+	                                <div class="inline">
+	                                    <div class="radio inline-75p">
+	                                        <input id="optionsRadios1" type="radio" name="optionsRadios" value="option1" checked="">全部任务
+	                                    </div>
+	                                    <div class="radio inline-75p">
+	                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" >已完成
+	                                    </div>
+	                                    <div class="radio inline-75p">
+	                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" >未完成
+	                                    </div>
+	                                    <div class="radio inline-75p">
+	                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" >进行中
+	                                    </div>
+	                                </div>
+	                            </div>
+		                    </form>
+		                        <!--</fieldset>-->
+	                            <div class="col-sm-4">
+	                                <fieldset class="jquery-Ui-fieldset">
+	                                    <label for="status">请选择导入数据起止时间</label>
+	                                    <input name="daterange" type="text">
+	                                </fieldset>
+	                            </div>
+                            <table id="datatable" class="table table-striped dt-responsive nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>我的任务</th>
+                                        <th>任务工单</th>
+                                        <th>截止时间</th>
+                                        <th>任务状态</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>约客户二次沟通</td>
+                                        <td>
+                                        	123342123&nbsp;
+                                        	查看
+                                        </td>
+                                        <td>2018年3月21日13：30</td>
+                                        <td>
+                                        	<select name="">
+                                        		<option value="">未完成</option>
+                                        		<option value="">进行中</option>
+                                        		<option value="">已完成</option>
+                                        	</select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>约客户三次沟通</td>
+                                        <td>
+                                        	123342123&nbsp;
+                                        	查看
+                                        </td>
+                                        <td>2018年3月21日13：30</td>
+                                        <td>
+                                        	<select name="">
+                                        		<option value="">未完成</option>
+                                        		<option value="">进行中</option>
+                                        		<option value="">已完成</option>
+                                        	</select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>约客户四次沟通</td>
+                                        <td>
+                                        	123342123&nbsp;
+                                        	查看
+                                        </td>
+                                        <td>2018年3月21日13：30</td>
+                                        <td>
+                                        	<select name="">
+                                        		<option value="">未完成</option>
+                                        		<option value="">进行中</option>
+                                        		<option value="">已完成</option>
+                                        	</select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div><!--end row-->
+            <!--end page content-->
+
+            <!--Start footer-->
+            <footer class="footer">
+                <span>Copyright &copy; </span>
+            </footer>
+            <!--end footer-->
+
+        </section>
+        <!--end main content-->
+
+        <!--Common plugins-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/pace.min.js"></script>
+        <script src="js/jasny-bootstrap.min.js"></script>
+        <script src="js/jquery.slimscroll.min.js"></script>
+        <script src="js/jquery.nanoscroller.min.js"></script>
+        <script src="js/metismenu.min.js"></script>
+        <script src="js/float-custom.js"></script>
+
+
+        <!--page script-->
+        <script src="js/jquery.datatables.min.js"></script>
+        <script src="js/datatables.responsive.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/jquery.ui.custom.js"></script>
+        <script src="js/moment-with-locales.js"></script>
+        <script src="js/bootstrap-datetimepicker.min.js"></script>
+        <script src="js/jayne.js"></script>
+        <script type="text/javascript" src="js/colorbox.js"></script>
+        <script type="text/javascript" src="js/timeliner.min.js"></script>
+    	<script src="js/moment.min.js"></script>
+    	<script src="js/daterangepicker.js"></script>
+        <script>
+			$(function() {
+				$.timeliner({
+					startOpen:['#20170831EX','#20170931EX']
+				});
+   
+                $('#datetimepicker1').datetimepicker();
+	            $('#datetimepicker11').datetimepicker({
+	                daysOfWeekDisabled: [0, 6]
+	            });
+			});
+            $('input[name="daterange"]').daterangepicker(
+                {
+                    locale: {
+                        format: 'YYYY-MM-DD',
+                        cancelLabel: '取消',
+                        applyLabel: '选择',
+                        "fromLabel": "从",
+                        "toLabel": "至",
+                        "customRangeLabel": "Custom",
+                        "weekLabel": "周",
+                        "daysOfWeek": [
+                            "日",
+                            "一",
+                            "二",
+                            "三",
+                            "四",
+                            "五",
+                            "六"
+                        ],
+                        "monthNames": [
+                            "一月",
+                            "二月",
+                            "三月",
+                            "四月",
+                            "五月",
+                            "六月",
+                            "七月",
+                            "八月",
+                            "九月",
+                            "十月",
+                            "十一月",
+                            "十二月"
+                        ],
+                        "firstDay": 1
+                    },
+                    startDate: '2018-01-01',
+                    endDate: moment()
+                },
+                function (start, end, label) {
+
+                });
+        </script>
+
+    </body>
+</html>
