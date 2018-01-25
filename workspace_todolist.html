@@ -25,6 +25,10 @@
         <link href="css/jayne.css" rel="stylesheet">
 		<!-- datapicker css-->
     	<link href="css/daterangepicker.css" rel="stylesheet">
+    	<!-- calender css-->
+        <link href='css/fullcalendar.css' rel="stylesheet">     
+        <!--for checkbox-->
+        <link href="css/blue.css" rel="stylesheet">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -114,9 +118,8 @@
 		                                </fieldset>
 		                            </div>
                         		</div>          
-	                            <a href="#" class="btn btn-default btn-primary top-button left-button" data-toggle="modal" data-target="#createModal">筛选</a>
-	                            <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-	                            <a href="#" class="btn btn-default btn-primary top-button right-button" data-toggle="modal" data-target="#createModal">日历视角</a>
+	                            <a href="#" class="btn btn-primary top-button left-button " >筛选</a>
+	                            <a href="#" class="btn  btn-primary top-button right-button shift" >日历视角</a>
                         	</div>
                             <table id="datatable" class="table table-striped dt-responsive nowrap">
                                 <thead>
@@ -126,9 +129,8 @@
                                         <th>截止时间</th>
                                         <th>任务状态</th>
                                     </tr>
-                                </thead>
-
                                 <tbody>
+                                </thead>
                                     <tr>
                                         <td>约客户二次沟通</td>
                                         <td>
@@ -176,10 +178,33 @@
                                     </tr>
                                 </tbody>
                             </table>
+                           	<div class="calendar">
+                                <div class="col-md-3">
+                                    <div id='external-events'>
+                                        <h4>拖拽一个事件放入日历中</h4>
+                                        <div class='fc-event'>事件1</div>
+                                        <div class='fc-event'>事件2</div>
+                                        <div class='fc-event'>事件3</div>
+                                        <div class='fc-event'>事件4</div>
+                                        <div class='fc-event'>事件5</div>
+                                        <p>
+                                            <input type='checkbox' class="i-checks" id='drop-remove' />
+                                            <label for='drop-remove'>拖拽后删除此事件</label>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div id='calendar'>
+                                    	
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div><!--end row-->
+            
             <!--end page content-->
 
             <!--Start footer-->
@@ -209,11 +234,13 @@
         <script src="js/jquery.ui.custom.js"></script>
         <script src="js/moment-with-locales.js"></script>
         <script src="js/bootstrap-datetimepicker.min.js"></script>
-        <script src="js/jayne.js"></script>
         <script type="text/javascript" src="js/colorbox.js"></script>
         <script type="text/javascript" src="js/timeliner.min.js"></script>
-    	<script src="js/moment.min.js"></script>
     	<script src="js/daterangepicker.js"></script>
+    	<script src="js/moment.min.js"></script>
+        <!--ichecks-->
+        <script src="js/fullcalendar.min.js"></script>
+        <script src="js/icheck.min.js"></script>
         <script>
 			$(function() {
 				$.timeliner({
@@ -225,6 +252,10 @@
 	                daysOfWeekDisabled: [0, 6]
 	            });
 			});
+			$('.shift').click(function(){
+				//日历视角切换
+				
+			})
             $('input[name="daterange"]').daterangepicker(
                 {
                     locale: {
@@ -262,10 +293,52 @@
                     },
                     startDate: '2018-01-01',
                     endDate: moment()
-                },
-                function (start, end, label) {
-
                 });
+                            
+            $(document).ready(function(){
+                
+                //icheck for checkbox
+                 $('.i-checks').iCheck({
+                    checkboxClass: 'icheckbox_square-blue',
+                    radioClass: 'iradio_square-blue'
+                });
+
+                /* initialize the external events
+                 -----------------------------------------------------------------*/
+                $('#external-events .fc-event').each(function () {
+
+                    // store data so the calendar knows to render an event upon drop
+                    $(this).data('event', {
+                        title: $.trim($(this).text()), // use the element's text as the event title
+                        stick: true // maintain when user navigates (see docs on the renderEvent method)
+                    });
+
+                    // make the event draggable using jQuery UI
+                    $(this).draggable({
+                        zIndex: 999,
+                        revert: true, // will cause the event to go back to its
+                        revertDuration: 0  //  original position after the drag
+                    });
+                });
+                /* initialize the calendar
+                 -----------------------------------------------------------------*/
+                $('#calendar').fullCalendar({
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay'
+                    },
+                    editable: true,
+                    droppable: true, // this allows things to be dropped onto the calendar
+                    drop: function () {
+                        // is the "remove after drop" checkbox checked?
+                        if ($('#drop-remove').is(':checked')) {
+                            // if so, remove the element from the "Draggable Events" list
+                            $(this).remove();
+                        }
+                    }
+                });
+            });
         </script>
 
     </body>
