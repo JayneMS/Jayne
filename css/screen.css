@@ -25,7 +25,7 @@ h1 {
 }
 
 h2 {
-	font-size:22px;
+	font-size:20px;
 	font-weight:400;
 	margin:5px 0;
 	letter-spacing:.1em;
@@ -80,18 +80,18 @@ div.timelineToggle {
 }
 
 a.expandAll {
-	color:#ccc;
+	color:white;
 	cursor:pointer;
-	background:#000;
+	background:#23B7E5;
 	-webkit-border-radius:4px;
 	-moz-border-radius:4px;
 	border-radius:4px;
-	font-size:12px;
+	font-size:14px;
 	padding:3px 5px;
 }
 
 	a.expandAll:hover {
-		color:#7DBADF;
+		color:white;
 		cursor:pointer;
 	}
 
@@ -111,7 +111,7 @@ div.timelineMajor {
 	}
 
 	.timelineMajor h2 span {
-		background:#ccc;
+		/*background:#ccc;*/
 		-webkit-border-radius:4px;
 		-moz-border-radius:4px;
 		border-radius:4px;
@@ -181,6 +181,7 @@ dl.timelineMinor {
 	line-height:1.5em;
 	margin:6px 0 10px;
 	width:500px;
+	margin-top: -18px;
 }
 
 .timelineEvent h4 {

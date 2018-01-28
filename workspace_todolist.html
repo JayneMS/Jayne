@@ -119,9 +119,10 @@
 		                            </div>
                         		</div>          
 	                            <a href="#" class="btn btn-primary top-button left-button " >筛选</a>
-	                            <a href="#" class="btn  btn-primary top-button right-button shift" >日历视角</a>
+	                            <a href="#" class="btn btn-primary top-button right-button shift calendar-title"  style="display: none;">日历视角</a>
+	                            <a href="#" class="btn btn-primary top-button right-button shift list-title">列表视角</a>
                         	</div>
-                            <table id="datatable" class="table table-striped dt-responsive nowrap">
+                            <table id="datatable" class="table table-striped dt-responsive nowrap list-table" style="display: none;">
                                 <thead>
                                     <tr>
                                         <th>我的任务</th>
@@ -178,6 +179,8 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <!--<div id="" style="display: none;">-->
+                            	
                            	<div class="calendar">
                                 <div class="col-md-3">
                                     <div id='external-events'>
@@ -193,12 +196,13 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-9" >
                                     <div id='calendar'>
                                     	
                                     </div>
                                 </div>
                             </div>
+                            <!--</div>-->
 
                         </div>
                     </div>
@@ -252,10 +256,21 @@
 	                daysOfWeekDisabled: [0, 6]
 	            });
 			});
-			$('.shift').click(function(){
+			$('.calendar-title').click(function(){
 				//日历视角切换
+				$('.list-table').css('display','none');
+				$('.list-title').css('display','inline-block');
+				$('.calendar-title').css('display','none');
+				$('.calendar').css('display','block');
+			});
+			$('.list-title').click(function(){
+				//列表视角切换
+				$('.list-table').css('display','table');
+				$('.list-title').css('display','none');
+				$('.calendar-title').css('display','inline-block');
+				$('.calendar').css('display','none');
 				
-			})
+			});
             $('input[name="daterange"]').daterangepicker(
                 {
                     locale: {
