@@ -123,7 +123,36 @@
             <div class="col-md-12">
                 <div class="panel panel-default collapsed">
                     <div class="panel-heading">
-                        字段模板设置
+                        字段模板列表
+                    </div>
+                    <div class="panel-body">
+                        <table id="fieldTemplateList" class="table table-striped dt-responsive nowrap">
+                            <thead>
+                                <tr>
+                                    <th>字段名称</th>
+                                    <th>字段类型</th>
+                                    <th>字段关联值</th>
+                                    <th>是否必填</th>
+                                    <th>是否查询</th>
+                                    <th>排序</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default collapsed">
+                    <div class="panel-heading">
+                        新建字段模板
                     </div>
                     <div class="panel-body">
                         <table id="datatable" class="table table-striped dt-responsive nowrap">
@@ -182,42 +211,16 @@
     <script src="js/jstree.min.js"></script>
     <!--sweet alerts-->
     <script src="js/sweet-alert.min.js"></script>
+    <script src="js/tableConfig.js"></script>
     <script>
         var counter = 0;
 
         $(document).ready(function () {
 
-            $('#datatable').DataTable({
-                destroy: true,
-                ordering: false,
-                language: {
-                    "sProcessing": "处理中...",
-                    "sLengthMenu": "显示 _MENU_ 项结果",
-                    "sZeroRecords": "没有匹配结果",
-                    "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-                    "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
-                    "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-                    "sInfoPostFix": "",
-                    "sSearch": "搜索:",
-                    "sUrl": "",
-                    "sEmptyTable": "表中数据为空",
-                    "sLoadingRecords": "载入中...",
-                    "sInfoThousands": ",",
-                    "oPaginate": {
-                        "sFirst": "首页",
-                        "sPrevious": "上页",
-                        "sNext": "下页",
-                        "sLast": "末页"
-                    },
-                    "oAria": {
-                        "sSortAscending": ": 以升序排列此列",
-                        "sSortDescending": ": 以降序排列此列"
-                    }
-                }
-            });
+            $('#datatable').DataTable(languageConfig);
+
             //add row
             var table = $('#datatable').DataTable();
-
             $('#addRow').on('click', function () {
                 table.row.add([
                     '<input class="fieldname' + counter + '" style="width:100px">',
