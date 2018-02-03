@@ -1,89 +1,104 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>尼罗河呼叫中心</title>
-        <!-- Common plugins -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/simple-line-icons.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/pace.css" rel="stylesheet">
-        <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/nanoscroller.css">
-        <link rel="stylesheet" href="css/metismenu.min.css">
-        <link href="css/c3.min.css" rel="stylesheet">
-        <link href="css/blue.css" rel="stylesheet">
-        <!-- dataTables -->
-        <link href="css/jquery.datatables.min.css" rel="stylesheet" type="text/css">
-        <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="css/jquery.toast.min.css" rel="stylesheet">
-        <!--template css-->
-        <link href="css/style.css" rel="stylesheet">
-        <link href="css/jayne.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/vlstyle.css">
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>尼罗河呼叫中心</title>
+    <!-- Common plugins -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-line-icons.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/pace.css" rel="stylesheet">
+    <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/nanoscroller.css">
+    <link rel="stylesheet" href="css/metismenu.min.css">
+    <link href="css/c3.min.css" rel="stylesheet">
+    <link href="css/blue.css" rel="stylesheet">
+    <!-- dataTables -->
+    <link href="css/jquery.datatables.min.css" rel="stylesheet" type="text/css">
+    <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/jquery.toast.min.css" rel="stylesheet">
+    <!--template css-->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/jayne.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/vlstyle.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
           <script src="js/html5shiv.min.js"></script>
           <script src="js/respond.min.js"></script>
         <![endif]-->
-    </head>
-    <body>
+</head>
 
-        <!--top bar start-->
-        <div class="top-bar light-top-bar"><!--by default top bar is dark, add .light-top-bar class to make it light-->
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xs-10">
-                        <a href="index.html" class="admin-logo">
-                            <h1><img src="picture/logo-dark.png" alt=""></h1>
+<body>
+
+    <!--top bar start-->
+    <div class="top-bar light-top-bar">
+        <!--by default top bar is dark, add .light-top-bar class to make it light-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-10">
+                    <a href="index.html" class="admin-logo">
+                        <h1>
+                            <img src="picture/logo-dark.png" alt="">
+                        </h1>
+                    </a>
+
+                    <div class="left-nav-toggle visible-xs visible-sm">
+                        <a href="">
+                            <i class="glyphicon glyphicon-menu-hamburger"></i>
                         </a>
-                        
-                        <div class="left-nav-toggle visible-xs visible-sm">
-                            <a href="">
-                                <i class="glyphicon glyphicon-menu-hamburger"></i>
-                            </a>
-                        </div> 
-                            <!--end nav toggle icon-->
-                        <!--start search form-->
-                        <div class="search-form hidden-xs">
-                            <form>
-                                <input type="text"  id="dialout_input" onkeydown="if(event.keyCode==13){softphonebar_dialout($('#dialout_input').val());}" class="form-control" placeholder="输入电话号码">
-                                <button type="button" class="btn-search"><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
+                    </div>
+                    <!--end nav toggle icon-->
+                    <!--start search form-->
+                    <div class="search-form hidden-xs">
+                        <form>
+                            <input type="text" id="dialout_input" onkeydown="if(event.keyCode==13){softphonebar_dialout($('#dialout_input').val());}"
+                                class="form-control" placeholder="输入电话号码">
+                            <button type="button" class="btn-search">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
 
-                        <!-- 电话条开始 -->
-                        <div id="icc_event"></div>
- 
-                        <div id="softphone-bar" class="softphone-bar ">	
-                            <div id="phone_bar"> 
-                                <div class="phone-bar-left">
-                                <input type="button" id="dialoutEnable" class="btn btn-success"  onclick="softphonebar_dialout($('#dialout_input').val());" value="呼叫" />
-                                <input type="button" id="dialoutDisable"  style="display:none" class="btn btn-info glyphicon glyphicon-headphones"   disabled value="呼叫" />
-                                <input type="button" id="hangupEnable"  class="btn btn-success"  style="display: none" onclick="phone_hangup();" value="挂机" />
-                                <input type="button" id="holdEnable" class="btn btn-success"  style="display: none;" onclick="phone_hold();" value="保持" />
-                                <input type="button" id="holdDisable" class="btn btn-info"  style="" disabled value="保持" />
-                                <input type="button" id="recoverEnable" class="btn btn-success"  style="display: none" onclick="phone_unhold();" value="恢复" />
-                                <input type="button" id="transferEnable" class="btn btn-success"  style="display: none"   onclick="transfer()" value="转接" />
-                                <input type="button" id="transferDisable" class="btn btn-info"  disabled  value="转接" />
-                                <input type="button" id="transfercancel" class="btn btn-success"  style="display: none" onclick="transfercancel()" value="取消转接" />
-                                <input type="button" id="consultEnable"  class="btn btn-success"  style="display: none" onclick="Consult()" value="咨询" />
-                                <input type="button" id="consultDisable"  class="btn btn-info"  style="display:none;" disabled  value="咨询" />
-                                <input type="button" id="stopConsultEnable" class="btn btn-success"  style="display: none;" onclick="phone_stopConsult();"  value="结束咨询"/>
-                                <input type="button" id="consultThreeWayCallEnable" class="btn btn-success"  style="display: none" onclick="phone_threewaycall('912345');"  value="三方" />
-                                <input type="button" id="threewayEnable"  class="btn btn-info"   style="display: none "   value="三方" />
-                                <input type="button" id="threewayDisable" class="btn btn-info"  style="" disabled  value="三方" /> 
+                    <!-- 电话条开始 -->
+                    <div id="icc_event"></div>
+
+                    <div id="softphone-bar" class="softphone-bar ">
+                        <div id="phone_bar">
+                            <div class="phone-bar-left">
+                                <input type="button" id="dialoutEnable" class="btn btn-success" onclick="softphonebar_dialout($('#dialout_input').val());"
+                                    value="呼叫" />
+                                <input type="button" id="dialoutDisable" style="display:none" class="btn btn-info glyphicon glyphicon-headphones" disabled
+                                    value="呼叫" />
+                                <input type="button" id="hangupEnable" class="btn btn-success" style="display: none" onclick="phone_hangup();" value="挂机"
+                                />
+                                <input type="button" id="holdEnable" class="btn btn-success" style="display: none;" onclick="phone_hold();" value="保持" />
+                                <input type="button" id="holdDisable" class="btn btn-info" style="" disabled value="保持" />
+                                <input type="button" id="recoverEnable" class="btn btn-success" style="display: none" onclick="phone_unhold();" value="恢复"
+                                />
+                                <input type="button" id="transferEnable" class="btn btn-success" style="display: none" onclick="transfer()" value="转接" />
+                                <input type="button" id="transferDisable" class="btn btn-info" disabled value="转接" />
+                                <input type="button" id="transfercancel" class="btn btn-success" style="display: none" onclick="transfercancel()" value="取消转接"
+                                />
+                                <input type="button" id="consultEnable" class="btn btn-success" style="display: none" onclick="Consult()" value="咨询" />
+                                <input type="button" id="consultDisable" class="btn btn-info" style="display:none;" disabled value="咨询" />
+                                <input type="button" id="stopConsultEnable" class="btn btn-success" style="display: none;" onclick="phone_stopConsult();"
+                                    value="结束咨询" />
+                                <input type="button" id="consultThreeWayCallEnable" class="btn btn-success" style="display: none" onclick="phone_threewaycall('912345');"
+                                    value="三方" />
+                                <input type="button" id="threewayEnable" class="btn btn-info" style="display: none " value="三方" />
+                                <input type="button" id="threewayDisable" class="btn btn-info" style="" disabled value="三方" />
                                 <span id="softphone_timer" class="fr state_time">00:00:00</span>
                                 <span id="softphone_dropdown" class="fr state_dropdown"></span>
                                 <span id="softphone_phonestate" class="fr state" style="cursor:pointer; display:none" onclick="javascript:$('#softphone_dropdown_caret').click()">失效</span>
-                                </div>
-                                
-                                <!-- peer_state -->
-                                <!--
+                            </div>
+
+                            <!-- peer_state -->
+                            <!--
                                 <input type="button" id="btnRestDisable" class="btn btn-info"  disabled  value="小休" />
                                 <input type="button" id="btnBusyDisable" class="btn btn-info"  disabled  value="忙碌" />
                                 <input type="button" id="btnRestDisable" class="btn btn-info"  disabled  value="小休" />
@@ -93,501 +108,619 @@
                                 <input type="button" id="btnBusy"  class="btn btn-success"     onclick="busy();"  value="忙碌" />
                                 <input type="button" id="btnNoBusy"  class="btn btn-success"   onclick="busy();"  style="display: none;"  value="取消忙碌" />
                                 <input type="button" id="btnLogout"  class="btn btn-success"   onclick="logout();" value="签出" /> -->
-                                
-                            </div>       
+
                         </div>
-
-                  
-                        
- 
-                        <!-- 电话条结束 -->
-                        <!--end search form-->
                     </div>
-                    <div class="col-xs-2  fr">
-                        <ul class="list-inline top-right-nav">
-                            <li class="dropdown hidden-xs icon-dropdown">
-                               
-                                <ul class="dropdown-menu top-dropdown lg-dropdown notification-dropdown">
-                                    <li>
-                                        <div class="dropdown-header"><a href="#" class="pull-right text-muted"><small>View All</small></a> Messages </div>
-                                        <div class="scrollDiv">
 
-                                            <div class="notification-list">
-                                                <a href="javascript: void(0);" class="clearfix">
-                                                    <span class="notification-icon">
-                                                        <img src="picture/avtar-2.jpg" alt="" class="img-circle" width="50">
-                                                    </span>                                                 
-                                                    <span class="notification-title">John Doe <label class="label label-primary pull-right">Office</label></span>
-                                                    <span class="notification-description">Praesent dictum nisl non est sagittis luctus.</span>
-                                                    <span class="notification-time">40 minutes ago</span>
-                                                </a>
-                                                <a href="javascript: void(0);" class="clearfix">
-                                                    <span class="notification-icon">
-                                                        <img src="picture/avtar-3.jpg" alt="" class="img-circle" width="50">
-                                                    </span>                                                 
-                                                    <span class="notification-title">Emily Doe  <label class="label label-info pull-right">Marketing</label></span>
-                                                    <span class="notification-description">Praesent dictum nisl non est sagittis luctus.</span>
-                                                    <span class="notification-time">40 minutes ago</span>
-                                                </a>
-                                                <a href="javascript: void(0);" class="clearfix">
-                                                    <span class="notification-icon">
-                                                        <img src="picture/avtar-4.jpg" alt="" class="img-circle" width="50">
-                                                    </span>                                                 
-                                                    <span class="notification-title">Michael Clark <label class="label label-warning pull-right">Support</label> </span>
-                                                    <span class="notification-description">Praesent dictum nisl non est sagittis luctus.</span>
-                                                    <span class="notification-time">40 minutes ago</span>
-                                                </a>
-                                                <a href="javascript: void(0);" class="clearfix">
-                                                    <span class="notification-icon">
-                                                        <img src="picture/avtar-5.jpg" alt="" class="img-circle" width="50">
-                                                    </span>                                                 
-                                                    <span class="notification-title">Ronaldo <label class="label label-success pull-right">Metting</label> </span>
-                                                    <span class="notification-description">Praesent dictum nisl non est sagittis luctus.</span>
-                                                    <span class="notification-time">40 minutes ago</span>
-                                                </a>
-                                            </div>
+
+
+
+                    <!-- 电话条结束 -->
+                    <!--end search form-->
+                </div>
+                <div class="col-xs-2  fr">
+                    <ul class="list-inline top-right-nav">
+                        <li class="dropdown hidden-xs icon-dropdown">
+
+                            <ul class="dropdown-menu top-dropdown lg-dropdown notification-dropdown">
+                                <li>
+                                    <div class="dropdown-header">
+                                        <a href="#" class="pull-right text-muted">
+                                            <small>View All</small>
+                                        </a> Messages </div>
+                                    <div class="scrollDiv">
+
+                                        <div class="notification-list">
+                                            <a href="javascript: void(0);" class="clearfix">
+                                                <span class="notification-icon">
+                                                    <img src="picture/avtar-2.jpg" alt="" class="img-circle" width="50">
+                                                </span>
+                                                <span class="notification-title">John Doe
+                                                    <label class="label label-primary pull-right">Office</label>
+                                                </span>
+                                                <span class="notification-description">Praesent dictum nisl non est sagittis luctus.</span>
+                                                <span class="notification-time">40 minutes ago</span>
+                                            </a>
+                                            <a href="javascript: void(0);" class="clearfix">
+                                                <span class="notification-icon">
+                                                    <img src="picture/avtar-3.jpg" alt="" class="img-circle" width="50">
+                                                </span>
+                                                <span class="notification-title">Emily Doe
+                                                    <label class="label label-info pull-right">Marketing</label>
+                                                </span>
+                                                <span class="notification-description">Praesent dictum nisl non est sagittis luctus.</span>
+                                                <span class="notification-time">40 minutes ago</span>
+                                            </a>
+                                            <a href="javascript: void(0);" class="clearfix">
+                                                <span class="notification-icon">
+                                                    <img src="picture/avtar-4.jpg" alt="" class="img-circle" width="50">
+                                                </span>
+                                                <span class="notification-title">Michael Clark
+                                                    <label class="label label-warning pull-right">Support</label>
+                                                </span>
+                                                <span class="notification-description">Praesent dictum nisl non est sagittis luctus.</span>
+                                                <span class="notification-time">40 minutes ago</span>
+                                            </a>
+                                            <a href="javascript: void(0);" class="clearfix">
+                                                <span class="notification-icon">
+                                                    <img src="picture/avtar-5.jpg" alt="" class="img-circle" width="50">
+                                                </span>
+                                                <span class="notification-title">Ronaldo
+                                                    <label class="label label-success pull-right">Metting</label>
+                                                </span>
+                                                <span class="notification-description">Praesent dictum nisl non est sagittis luctus.</span>
+                                                <span class="notification-time">40 minutes ago</span>
+                                            </a>
                                         </div>
-                                    </li>
+                                    </div>
+                                </li>
 
-                                </ul>
-                            </li>
-                            <li class="dropdown hidden-xs icon-dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="glyphicon glyphicon-bell"></i>
-                                    <span class="badge badge-danger">6</span>
-                                </a>
-                                <ul class="dropdown-menu top-dropdown lg-dropdown notification-dropdown">
-                                    <li>
-                                        <div class="dropdown-header"><a href="#" class="pull-right text-muted"><small>查看全部</small></a> 通知 </div>
-                                        <div class="scrollDiv">
-                                            <div class="notification-list">
-                                                <a href="javascript: void(0);" class="clearfix">
-                                                    <span class="notification-icon"><i class="icon-cloud-upload text-primary"></i></span>                                                 
-                                                    <span class="notification-title">这里是通知栏第一条通知</span>
-                                                    <span class="notification-description">你好，王玲，请xxxxx</span>
-                                                    <span class="notification-time">40 minutes ago</span>
-                                                </a>
-                                                <a href="javascript: void(0);" class="clearfix">
-                                                    <span class="notification-icon"><i class="icon-info text-warning"></i></span>                                                 
-                                                    <span class="notification-title">这里是通知栏第二条通知</span>
-                                                    <span class="notification-description">您回收了一条数据，已经被管理员审核！</span>
-                                                    <span class="notification-time">40 minutes ago</span>
-                                                </a>
-                                                <a href="javascript: void(0);" class="clearfix">
-                                                    <span class="notification-icon"><i class="icon-check text-success"></i></span>                                                 
-                                                    <span class="notification-title"> 这里是通知栏第三条通知</span>
-                                                    <span class="notification-description">部门通知：请xxxxxxx</span>
-                                                    <span class="notification-time">40 minutes ago</span>
-                                                </a>
-                                            </div>
+                            </ul>
+                        </li>
+                        <li class="dropdown hidden-xs icon-dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="glyphicon glyphicon-bell"></i>
+                                <span class="badge badge-danger">6</span>
+                            </a>
+                            <ul class="dropdown-menu top-dropdown lg-dropdown notification-dropdown">
+                                <li>
+                                    <div class="dropdown-header">
+                                        <a href="#" class="pull-right text-muted">
+                                            <small>查看全部</small>
+                                        </a> 通知 </div>
+                                    <div class="scrollDiv">
+                                        <div class="notification-list">
+                                            <a href="javascript: void(0);" class="clearfix">
+                                                <span class="notification-icon">
+                                                    <i class="icon-cloud-upload text-primary"></i>
+                                                </span>
+                                                <span class="notification-title">这里是通知栏第一条通知</span>
+                                                <span class="notification-description">你好，王玲，请xxxxx</span>
+                                                <span class="notification-time">40 minutes ago</span>
+                                            </a>
+                                            <a href="javascript: void(0);" class="clearfix">
+                                                <span class="notification-icon">
+                                                    <i class="icon-info text-warning"></i>
+                                                </span>
+                                                <span class="notification-title">这里是通知栏第二条通知</span>
+                                                <span class="notification-description">您回收了一条数据，已经被管理员审核！</span>
+                                                <span class="notification-time">40 minutes ago</span>
+                                            </a>
+                                            <a href="javascript: void(0);" class="clearfix">
+                                                <span class="notification-icon">
+                                                    <i class="icon-check text-success"></i>
+                                                </span>
+                                                <span class="notification-title"> 这里是通知栏第三条通知</span>
+                                                <span class="notification-description">部门通知：请xxxxxxx</span>
+                                                <span class="notification-time">40 minutes ago</span>
+                                            </a>
                                         </div>
-                                    </li>
+                                    </div>
+                                </li>
 
-                                </ul>
-                            </li>
-                            <!--
+                            </ul>
+                        </li>
+                        <!--
                             <li class="dropdown">
                                 <a href="javascript: void(0);" class="right-sidebar-toggle"><i class="glyphicon glyphicon-align-right"></i></a>
                             </li>-->
-                            <li class="dropdown avtar-dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="picture/avtar-1.jpg" class="img-circle" width="30" alt="">
+                        <li class="dropdown avtar-dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="picture/avtar-1.jpg" class="img-circle" width="30" alt="">
 
-                                </a>
-                                <ul class="dropdown-menu top-dropdown">
-                                    <li><a href="javascript: void(0);"><i class="icon-bell"></i>我的通知</a></li>
-                                    <li><a href="javascript: void(0);"><i class="icon-user"></i> 我的工作台</a></li>
-                                    <li><a href="javascript: void(0);"><i class="icon-settings"></i> 设置</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="javascript: void(0);"><i class="icon-logout"></i> 退出</a></li>
-                                </ul>
-                            </li>
+                            </a>
+                            <ul class="dropdown-menu top-dropdown">
+                                <li>
+                                    <a href="javascript: void(0);">
+                                        <i class="icon-bell"></i>我的通知</a>
+                                </li>
+                                <li>
+                                    <a href="javascript: void(0);">
+                                        <i class="icon-user"></i> 我的工作台</a>
+                                </li>
+                                <li>
+                                    <a href="javascript: void(0);">
+                                        <i class="icon-settings"></i> 设置</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="javascript: void(0);">
+                                        <i class="icon-logout"></i> 退出</a>
+                                </li>
+                            </ul>
+                        </li>
 
-                        </ul> 
-                    </div>
+                    </ul>
                 </div>
             </div>
         </div>
-        <!-- top bar end-->
+    </div>
+    <!-- top bar end-->
 
-        <!--right side bar panel-->
-        <nav id="right-sidebar-toggle" class="right_sidebar">
-            <div class="nano">
-                <div class="nano-content">
-                    <div>
-                        <!-- Nav tabs -->
-                        <ul class="list-inline nav-tab-panel clearfix" role="tablist">
-                            <li role="presentation" class="active"><a href="#projects" aria-controls="projects" role="tab" data-toggle="tab">Projects</a></li>
-                            <li role="presentation"><a href="#contacts" aria-controls="contacts" role="tab" data-toggle="tab">Contacts</a></li>
-
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="projects">
-                                <ul class="sidebar-list">
-                                    <li class="sidebar-title">
-                                        <h3 class="font-100"> Current projects</h3>
-                                        <small>There are <strong>7</strong> Current project</small>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="label label-primary pull-right">New</span>
-                                            <h4>YII with material design</h4>
-                                            <p>
-                                                It is a long established fact that a reader will be distracted.
-                                            </p>
-
-                                            <div class="small">Completion with: 42%</div>
-                                            <div class="progress progress-mini">
-                                                <div style="width: 42%;" class="progress-bar progress-bar-warning"></div>
-                                            </div>
-                                            <div class="small text-danger">Deadline - September 15, 2016</div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="label label-primary pull-right">New</span>
-                                            <h4>HTML to AngularJs</h4>
-                                            <p>
-                                                It is a long established fact that a reader will be distracted.
-                                            </p>
-
-                                            <div class="small">Completion with: 12%</div>
-                                            <div class="progress progress-mini">
-                                                <div style="width: 12%;" class="progress-bar progress-bar-danger"></div>
-                                            </div>
-                                            <div class="small text-danger">Deadline - September 15, 2016</div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="label label-success pull-right">Company</span>
-                                            <h4>Website Re-design</h4>
-                                            <p>
-                                                It is a long established fact that a reader will be distracted.
-                                            </p>
-
-                                            <div class="small">Completion with: 84%</div>
-                                            <div class="progress progress-mini">
-                                                <div style="width: 84%;" class="progress-bar progress-bar-success"></div>
-                                            </div>
-                                            <div class="small text-danger">Deadline - September 15, 2016</div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="label label-success pull-right">Metting</span>
-                                            <h4>Business Consultancy</h4>
-                                            <p>
-                                                It is a long established fact that a reader will be distracted.
-                                            </p>
-
-                                            <div class="small">Completion with: 54%</div>
-                                            <div class="progress progress-mini">
-                                                <div style="width: 54%;" class="progress-bar progress-bar-info"></div>
-                                            </div>
-                                            <div class="small text-danger">Deadline - September 15, 2016</div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="label label-primary pull-right">New</span>
-                                            <h4>YII with material design</h4>
-                                            <p>
-                                                It is a long established fact that a reader will be distracted.
-                                            </p>
-
-                                            <div class="small">Completion with: 42%</div>
-                                            <div class="progress progress-mini">
-                                                <div style="width: 42%;" class="progress-bar progress-bar-warning"></div>
-                                            </div>
-                                            <div class="small text-danger">Deadline - September 15, 2016</div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="label label-primary pull-right">New</span>
-                                            <h4>HTML to AngularJs</h4>
-                                            <p>
-                                                It is a long established fact that a reader will be distracted.
-                                            </p>
-
-                                            <div class="small">Completion with: 12%</div>
-                                            <div class="progress progress-mini">
-                                                <div style="width: 12%;" class="progress-bar progress-bar-danger"></div>
-                                            </div>
-                                            <div class="small text-danger">Deadline - September 15, 2016</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="contacts">
-
-                                <ul class="list-unstyled sidebar-contact-list">
-                                    <li class="clearfix">
-                                        <a href="#" class="media-box">
-                                            <span class="pull-right">
-                                                <span class="circle circle-success circle-lg"></span>
-                                            </span>
-                                            <span class="pull-left">
-                                                <!-- Contact avatar-->
-                                                <img src="picture/avtar-1.jpg" alt="user" class="media-box-object img-circle" width="50">
-                                            </span>
-                                            <!-- Contact info-->
-                                            <span class="media-box-body">
-                                                <span class="media-box-heading">
-                                                    <strong>Angelina</strong>
-                                                    <br>
-                                                    <small class="text-muted">Designer</small>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li><!--li end-->
-                                    <li class="clearfix">
-                                        <a href="#" class="media-box">
-                                            <span class="pull-right">
-                                                <span class="circle circle-success circle-lg"></span>
-                                            </span>
-                                            <span class="pull-left">
-                                                <!-- Contact avatar-->
-                                                <img src="picture/avtar-2.jpg" alt="user" class="media-box-object img-circle" width="50">
-                                            </span>
-                                            <!-- Contact info-->
-                                            <span class="media-box-body">
-                                                <span class="media-box-heading">
-                                                    <strong>John doe</strong>
-                                                    <br>
-                                                    <small class="text-muted">Designer</small>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li><!--li end-->
-                                    <li class="clearfix">
-                                        <a href="#" class="media-box">
-                                            <span class="pull-right">
-                                                <span class="circle circle-danger circle-lg"></span>
-                                            </span>
-                                            <span class="pull-left">
-                                                <!-- Contact avatar-->
-                                                <img src="picture/avtar-3.jpg" alt="user" class="media-box-object img-circle" width="50">
-                                            </span>
-                                            <!-- Contact info-->
-                                            <span class="media-box-body">
-                                                <span class="media-box-heading">
-                                                    <strong>Eluga Smith</strong>
-                                                    <br>
-                                                    <small class="text-muted">Designer</small>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li><!--li end-->
-                                    <li class="clearfix">
-                                        <a href="#" class="media-box">
-                                            <span class="pull-right">
-                                                <span class="circle circle-lg"></span>
-                                            </span>
-                                            <span class="pull-left">
-                                                <!-- Contact avatar-->
-                                                <img src="picture/avtar-4.jpg" alt="user" class="media-box-object img-circle" width="50">
-                                            </span>
-                                            <!-- Contact info-->
-                                            <span class="media-box-body">
-                                                <span class="media-box-heading">
-                                                    <strong>Jonathan Doe</strong>
-                                                    <br>
-                                                    <small class="text-muted">Designer</small>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li><!--li end-->
-                                    <li class="clearfix">
-                                        <a href="#" class="media-box">
-                                            <span class="pull-right">
-                                                <span class="circle circle-success circle-lg"></span>
-                                            </span>
-                                            <span class="pull-left">
-                                                <!-- Contact avatar-->
-                                                <img src="picture/avtar-5.jpg" alt="user" class="media-box-object img-circle" width="50">
-                                            </span>
-                                            <!-- Contact info-->
-                                            <span class="media-box-body">
-                                                <span class="media-box-heading">
-                                                    <strong>Angelina</strong>
-                                                    <br>
-                                                    <small class="text-muted">Designer</small>
-                                                </span>
-                                            </span>
-                                        </a>
-                                    </li><!--li end-->
-                                    <li>
-                                        <div class=" text-center">
-                                            <!-- Optional link to list more users-->
-                                            <a href="javascript:void(0);" title="See more contacts" class="btn btn-teal">
-                                                Load more..
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul><!--end sidebar contacts-list-->
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <!--end right side bar panel-->
-
-        <!--left navigation start-->
-        <aside class="float-navigation light-navigation">
-            <div class="nano">
-                <div class="nano-content">
-                    <ul class="metisMenu nav" id="menu">
-                        <!--<li class="nav-heading"><span>Main Navigation</span></li>-->
-                        <li class="active">
-                            <a href="javascript: void(0);" aria-expanded="true"><i class="icon-home"></i> 首页 </a>
+    <!--right side bar panel-->
+    <nav id="right-sidebar-toggle" class="right_sidebar">
+        <div class="nano">
+            <div class="nano-content">
+                <div>
+                    <!-- Nav tabs -->
+                    <ul class="list-inline nav-tab-panel clearfix" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#projects" aria-controls="projects" role="tab" data-toggle="tab">Projects</a>
                         </li>
-                        <li>
-                            <a href="javascript: void(0);" aria-expanded="true"><i class="icon-user"></i> 客户信息管理  <span class="fa arrow"></span></a>
-                            <ul class="nav-second-level nav" aria-expanded="true">
-                                <li><a href="#">数据录入</a></li>
-                                <li><a href="#">数据公海</a></li>
-                                <li><a href="#">我的公海</a></li>
-                                <li><a href="#">预测外呼</a></li>
-                                <li><a href="#">垃圾箱</a></li>
-                            </ul>
+                        <li role="presentation">
+                            <a href="#contacts" aria-controls="contacts" role="tab" data-toggle="tab">Contacts</a>
                         </li>
-                        <li>
-                            <a href="javascript: void(0);" aria-expanded="true"><i class="icon-grid"></i> 工作台 <span class="fa arrow"></span></a>
-                            <ul class="nav-second-level nav" aria-expanded="true">
-                                <li><a href="#">我的工作台</a></li>
-                                <li><a href="#">被叫工作台</a></li>
-                                <li><a href="#">待办任务</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" aria-expanded="true"><i class="icon-bar-chart"></i> 报表统计 <span class="fa arrow"></span></a>
-                            <ul class="nav-second-level nav" aria-expanded="true">
-                                <li><a href="#">报表统计</a></li>
-                                <li><a href="#">我的报表</a></li>
-                                <li><a href="#">录音查询</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" aria-expanded="true"><i class="icon-social-dropbox"></i> 全媒体管理中心 <span class="fa arrow"></span></a>
-                            <ul class="nav-second-level nav" aria-expanded="true">
-                                <li><a href="#">媒体开通管理</a></li>
-                                <li><a href="#">设置</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" aria-expanded="true"><i class="icon-layers"></i> 流程管理 <span class="fa arrow"></span></a>
-                            <ul class="nav-second-level nav" aria-expanded="false">
-                                <li><a href="#">角色与权限管理</a></li>
-                                <li><a href="#">用户管理</a></li>
-                                <li><a href="#">组织架构</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" aria-expanded="true"><i class="icon-settings"></i> 系统设置 <span class="fa arrow"></span></a>
-                            <ul class="nav-second-level nav" aria-expanded="true">
-                                <li><a href="#">公海管理</a></li>
-                                <li><a href="#">字段模板设置</a></li>
-                                <li><a href="#">口径录入</a></li>
-                                <li><a href="#">分配规则设置</a></li>
-                                <li><a href="#">密码管理</a></li>
-                            </ul>
-                        </li>
-   
-                        <!--<li><a href="#"><i class="icon-notebook"></i>  基本UI交互原则</a></li>-->
+
                     </ul>
-                </div><!--nano content-->
-            </div><!--nano scroll end-->
-        </aside>
-        <!--left navigation end-->
 
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="projects">
+                            <ul class="sidebar-list">
+                                <li class="sidebar-title">
+                                    <h3 class="font-100"> Current projects</h3>
+                                    <small>There are
+                                        <strong>7</strong> Current project</small>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-primary pull-right">New</span>
+                                        <h4>YII with material design</h4>
+                                        <p>
+                                            It is a long established fact that a reader will be distracted.
+                                        </p>
 
-        <!--main content start-->
-        <section class="main-content">
+                                        <div class="small">Completion with: 42%</div>
+                                        <div class="progress progress-mini">
+                                            <div style="width: 42%;" class="progress-bar progress-bar-warning"></div>
+                                        </div>
+                                        <div class="small text-danger">Deadline - September 15, 2016</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-primary pull-right">New</span>
+                                        <h4>HTML to AngularJs</h4>
+                                        <p>
+                                            It is a long established fact that a reader will be distracted.
+                                        </p>
 
+                                        <div class="small">Completion with: 12%</div>
+                                        <div class="progress progress-mini">
+                                            <div style="width: 12%;" class="progress-bar progress-bar-danger"></div>
+                                        </div>
+                                        <div class="small text-danger">Deadline - September 15, 2016</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-success pull-right">Company</span>
+                                        <h4>Website Re-design</h4>
+                                        <p>
+                                            It is a long established fact that a reader will be distracted.
+                                        </p>
 
+                                        <div class="small">Completion with: 84%</div>
+                                        <div class="progress progress-mini">
+                                            <div style="width: 84%;" class="progress-bar progress-bar-success"></div>
+                                        </div>
+                                        <div class="small text-danger">Deadline - September 15, 2016</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-success pull-right">Metting</span>
+                                        <h4>Business Consultancy</h4>
+                                        <p>
+                                            It is a long established fact that a reader will be distracted.
+                                        </p>
 
-            <!--page header start-->
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4>工作面板</h4>
+                                        <div class="small">Completion with: 54%</div>
+                                        <div class="progress progress-mini">
+                                            <div style="width: 54%;" class="progress-bar progress-bar-info"></div>
+                                        </div>
+                                        <div class="small text-danger">Deadline - September 15, 2016</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-primary pull-right">New</span>
+                                        <h4>YII with material design</h4>
+                                        <p>
+                                            It is a long established fact that a reader will be distracted.
+                                        </p>
+
+                                        <div class="small">Completion with: 42%</div>
+                                        <div class="progress progress-mini">
+                                            <div style="width: 42%;" class="progress-bar progress-bar-warning"></div>
+                                        </div>
+                                        <div class="small text-danger">Deadline - September 15, 2016</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-primary pull-right">New</span>
+                                        <h4>HTML to AngularJs</h4>
+                                        <p>
+                                            It is a long established fact that a reader will be distracted.
+                                        </p>
+
+                                        <div class="small">Completion with: 12%</div>
+                                        <div class="progress progress-mini">
+                                            <div style="width: 12%;" class="progress-bar progress-bar-danger"></div>
+                                        </div>
+                                        <div class="small text-danger">Deadline - September 15, 2016</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="contacts">
+
+                            <ul class="list-unstyled sidebar-contact-list">
+                                <li class="clearfix">
+                                    <a href="#" class="media-box">
+                                        <span class="pull-right">
+                                            <span class="circle circle-success circle-lg"></span>
+                                        </span>
+                                        <span class="pull-left">
+                                            <!-- Contact avatar-->
+                                            <img src="picture/avtar-1.jpg" alt="user" class="media-box-object img-circle" width="50">
+                                        </span>
+                                        <!-- Contact info-->
+                                        <span class="media-box-body">
+                                            <span class="media-box-heading">
+                                                <strong>Angelina</strong>
+                                                <br>
+                                                <small class="text-muted">Designer</small>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <!--li end-->
+                                <li class="clearfix">
+                                    <a href="#" class="media-box">
+                                        <span class="pull-right">
+                                            <span class="circle circle-success circle-lg"></span>
+                                        </span>
+                                        <span class="pull-left">
+                                            <!-- Contact avatar-->
+                                            <img src="picture/avtar-2.jpg" alt="user" class="media-box-object img-circle" width="50">
+                                        </span>
+                                        <!-- Contact info-->
+                                        <span class="media-box-body">
+                                            <span class="media-box-heading">
+                                                <strong>John doe</strong>
+                                                <br>
+                                                <small class="text-muted">Designer</small>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <!--li end-->
+                                <li class="clearfix">
+                                    <a href="#" class="media-box">
+                                        <span class="pull-right">
+                                            <span class="circle circle-danger circle-lg"></span>
+                                        </span>
+                                        <span class="pull-left">
+                                            <!-- Contact avatar-->
+                                            <img src="picture/avtar-3.jpg" alt="user" class="media-box-object img-circle" width="50">
+                                        </span>
+                                        <!-- Contact info-->
+                                        <span class="media-box-body">
+                                            <span class="media-box-heading">
+                                                <strong>Eluga Smith</strong>
+                                                <br>
+                                                <small class="text-muted">Designer</small>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <!--li end-->
+                                <li class="clearfix">
+                                    <a href="#" class="media-box">
+                                        <span class="pull-right">
+                                            <span class="circle circle-lg"></span>
+                                        </span>
+                                        <span class="pull-left">
+                                            <!-- Contact avatar-->
+                                            <img src="picture/avtar-4.jpg" alt="user" class="media-box-object img-circle" width="50">
+                                        </span>
+                                        <!-- Contact info-->
+                                        <span class="media-box-body">
+                                            <span class="media-box-heading">
+                                                <strong>Jonathan Doe</strong>
+                                                <br>
+                                                <small class="text-muted">Designer</small>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <!--li end-->
+                                <li class="clearfix">
+                                    <a href="#" class="media-box">
+                                        <span class="pull-right">
+                                            <span class="circle circle-success circle-lg"></span>
+                                        </span>
+                                        <span class="pull-left">
+                                            <!-- Contact avatar-->
+                                            <img src="picture/avtar-5.jpg" alt="user" class="media-box-object img-circle" width="50">
+                                        </span>
+                                        <!-- Contact info-->
+                                        <span class="media-box-body">
+                                            <span class="media-box-heading">
+                                                <strong>Angelina</strong>
+                                                <br>
+                                                <small class="text-muted">Designer</small>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <!--li end-->
+                                <li>
+                                    <div class=" text-center">
+                                        <!-- Optional link to list more users-->
+                                        <a href="javascript:void(0);" title="See more contacts" class="btn btn-teal">
+                                            Load more..
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!--end sidebar contacts-list-->
+                        </div>
                     </div>
-                    <div class="col-sm-6 text-right">
-                        <ol class="breadcrumb">
-                            <li><a href="javascript: void(0);"><i class="fa fa-home"></i></a></li>
-                            <li>仪表盘</li>
-                        </ol>
-                    </div>
+
                 </div>
             </div>
-            <!--page header end-->
+        </div>
+    </nav>
+    <!--end right side bar panel-->
 
+    <!--left navigation start-->
+    <aside class="float-navigation light-navigation">
+        <div class="nano">
+            <div class="nano-content">
+                <ul class="metisMenu nav" id="menu">
+                    <!--<li class="nav-heading"><span>Main Navigation</span></li>-->
+                    <li class="active">
+                        <a href="javascript: void(0);" aria-expanded="true">
+                            <i class="icon-home"></i> 首页 </a>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);" aria-expanded="true">
+                            <i class="icon-user"></i> 客户信息管理
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav-second-level nav" aria-expanded="true">
+                            <li>
+                                <a href="#">数据录入</a>
+                            </li>
+                            <li>
+                                <a href="#">数据公海</a>
+                            </li>
+                            <li>
+                                <a href="#">我的公海</a>
+                            </li>
+                            <li>
+                                <a href="#">预测外呼</a>
+                            </li>
+                            <li>
+                                <a href="#">垃圾箱</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);" aria-expanded="true">
+                            <i class="icon-grid"></i> 工作台
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav-second-level nav" aria-expanded="true">
+                            <li>
+                                <a href="#">我的工作台</a>
+                            </li>
+                            <li>
+                                <a href="#">被叫工作台</a>
+                            </li>
+                            <li>
+                                <a href="#">待办任务</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);" aria-expanded="true">
+                            <i class="icon-bar-chart"></i> 报表统计
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav-second-level nav" aria-expanded="true">
+                            <li>
+                                <a href="#">报表统计</a>
+                            </li>
+                            <li>
+                                <a href="#">我的报表</a>
+                            </li>
+                            <li>
+                                <a href="#">录音查询</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);" aria-expanded="true">
+                            <i class="icon-social-dropbox"></i> 全媒体管理中心
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav-second-level nav" aria-expanded="true">
+                            <li>
+                                <a href="#">媒体开通管理</a>
+                            </li>
+                            <li>
+                                <a href="#">设置</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);" aria-expanded="true">
+                            <i class="icon-layers"></i> 流程管理
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav-second-level nav" aria-expanded="false">
+                            <li>
+                                <a href="#">角色与权限管理</a>
+                            </li>
+                            <li>
+                                <a href="#">用户管理</a>
+                            </li>
+                            <li>
+                                <a href="#">组织架构</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);" aria-expanded="true">
+                            <i class="icon-settings"></i> 系统设置
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav-second-level nav" aria-expanded="true">
+                            <li>
+                                <a href="#">公海管理</a>
+                            </li>
+                            <li>
+                                <a href="#">字段模板设置</a>
+                            </li>
+                            <li>
+                                <a href="#">口径录入</a>
+                            </li>
+                            <li>
+                                <a href="#">分配规则设置</a>
+                            </li>
+                            <li>
+                                <a href="#">密码管理</a>
+                            </li>
+                        </ul>
+                    </li>
 
-            <!--start page content-->
-
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="widget bg-primary padding-0">
-                        <div class="row row-table">
-                            <div class="col-xs-4 text-center pv-15 bg-light-dark">
-                                <em class="icon-cloud-upload fa-3x"></em>
-                            </div>
-                            <div class="col-xs-8 pv-15 text-center">
-                                <h2 class="mv-0">2300</h2>
-                                <div class="text-uppercase">今日待打</div>
-                            </div>
-                        </div>
-                    </div><!--end widget-->
-                </div><!--end col-->
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="widget bg-teal padding-0">
-                        <div class="row row-table">
-                            <div class="col-xs-4 text-center pv-15 bg-light-dark">
-                                <em class="icon-bag fa-3x"></em>
-                            </div>
-                            <div class="col-xs-8 pv-15 text-center">
-                                <h2 class="mv-0">573</h2>
-                                <div class="text-uppercase">待办任务</div>
-                            </div>
-                        </div>
-                    </div><!--end widget-->
-                </div><!--end col-->
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="widget bg-success padding-0">
-                        <div class="row row-table">
-                            <div class="col-xs-4 text-center pv-15 bg-light-dark">
-                                <em class="icon-users fa-3x"></em>
-                            </div>
-                            <div class="col-xs-8 pv-15 text-center">
-                                <h2 class="mv-0">1859</h2>
-                                <div class="text-uppercase">在线坐席</div>
-                            </div>
-                        </div>
-                    </div><!--end widget-->
-                </div><!--end col-->
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="widget bg-indigo padding-0">
-                        <div class="row row-table">
-                            <div class="col-xs-4 text-center pv-15 bg-light-dark">
-                                <em class="icon-cloud-download fa-3x"></em>
-                            </div>
-                            <div class="col-xs-8 pv-15 text-center">
-                                <h2 class="mv-0">456</h2>
-                                <div class="text-uppercase">今日接通率</div>
-                            </div>
-                        </div>
-                    </div><!--end widget-->
-                </div><!--end col-->
+                    <!--<li><a href="#"><i class="icon-notebook"></i>  基本UI交互原则</a></li>-->
+                </ul>
             </div>
-            
+            <!--nano content-->
+        </div>
+        <!--nano scroll end-->
+    </aside>
+    <!--left navigation end-->
+
+
+    <!--main content start-->
+    <section class="main-content">
+
+
+
+        <!--page header start-->
+        <div class="page-header">
             <div class="row">
-                <!-- <div class="col-md-6">
+                <div class="col-sm-6">
+                    <h4>工作面板</h4>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="fa fa-home"></i>
+                            </a>
+                        </li>
+                        <li>仪表盘</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!--page header end-->
+
+
+        <!--start page content-->
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-primary padding-0">
+                    <div class="row row-table">
+                        <div class="col-xs-4 text-center pv-15 bg-light-dark">
+                            <em class="icon-cloud-upload fa-3x"></em>
+                        </div>
+                        <div class="col-xs-8 pv-15 text-center">
+                            <h2 class="mv-0">2300</h2>
+                            <div class="text-uppercase">今日待打</div>
+                        </div>
+                    </div>
+                </div>
+                <!--end widget-->
+            </div>
+            <!--end col-->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-teal padding-0">
+                    <div class="row row-table">
+                        <div class="col-xs-4 text-center pv-15 bg-light-dark">
+                            <em class="icon-bag fa-3x"></em>
+                        </div>
+                        <div class="col-xs-8 pv-15 text-center">
+                            <h2 class="mv-0">573</h2>
+                            <div class="text-uppercase">待办任务</div>
+                        </div>
+                    </div>
+                </div>
+                <!--end widget-->
+            </div>
+            <!--end col-->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-success padding-0">
+                    <div class="row row-table">
+                        <div class="col-xs-4 text-center pv-15 bg-light-dark">
+                            <em class="icon-users fa-3x"></em>
+                        </div>
+                        <div class="col-xs-8 pv-15 text-center">
+                            <h2 class="mv-0">1859</h2>
+                            <div class="text-uppercase">在线坐席</div>
+                        </div>
+                    </div>
+                </div>
+                <!--end widget-->
+            </div>
+            <!--end col-->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="widget bg-indigo padding-0">
+                    <div class="row row-table">
+                        <div class="col-xs-4 text-center pv-15 bg-light-dark">
+                            <em class="icon-cloud-download fa-3x"></em>
+                        </div>
+                        <div class="col-xs-8 pv-15 text-center">
+                            <h2 class="mv-0">456</h2>
+                            <div class="text-uppercase">今日接通率</div>
+                        </div>
+                    </div>
+                </div>
+                <!--end widget-->
+            </div>
+            <!--end col-->
+        </div>
+
+        <div class="row">
+            <!-- <div class="col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="pull-right">
@@ -712,108 +845,137 @@
                     </div>
                 </div> -->
 
-                <div class="col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                 待办任务
-                                </div>
-                                <div class="col-xs-6">
-                                    <div class="panel-search">
-                                        <form action="">                                      
-                                            <input type="text" class="form-control" placeholder="搜索任务关键词" name="s">                                          
-                                            <span class="fa fa-search"></span>                                                                               
-                                        </form>
-                                    </div>
-                                </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                待办任务
                             </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="scrollDiv">
-                                <ul class="todo-list">
-                                    <li>
-                                        <input type="checkbox" value="" name="" class="i-checks"/>
-                                        <span class="">给1839999000用户打电话，说明价格</span>
-                                        <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 mins</small>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" value="" name="" class="i-checks" checked/>
-                                        <span class="">联系赵总，约定拜访时间</span>
-                                        <small class="label label-info"><i class="fa fa-clock-o"></i> 3 mins</small>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" value="" name="" class="i-checks" />
-                                        <span class="">再次给王先生打电话, 咨询详情</span>
-                                        <small class="label label-warning"><i class="fa fa-clock-o"></i> 2 mins</small>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" value="" name="" class="i-checks"/>
-                                        <span class="">再次给王先生打电话, 咨询详情</span>
-                                        <small class="label label-danger"><i class="fa fa-clock-o"></i> 42 mins</small>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" value="" name="" class="i-checks"/>
-                                        <span class="">再次给王先生打电话, 咨询详情</span>
-                                        <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 mins</small>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" value="" name="" class="i-checks" />
-                                        <span class="">再次给王先生打电话, 咨询详情</span>
-                                        <small class="label label-info"><i class="fa fa-clock-o"></i> 3 mins</small>
-                                    </li>
-                                  
-                                </ul>
-                            </div>
-
-                        </div>
-                        <div class="panel-footer">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="添加代办">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default">
-                                        添加</button>
-                                </span>
+                            <div class="col-xs-6">
+                                <div class="panel-search">
+                                    <form action="">
+                                        <input type="text" class="form-control" placeholder="搜索任务关键词" name="s">
+                                        <span class="fa fa-search"></span>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div><!--end col-->
-               
+                    <div class="panel-body">
+                        <div class="scrollDiv">
+                            <ul class="todo-list">
+                                <li>
+                                    <input type="checkbox" value="" name="" class="i-checks" />
+                                    <span class="">给1839999000用户打电话，说明价格</span>
+                                    <small class="label label-primary">
+                                        <i class="fa fa-clock-o"></i> 1 mins</small>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="" name="" class="i-checks" checked/>
+                                    <span class="">联系赵总，约定拜访时间</span>
+                                    <small class="label label-info">
+                                        <i class="fa fa-clock-o"></i> 3 mins</small>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="" name="" class="i-checks" />
+                                    <span class="">再次给王先生打电话, 咨询详情</span>
+                                    <small class="label label-warning">
+                                        <i class="fa fa-clock-o"></i> 2 mins</small>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="" name="" class="i-checks" />
+                                    <span class="">再次给王先生打电话, 咨询详情</span>
+                                    <small class="label label-danger">
+                                        <i class="fa fa-clock-o"></i> 42 mins</small>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="" name="" class="i-checks" />
+                                    <span class="">再次给王先生打电话, 咨询详情</span>
+                                    <small class="label label-primary">
+                                        <i class="fa fa-clock-o"></i> 1 mins</small>
+                                </li>
+                                <li>
+                                    <input type="checkbox" value="" name="" class="i-checks" />
+                                    <span class="">再次给王先生打电话, 咨询详情</span>
+                                    <small class="label label-info">
+                                        <i class="fa fa-clock-o"></i> 3 mins</small>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="添加代办">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default">
+                                    添加</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
- 
-            <!--end page content-->
+            <!--end col-->
+
+        </div>
+
+        <!--end page content-->
 
 
-            <!--Start footer-->
-            <footer class="footer">
-                <span>Copyright &copy; </span>
-            </footer>
-            <!--end footer-->
+        <!--Start footer-->
+        <footer class="footer">
+            <span>Copyright &copy; </span>
+        </footer>
+        <!--end footer-->
 
-        </section>
-        <!--end main content-->
+    </section>
+    <!--end main content-->
 
 
 
-        <!--Common plugins-->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/pace.min.js"></script>
-        <script src="js/jasny-bootstrap.min.js"></script>
-        <script src="js/jquery.slimscroll.min.js"></script>
-        <script src="js/jquery.nanoscroller.min.js"></script>
-        <script src="js/metismenu.min.js"></script>
-        <script src="js/float-custom.js"></script>
-        <!--page script-->
-        <script src="js/d3.min.js"></script>
-        <script src="js/c3.min.js"></script>
-        <!-- iCheck for radio and checkboxes -->
-        <script src="js/icheck.min.js"></script>
-        <!-- Datatables-->
-        <script src="js/jquery.datatables.min.js"></script>
-        <script src="js/datatables.responsive.min.js"></script>
-        <script src="js/jquery.toast.min.js"></script>
-        <script src="js/dashboard-alpha.js"></script>
-        <script src="js/phonebar.js"></script>
-    </body>
+    <!--Common plugins-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/pace.min.js"></script>
+    <script src="js/jasny-bootstrap.min.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <script src="js/jquery.nanoscroller.min.js"></script>
+    <script src="js/metismenu.min.js"></script>
+    <script src="js/float-custom.js"></script>
+    <!--page script-->
+    <script src="js/d3.min.js"></script>
+    <script src="js/c3.min.js"></script>
+    <!-- iCheck for radio and checkboxes -->
+    <script src="js/icheck.min.js"></script>
+    <!-- Datatables-->
+    <script src="js/jquery.datatables.min.js"></script>
+    <script src="js/datatables.responsive.min.js"></script>
+    <script src="js/jquery.toast.min.js"></script>
+    <script src="js/dashboard-alpha.js"></script>
+    <script src="js/phonebar.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('.metisMenu li').click(function (e) {
+                $(this)
+                    .addClass('active')
+                    .siblings().removeClass('active')
+            })
+            $('.nav-second-level li a').click(function (e) {
+                $('.metisMenu li')
+                    .removeClass('active')
+                    .find('a')
+                    .removeClass('active-a')
+
+                $(this)
+                    .addClass('active-a')
+
+                return false
+            })
+        })
+    </script>
+</body>
+
 </html>
