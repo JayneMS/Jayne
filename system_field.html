@@ -26,6 +26,7 @@
     <link href="css/jayne.css" rel="stylesheet">
     <!--sweetalert css-->
     <link href="css/sweet-alert.css" rel="stylesheet">
+    <link href="css/vlstyle.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -101,7 +102,7 @@
                 <div class="col-sm-6 flex-align-center">
                     <h4 class="inline">表字段设置与维护</h4>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="#" id="addRow" class="btn btn-default btn-primary" data-toggle="modal" data-target="#" style="margin:5px;">新建字段</a>
+                    <a href="./system_field_create.html" class="btn btn-default btn-primary" style="margin:5px;">新建模板</a>
                 </div>
                 <div class="col-sm-6 text-right">
                     <ol class="breadcrumb">
@@ -126,57 +127,51 @@
                         字段模板列表
                     </div>
                     <div class="panel-body">
+                        <div class="buttons">
+                            <a href="javascript: void(0);" class="btn btn-primary">修改</a>
+                            <a href="javascript: void(0);" class="btn btn-danger">删除</a>
+                        </div>
                         <table id="fieldTemplateList" class="table table-striped dt-responsive nowrap">
                             <thead>
                                 <tr>
-                                    <th>字段名称</th>
-                                    <th>字段类型</th>
-                                    <th>字段关联值</th>
-                                    <th>是否必填</th>
-                                    <th>是否查询</th>
-                                    <th>排序</th>
-                                    <th>操作</th>
+                                    <th>模板名称</th>
+                                    <th>所属公海</th>
+                                    <th>字段个数</th>
+                                    <th>创建人</th>
+                                    <th>创建时间</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-default collapsed">
-                    <div class="panel-heading">
-                        新建字段模板
-                    </div>
-                    <div class="panel-body">
-                        <table id="datatable" class="table table-striped dt-responsive nowrap">
-                            <thead>
                                 <tr>
-                                    <th>字段名称</th>
-                                    <th>字段类型</th>
-                                    <th>字段关联值</th>
-                                    <th>是否必填</th>
-                                    <th>是否查询</th>
-                                    <th>排序</th>
-                                    <th>操作</th>
+                                    <td>移动模板1</td>
+                                    <td>移动数据公海</td>
+                                    <td>7</td>
+                                    <td>王玲</td>
+                                    <td>2018-01-21</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-
+                                <tr>
+                                    <td>移动模板1</td>
+                                    <td>移动数据公海</td>
+                                    <td>7</td>
+                                    <td>王玲</td>
+                                    <td>2018-01-21</td>
+                                </tr>
+                                <tr>
+                                    <td>移动模板1</td>
+                                    <td>移动数据公海</td>
+                                    <td>7</td>
+                                    <td>王玲</td>
+                                    <td>2018-01-21</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+
         <!--end row-->
-        <span class="tip red">*如字段类型为下拉菜单、单选按钮、多选按钮，需设置字段关联值，请用';'隔开</span>
+
         <a href="#" id="savefield" class="btn btn-default btn-primary  pull-right" data-toggle="modal" data-target="#createModal"
             style="margin-top:-10px;">创建并应用</a>
         <!--end page content-->
@@ -217,49 +212,29 @@
 
         $(document).ready(function () {
 
-            $('#datatable').DataTable(languageConfig);
+            $('#fieldTemplateList').DataTable(languageConfig);
 
-            //add row
-            var table = $('#datatable').DataTable();
-            $('#addRow').on('click', function () {
-                table.row.add([
-                    '<input class="fieldname' + counter + '" style="width:100px">',
-                    '<select class="fieldtype' + counter + '" style="width:100px"><option value="普通文本">普通文本</option vlaue="电话文本"><option>电话文本</option><option vlaue="下拉菜单">下拉菜单</option><option vlaue="单选按钮">单选按钮</option><option vlaue="多选按钮">多选按钮</option><option vlaue="是否">是否</option><option vlaue="日期类型">日期类型</option></select>',
-                    '<input class="fieldrelated' + counter + '" style="width:100px">',
-                    '<select class="isrequired' + counter + '"><option value="1">是</option><option value="0">否</option></select>',
-                    '<select class="issearched' + counter + '"><option value="1">是</option><option value="0">否</option></select>',
-                    '<input class="sort' + counter + '" style="width:100px">',
-                    '<a href="#" class="sort' + counter + '" onclick="delete_r(this)" style="margin:5px;">删除</a>'
-                ]).draw();
+            var selected = []; //选择数组
+            $('#fieldTemplateList tbody').on('click', "tr", function () {
 
-                $('.fieldname' + counter).focus()
-                $('.fieldname' + counter).click(function () {
-                    this.focus()
-                })
 
-                counter++;
+                var id = $(this).index();  // id 从server端获取
+
+                var index = $.inArray(id, selected);
+
+                if (index === -1) {
+                    selected.push(id);
+                } else {
+                    selected.splice(index, 1);
+                }
+
+                $(this)
+                    .toggleClass('selected')
+                    .siblings()
+                    .removeClass('selected')
+
             });
 
-            // Automatically add a first row of data
-            //			    $('#addRow').click();
-
-            //checkbox
-            $('#checkTree').jstree({
-                'core': {
-                    'themes': {
-                        'responsive': false
-                    }
-                },
-                'types': {
-                    'default': {
-                        'icon': 'fa fa-folder'
-                    },
-                    'file': {
-                        'icon': 'fa fa-file'
-                    }
-                },
-                'plugins': ['types', 'checkbox']
-            });
         });
 
 

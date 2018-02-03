@@ -102,3 +102,7 @@ tr.even.selected {
 .active-a {
     color: #23b7e5!important;
 }
+
+.operation-btns {
+    display: inline-block;
+}
