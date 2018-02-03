@@ -1,6 +1,8 @@
 var languageConfig = {
     destroy: true,
     ordering: false,
+    searching: false,
+    lengthChange: false, // 每一页显示条数
     language: {
         "sProcessing": "处理中...",
         "sLengthMenu": "显示 _MENU_ 项结果",
