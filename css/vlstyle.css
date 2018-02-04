@@ -90,6 +90,7 @@
 tr.odd.selected,
 tr.even.selected {
     background-color: #abb9d3!important;
+    color: white!important;
 }
 
 
@@ -105,4 +106,20 @@ tr.even.selected {
 
 .operation-btns {
     display: inline-block;
+}
+
+.dashed-border {
+    border: 1px dashed #eee ;  
+    margin-bottom: 15px ;
+    padding-bottom: 5px ;
+}
+.require-star {
+    color: red ;
+}
+
+.vl-a {
+    font-size: 12px ;
+    text-decoration: underline ;
+    margin: 0 6px ;
+    cursor: pointer
 }

@@ -1,271 +1,283 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>部门管理</title>
-        
-        <!-- Common plugins -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/simple-line-icons.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/pace.css" rel="stylesheet">
-        <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/nanoscroller.css">
-        <link rel="stylesheet" href="css/metismenu.min.css">
-        <!-- dataTables -->
-        <link href="css/jquery.datatables.min.css" rel="stylesheet" type="text/css">
-        <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
-        <!--template css-->
-        <link href="css/style.css" rel="stylesheet">
-        <link href="css/jayne.css" rel="stylesheet">
-        <!--sweetalert css-->
-        <link href="css/sweet-alert.css" rel="stylesheet">
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>队列管理</title>
+
+    <!-- Common plugins -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-line-icons.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/pace.css" rel="stylesheet">
+    <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/nanoscroller.css">
+    <link rel="stylesheet" href="css/metismenu.min.css">
+    <!-- dataTables -->
+    <link href="css/jquery.datatables.min.css" rel="stylesheet" type="text/css">
+    <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--template css-->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/jayne.css" rel="stylesheet">
+    <!--sweetalert css-->
+    <link href="css/sweet-alert.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
           <script src="js/html5shiv.min.js"></script>
           <script src="js/respond.min.js"></script>
         <![endif]-->
-    </head>
-    <body>
+</head>
 
-        <!--modal create start-->
-        <div class="modal fade height-500" data-backdrop="static" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>
-                        <h3 class="modal-title" id="myModalLabel">新建部门</h3>
-                    </div>
-                    <div class="modal-body">
-                        <div class="modal-form">
-                            <form role="form">
-                                <div class="form-group">
-	                                <label>队列名称</label>
-                                    <input type="text" class="form-control" required="">
-                                </div>
-                                <div class="form-group">
-	                                <label>振铃方式</label>
-	                                <select name="" class="form-control" >
-	                                	<option value="">方式A</option>
-	                                	<option value="">方式B</option>
-	                                	<option value="">方式C</option>
-	                                	<option value="">方式D</option>
-	                                </select>
-                                </div>
-                                <div class="form-group">
-	                                <label>队列联系号码</label>
-                                    <input type="text" class="form-control" required="">
-                                </div>
-                                <div class="form-group">
-	                                <label>所属部门</label>
-	                                <select name="" class="form-control" >
-	                                	<option value="">移动化部门</option>
-	                                	<option value="">信息部门</option>
-	                                	<option value="">联通部门</option>
-	                                	<option value="">移动部门</option>
-	                                </select>
-                                </div>
-                                <div class="clearfix">
-                                    <button type="submit" class="btn  btn-primary pull-right">创建</button>
-                                </div>
-                            </form>
-                        </div>
+<body>
+
+    <!--modal create start-->
+    <div class="modal fade height-500" data-backdrop="static" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="fa fa-times-circle"></span>
+                    </button>
+                    <h3 class="modal-title" id="myModalLabel">新建队列</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-form">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>队列名称</label>
+                                <input type="text" class="form-control" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>振铃方式</label>
+                                <select name="" class="form-control">
+                                    <option value="">方式A</option>
+                                    <option value="">方式B</option>
+                                    <option value="">方式C</option>
+                                    <option value="">方式D</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>队列联系号码</label>
+                                <input type="text" class="form-control" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>所属部门</label>
+                                <select name="" class="form-control">
+                                    <option value="">移动化部门</option>
+                                    <option value="">信息部门</option>
+                                    <option value="">联通部门</option>
+                                    <option value="">移动部门</option>
+                                </select>
+                            </div>
+                            <div class="clearfix">
+                                <button type="submit" class="btn  btn-primary pull-right">创建</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!--modal create end-->
-        <!--modal update start-->
-        <div class="modal fade" data-backdrop="static" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>
-                        <h3 class="modal-title" id="myModalLabel">修改部门</h3>
-                    </div>
-                    <div class="modal-body">
-                        <div class="modal-form">
-                            <form role="form">
-                                <div class="form-group">
-	                                <label>队列名称</label>
-                                    <input type="text" class="form-control" required="">
-                                </div>
-                                <div class="form-group">
-	                                <label>振铃方式</label>
-	                                <select name="" class="form-control" >
-	                                	<option value="">方式A</option>
-	                                	<option value="">方式B</option>
-	                                	<option value="">方式C</option>
-	                                	<option value="">方式D</option>
-	                                </select>
-                                </div>
-                                <div class="form-group">
-	                                <label>队列联系号码</label>
-                                    <input type="text" class="form-control" required="">
-                                </div>
-                                <div class="form-group">
-	                                <label>所属部门</label>
-	                                <select name="" class="form-control" >
-	                                	<option value="">移动化部门</option>
-	                                	<option value="">信息部门</option>
-	                                	<option value="">联通部门</option>
-	                                	<option value="">移动部门</option>
-	                                </select>
-                                </div>
-                                <div class="clearfix">
-                                    <button type="submit" class="btn  btn-primary pull-right">创建</button>
-                                </div>
-                            </form>
-                        </div>
+    </div>
+    <!--modal create end-->
+    <!--modal update start-->
+    <div class="modal fade" data-backdrop="static" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="fa fa-times-circle"></span>
+                    </button>
+                    <h3 class="modal-title" id="myModalLabel">修改部门</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-form">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>队列名称</label>
+                                <input type="text" class="form-control" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>振铃方式</label>
+                                <select name="" class="form-control">
+                                    <option value="">方式A</option>
+                                    <option value="">方式B</option>
+                                    <option value="">方式C</option>
+                                    <option value="">方式D</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>队列联系号码</label>
+                                <input type="text" class="form-control" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>所属部门</label>
+                                <select name="" class="form-control">
+                                    <option value="">移动化部门</option>
+                                    <option value="">信息部门</option>
+                                    <option value="">联通部门</option>
+                                    <option value="">移动部门</option>
+                                </select>
+                            </div>
+                            <div class="clearfix">
+                                <button type="submit" class="btn  btn-primary pull-right">创建</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!--modal update end-->
+    </div>
+    <!--modal update end-->
 
-        <!--main content start-->
-        <section class="main-content">
+    <!--main content start-->
+    <section class="main-content">
 
-            <!--page header start-->
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-sm-6 flex-align-center">
-                        <h4 class="inline">部门管理</h4>
-                        &nbsp;&nbsp;&nbsp;&nbsp;          
-                        <a href="#" class="btn btn-default btn-primary" data-toggle="modal" data-target="#createModal" style="margin:5px;">新建部门</a>
-                    </div>
-                    <div class="col-sm-6 text-right">
-                        <ol class="breadcrumb">
-                            <li><a href="javascript: void(0);"><i class="fa fa-home"></i></a></li>
-                            <li>流程管理</li>
-                            <li>部门管理</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-            <!--page header end-->
-
-            <!--start page content-->
+        <!--page header start-->
+        <div class="page-header">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default collapsed">
-                        <div class="panel-heading">
-                          	部门设置
-                        </div>
-                        <div class="panel-body">
-                            <table id="datatable" class="table table-striped dt-responsive nowrap">
-                                <thead>
-                                    <tr>
-                                        <th>队列名称</th>
-                                        <th>振铃方式</th>
-                                        <th>队列联系号码</th>
-                                        <th>所属部门</th>
-                                        <th>操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                    	<td>w5e45s8d5</td>
-                                    	<td>方式A</td>
-                                        <td>111111</td>
-                                        <td>移动部门</td>
-                                        <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" class=""  onclick="delete_r(this)" style="margin:5px;">删除</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                    	<td>w55sw9851</td>
-                                    	<td>方式B</td>
-                                        <td>2222222</td>
-                                        <td>移动部门</td>
-                                        <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" class=""  onclick="delete_r(this)" style="margin:5px;">删除</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                    	<td>wwq95d5</td>
-                                    	<td>方式C</td>
-                                        <td>33333</td>
-                                        <td>移动部门</td>
-                                        <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" class=""  onclick="delete_r(this)" style="margin:5px;">删除</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                    	<td>w54e5s8d5</td>
-                                    	<td>方式D</td>
-                                        <td>444444</td>
-                                        <td>信息化部门</td>
-                                        <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" class=""  onclick="delete_r(this)" style="margin:5px;">删除</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                <div class="col-sm-6 flex-align-center">
+                    <h4 class="inline">队列管理</h4>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="#" class="btn btn-default btn-primary" data-toggle="modal" data-target="#createModal" style="margin:5px;">新建队列</a>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="fa fa-home"></i>
+                            </a>
+                        </li>
+                        <li>流程管理</li>
+                        <li>队列管理</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!--page header end-->
+
+        <!--start page content-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default collapsed">
+                    <div class="panel-heading">
+                        队列设置
+                    </div>
+                    <div class="panel-body">
+                        <table id="datatable" class="table table-striped dt-responsive nowrap">
+                            <thead>
+                                <tr>
+                                    <th>队列名称</th>
+                                    <th>振铃方式</th>
+                                    <th>队列联系号码</th>
+                                    <th>所属部门</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>w5e45s8d5</td>
+                                    <td>方式A</td>
+                                    <td>111111</td>
+                                    <td>移动部门</td>
+                                    <td>
+                                        <a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
+                                        <a href="#" class="" onclick="delete_r(this)" style="margin:5px;">删除</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>w55sw9851</td>
+                                    <td>方式B</td>
+                                    <td>2222222</td>
+                                    <td>移动部门</td>
+                                    <td>
+                                        <a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
+                                        <a href="#" class="" onclick="delete_r(this)" style="margin:5px;">删除</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>wwq95d5</td>
+                                    <td>方式C</td>
+                                    <td>33333</td>
+                                    <td>移动部门</td>
+                                    <td>
+                                        <a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
+                                        <a href="#" class="" onclick="delete_r(this)" style="margin:5px;">删除</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>w54e5s8d5</td>
+                                    <td>方式D</td>
+                                    <td>444444</td>
+                                    <td>信息化部门</td>
+                                    <td>
+                                        <a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
+                                        <a href="#" class="" onclick="delete_r(this)" style="margin:5px;">删除</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </div><!--end row-->
-            
-            <!--end page content-->
+            </div>
+        </div>
+        <!--end row-->
+
+        <!--end page content-->
 
 
-            <!--Start footer-->
-            <footer class="footer">
-                <span>Copyright &copy; </span>
-            </footer>
-            <!--end footer-->
+        <!--Start footer-->
+        <footer class="footer">
+            <span>Copyright &copy; </span>
+        </footer>
+        <!--end footer-->
 
-        </section>
-        <!--end main content-->
-        
-        <!--Common plugins-->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/pace.min.js"></script>
-        <script src="js/jasny-bootstrap.min.js"></script>
-        <script src="js/jquery.slimscroll.min.js"></script>
-        <script src="js/jquery.nanoscroller.min.js"></script>
-        <script src="js/metismenu.min.js"></script>
-        <script src="js/float-custom.js"></script>
+    </section>
+    <!--end main content-->
 
-        <!--page script-->
-        <script src="js/jquery.datatables.min.js"></script>
-        <script src="js/datatables.responsive.min.js"></script>
-        <script src="js/jquery-ui.min.js"></script>
-        <script src="js/jquery.ui.custom.js"></script>
-        <script src="js/jayne.js"></script>        
-        <!--sweet alerts-->
-        <script src="js/sweet-alert.min.js"></script>
-        <script>
-            
-            function delete_r(othis){
-            	swal({    
-            		title: "确定删除吗？",    
-            		type: "warning",   
-            		showCancelButton: true,    
-            		confirmButtonColor: "#DD6B55",   
-            		confirmButtonText: "确定！",
-            		cancelButtonText:'取消',
-            		closeOnConfirm: false 
-            	}, 
-            	function(){   
-            		swal(
-            			"删除！", "该部门已经被删除。","success"
-            		);
-            		$(othis).parents("tr").css("display","none");
-            	});
-            	
-            }
-        </script>
+    <!--Common plugins-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/pace.min.js"></script>
+    <script src="js/jasny-bootstrap.min.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <script src="js/jquery.nanoscroller.min.js"></script>
+    <script src="js/metismenu.min.js"></script>
+    <script src="js/float-custom.js"></script>
 
-    </body>
+    <!--page script-->
+    <script src="js/jquery.datatables.min.js"></script>
+    <script src="js/datatables.responsive.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.ui.custom.js"></script>
+    <script src="js/jayne.js"></script>
+    <!--sweet alerts-->
+    <script src="js/sweet-alert.min.js"></script>
+    <script>
+
+        function delete_r(othis) {
+            swal({
+                title: "确定删除吗？",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "确定！",
+                cancelButtonText: '取消',
+                closeOnConfirm: false
+            },
+                function () {
+                    swal(
+                        "删除！", "该部门已经被删除。", "success"
+                    );
+                    $(othis).parents("tr").css("display", "none");
+                });
+
+        }
+    </script>
+
+</body>
+
 </html>
