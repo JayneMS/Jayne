@@ -124,3 +124,6 @@ tr.even.selected {
     cursor: pointer
 }
 
+.zIndex9999 {
+    z-index: 9999
+}

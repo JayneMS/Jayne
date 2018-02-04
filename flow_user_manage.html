@@ -1,482 +1,536 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>用户管理</title>
-        
-        <!-- Common plugins -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/simple-line-icons.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/pace.css" rel="stylesheet">
-        <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/nanoscroller.css">
-        <link rel="stylesheet" href="css/metismenu.min.css">
-        <!-- dataTables -->
-        <link href="css/jquery.datatables.min.css" rel="stylesheet" type="text/css">
-        <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
-        <!-- Treeview css -->
-        <link href="css/style_1.css" rel="stylesheet" type="text/css" />
-        <!--sweetalert css-->
-        <link href="css/sweet-alert.css" rel="stylesheet">
-        <!--template css-->
-	    <link href="css/jquery-ui.css" rel="stylesheet">
-	
-	    <link href="css/blue.css" rel="stylesheet">
-	    <link href="css/style.css" rel="stylesheet">
-	    <link href="css/jayne.css" rel="stylesheet">
-	    <link href="css/vlstyle.css" rel="stylesheet">
-	    <link rel="stylesheet" href="css/timeline.css">
-        
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>用户管理</title>
+
+    <!-- Common plugins -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-line-icons.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/pace.css" rel="stylesheet">
+    <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/nanoscroller.css">
+    <link rel="stylesheet" href="css/metismenu.min.css">
+    <!-- dataTables -->
+    <link href="css/jquery.datatables.min.css" rel="stylesheet" type="text/css">
+    <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- Treeview css -->
+    <link href="css/style_1.css" rel="stylesheet" type="text/css" />
+    <!--sweetalert css-->
+    <link href="css/sweet-alert.css" rel="stylesheet">
+    <!--template css-->
+    <link href="css/jquery-ui.css" rel="stylesheet">
+
+    <link href="css/blue.css" rel="stylesheet">
+    <link href="css/switch.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/jayne.css" rel="stylesheet">
+    <link href="css/vlstyle.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/timeline.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
           <script src="js/html5shiv.min.js"></script>
           <script src="js/respond.min.js"></script>
         <![endif]-->
-    </head>
-    <body>
+</head>
 
-        <!--modal create-role start-->
-        <div class="modal fade height-500" data-backdrop="static" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>
-                        <h3 class="modal-title" id="myModalLabel">新建用户</h3>
-                    </div>
-                    <div class="modal-body">
-                        <div class="modal-form">
-                            <form role="form">
-                                <div class="form-group">
-	                                <label>用户名</label>
-	                                <span class="require-star">*</span>
-                                    <input name="uname" type="text" class="form-control" required="">
-                                </div>
-                                <div class="form-group">
-	                                <label>角色</label>
-	                                <select name="role" class="form-control" >
-	                                	<option>超级管理员</option>
-	                                	<option>管理员</option>
-	                                	<option>部门管理员</option>
-	                                	<option>坐席</option>
-	                                </select>
-                                </div>
-                                <div class="form-group">
-	                                <label>部门</label>
-                                    <select name="branch" class="form-control" >
-                                        <option>信息化部门</option>
-                                        <option>移动部门</option>
-                                        <option>联通部门</option>
-                                    </select>
-                                </div>
-                                <div class="clearfix">
-                                    <a class="btn  btn-primary pull-right" onclick="add_tab()">创建</a>
-                                </div>
-                            </form>
-                        </div>
+<body>
+
+    <!--modal create-role start-->
+    <div class="modal fade height-500" data-backdrop="static" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="fa fa-times-circle"></span>
+                    </button>
+                    <h3 class="modal-title" id="myModalLabel">新建用户</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-form">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>工号</label>
+                                <span class="require-star">*</span>
+                                <input name="uid" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>用户名</label>
+                                <span class="require-star">*</span>
+                                <input name="uname" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>角色</label>
+                                <select name="role" class="form-control">
+                                    <option>超级管理员</option>
+                                    <option>管理员</option>
+                                    <option>坐席班长</option>
+                                    <option>坐席</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>队列</label>
+                                <select name="branch" class="form-control">
+                                    <option>移动队列</option>
+                                    <option>移动队列2</option>
+                                    <option>移动队列3</option>
+                                    <option>联通队列1</option>
+                                    <option>联通队列2</option>
+                                    <option>联通队列3</option>
+                                </select>
+                            </div>
+                            <div class="clearfix">
+                                <a class="btn  btn-primary pull-right" onclick="add_tab()">创建</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!--modal create-role end-->
-        <!--modal update-role start-->
-        <div class="modal fade" data-backdrop="static" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>
-                        <h3 class="modal-title" id="myModalLabel">修改用户</h3>
-                    </div>
-                    <div class="modal-body">
-                        <div class="modal-form">
-                            <form role="form">
-                                <div class="form-group">
-	                                <label>用户名</label>
-	                                <span class="require-star">*</span>
-                                    <input name="al_uname" type="text" class="form-control" required="">
-                                </div>
-                                <div class="form-group">
-	                                <label>角色</label>
-	                                <select name="al_role" class="form-control" >
-	                                	<option>超级管理员</option>
-	                                	<option>管理员</option>
-	                                	<option>部门管理员</option>
-	                                	<option>坐席</option>
-	                                </select>
-                                </div>
-                                <div class="form-group">
-	                                <label>部门</label>
-                                    <select name="al_branch" class="form-control" >
-                                        <option>信息化部门</option>
-                                        <option>移动部门</option>
-                                        <option>联通部门</option>
-                                    </select>
-                                </div>
-                                <div class="clearfix">
-                                    <a class="btn btn-primary pull-right" onclick="alter_tab()">创建</a>
-                                </div>
-                            </form>
-                        </div>
+    </div>
+    <!--modal create-role end-->
+    <!--modal update-role start-->
+    <div class="modal fade" data-backdrop="static" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="fa fa-times-circle"></span>
+                    </button>
+                    <h3 class="modal-title" id="myModalLabel">修改用户</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-form">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>工号</label>
+                                <span class="require-star">*</span>
+                                <input name="al_uid" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>用户名</label>
+                                <span class="require-star">*</span>
+                                <input name="al_uname" type="text" class="form-control" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>角色</label>
+                                <select name="al_role" class="form-control">
+                                    <option>超级管理员</option>
+                                    <option>管理员</option>
+                                    <option>坐席班长</option>
+                                    <option>坐席</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>队列</label>
+                                <select name="al_branch" class="form-control">
+                                    <option>移动队列</option>
+                                    <option>移动队列2</option>
+                                    <option>移动队列3</option>
+                                    <option>联通队列1</option>
+                                    <option>联通队列2</option>
+                                    <option>联通队列3</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="margin-top: 20px ">
+                                <label>工作状态</label>
+                                <input type="checkbox" class="checkbox-switch" /> (绿色开关为正常，关闭开关为休假/离职/未在岗，则不分配外呼任务)
+                            </div>
+
+                            <div class="clearfix">
+                                <a class="btn btn-primary pull-right" onclick="alter_tab()">创建</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!--modal update-role end-->
+    </div>
+    <!--modal update-role end-->
 
-        <!--modal delete-->
-        <div class="modal fade modal-delete" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="mySmallModalLabel">删除用户</h4>
-                    </div>
-                    <div class="modal-body">
-                    	您确定要删除此用户吗？
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary">确定</button>
-                    </div>
+    <!--modal delete-->
+    <div class="modal fade modal-delete" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="mySmallModalLabel">删除用户</h4>
+                </div>
+                <div class="modal-body">
+                    您确定要删除此用户吗？
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确定</button>
                 </div>
             </div>
         </div>
-        <!--end delete modal-->
-        
-        <!--main content start-->
-        <section class="main-content">
+    </div>
+    <!--end delete modal-->
 
-            <!--page header start-->
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-sm-6 flex-align-center">
-                        <h4 class="inline">用户管理</h4>
-                        <!--&nbsp;&nbsp;&nbsp;&nbsp;-->
-                        <!--<a href="#" class="btn btn-default btn-primary" data-toggle="modal" data-target="#createModal" style="margin:5px;">添加</a>-->
-                    </div>
-                    <div class="col-sm-6 text-right">
-                        <ol class="breadcrumb">
-                            <li><a href="javascript: void(0);"><i class="fa fa-home"></i></a></li>
-                            <li>流程管理</li>
-                            <li>用户管理</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-            <!--page header end-->
+    <!--main content start-->
+    <section class="main-content">
 
-	        <!--page filter start-->
-	        <div class="row">
-	            <div class="col-md-12">
-	                <div class="panel panel-default collapsed">
-	                    <div class="panel-heading">
-	                        <p class="inline">查询条件</p>&nbsp;&nbsp;&nbsp;&nbsp;
-	                    </div>
-	                    <div class="panel-body">
-	                        <div class="row">
-	                            <div class="col-sm-3">
-	                                <fieldset class="jquery-Ui-fieldset">
-		                                <label  for="role">角色</label>
-		                                <select name="role" id="role">
-	                                        <option selected="selected">全部角色</option>
-		                                	<option>超级管理员</option>
-		                                	<option>管理员</option>
-		                                	<option>部门管理员</option>
-		                                	<option>坐席</option>
-		                                </select>
-	                                </fieldset>
-	                            </div>
-	
-	                            <div class="col-sm-3">
-	                                <fieldset class="jquery-Ui-fieldset">
-	                                    <label for="branch">部门</label>
-	                                    <select name="branch" id="branch">
-	                                        <option selected="selected">全部部门</option>
-	                                        <option>信息化部门</option>
-	                                        <option>移动部门</option>
-	                                        <option>联通部门</option>
-	                                    </select>
-	                                </fieldset>
-	                            </div>
-	                            
-	                            <div class="col-sm-3">
-	                                <fieldset class="jquery-Ui-fieldset">
-	                                    <label for="uid">用户ID</label>
-	                                    <input class="input-150p black" type="" name="uid" id="uid" value="" />
-	                                </fieldset>
-	                            </div>
-	                            
-	                            <div class="col-sm-3">
-	                                <fieldset class="jquery-Ui-fieldset">
-	                                	<label for="uname">姓名</label>
-	                                    <input class="input-150p black" type="" name="uname" id="uname" value="" />
-	                                </fieldset>
-	                            </div>
-	                        </div>
-	                        <a href="javascript: void(0);" class="btn btn-primary inline float-right" onclick="search_tab()">开始查询</a>
-	                    </div>
-	                    
-	                </div>
-	            </div>
-	        </div>
-	        <!--page filter end-->
-	        
-	        
-            <!--start page content-->
-
+        <!--page header start-->
+        <div class="page-header">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default collapsed">
-	                    <div class="panel-heading">
-	                        <div class="buttons">
-	                            <a id="selectAllBtn" class="btn btn-primary btn-border">全选</a>
-	                            <a href="javascript: void(0);" class="btn btn-primary" data-toggle="modal" data-target="#createModal" >新增用户</a>
-	                            <a href="javascript: void(0);" class="btn btn-teal" data-toggle="modal" data-target="#updateModal" >修改用户</a>
-	                            <a href="javascript: void(0);" class="btn btn-danger" onclick="delete_r()">删除用户</a>
-	                        </div>
-	                    </div>
-                        <div class="panel-body">
-                            <table id="datatable" class="table table-striped dt-responsive nowrap">
-                                <thead>
-                                    <tr>
-                                        <th>坐席工号</th>
-                                        <th>姓名</th>
-                                        <th>用户角色</th>
-                                        <th>所属部门</th>
-                                        <th>部门管理员</th>
-                                        <th>其他信息</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                    	<td name="uid">w5e45s8d5</td>
-                                    	<td name="uname">周敏</td>
-                                        <td name="role">超级管理员</td>
-                                        <td name="branch">移动部门</td>
-                                        <td name="bmanager">周敏</td>
-                                        <td name="others">...</td>
-                                    </tr>
-                                    <tr>
-                                    	<td>w55sw9851</td>
-                                    	<td>王林</td>
-                                        <td>管理员</td>
-                                        <td>移动部门</td>
-                                        <td>周敏</td>
-                                        <td>...</td>
-                                    </tr>
-                                    <tr>
-                                    	<td>wwq95d5</td>
-                                    	<td>李毅</td>
-                                        <td>坐席</td>
-                                        <td>移动部门</td>
-                                        <td>王林</td>
-                                        <td>...</td>
-                                    </tr>
-                                    <tr>
-                                    	<td>w54e5s8d5</td>
-                                    	<td>周敏</td>
-                                        <td>管理员</td>
-                                        <td>信息化部门</td>
-                                        <td>刘洋</td>
-                                        <td>...</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                <div class="col-sm-6 flex-align-center">
+                    <h4 class="inline">用户管理</h4>
+                    <!--&nbsp;&nbsp;&nbsp;&nbsp;-->
+                    <!--<a href="#" class="btn btn-default btn-primary" data-toggle="modal" data-target="#createModal" style="margin:5px;">添加</a>-->
+                </div>
+                <div class="col-sm-6 text-right">
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="javascript: void(0);">
+                                <i class="fa fa-home"></i>
+                            </a>
+                        </li>
+                        <li>流程管理</li>
+                        <li>用户管理</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!--page header end-->
+
+        <!--page filter start-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default collapsed">
+                    <div class="panel-heading">
+                        <p class="inline">查询条件</p>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                    <label for="role">角色</label>
+                                    <select name="role" id="role">
+                                        <option selected="selected">全部角色</option>
+                                        <option>超级管理员</option>
+                                        <option>管理员</option>
+                                        <option>坐席班长</option>
+                                        <option>坐席</option>
+                                    </select>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                    <label for="branch">队列</label>
+                                    <select name="branch" id="branch">
+                                        <option selected="selected">全部队列</option>
+                                        <option>移动队列</option>
+                                        <option>移动队列2</option>
+                                        <option>移动队列3</option>
+                                        <option>联通队列1</option>
+                                        <option>联通队列2</option>
+                                        <option>联通队列3</option>
+                                    </select>
+                                    </select>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                    <label for="uid">坐席工号</label>
+                                    <input class="input-150p black" type="" name="uid" id="uid" value="" />
+                                </fieldset>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                    <label for="uname">姓名</label>
+                                    <input class="input-150p black" type="" name="uname" id="uname" value="" />
+                                </fieldset>
+                            </div>
+                        </div>
+                        <a href="javascript: void(0);" class="btn btn-primary inline float-right" onclick="search_tab()">开始查询</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--page filter end-->
+
+
+        <!--start page content-->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default collapsed">
+                    <div class="panel-heading">
+                        <div class="buttons">
+                            <a id="selectAllBtn" class="btn btn-primary btn-border">全选</a>
+                            <a href="javascript: void(0);" class="btn btn-primary" data-toggle="modal" data-target="#createModal">新增用户</a>
+                            <a href="javascript: void(0);" class="btn btn-teal" data-toggle="modal" data-target="#updateModal">修改用户</a>
+                            <a href="javascript: void(0);" class="btn btn-danger" onclick="delete_r()">删除用户</a>
                         </div>
                     </div>
+                    <div class="panel-body">
+                        <table id="datatable" class="table table-striped dt-responsive nowrap">
+                            <thead>
+                                <tr>
+                                    <th>坐席工号</th>
+                                    <th>姓名</th>
+                                    <th>用户角色</th>
+                                    <th>所属队列</th>
+                                    <th>坐席班长</th>
+                                    <th>工作状态</th>
+                                    <th>其他信息</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td name="uid">w5e45s8d5</td>
+                                    <td name="uname">周敏</td>
+                                    <td name="role">超级管理员</td>
+                                    <td name="branch">移动队列</td>
+                                    <td name="bmanager">周敏</td>
+                                    <td name="others">
+                                        正常
+                                    </td>
+                                    <td name="others">...</td>
+                                </tr>
+                                <tr>
+                                    <td>w55sw9851</td>
+                                    <td>王林</td>
+                                    <td>管理员</td>
+                                    <td>移动队列</td>
+                                    <td>周敏</td>
+                                    <td>
+                                        正常
+                                    </td>
+                                    <td>...</td>
+                                </tr>
+                                <tr>
+                                    <td>wwq95d5</td>
+                                    <td>李毅</td>
+                                    <td>坐席</td>
+                                    <td>移动队列</td>
+                                    <td>王林</td>
+                                    <td>
+                                        非工作状态
+                                    </td>
+                                    <td>...</td>
+                                </tr>
+                                <tr>
+                                    <td>w54e5s8d5</td>
+                                    <td>周敏</td>
+                                    <td>管理员</td>
+                                    <td>信息化队列</td>
+                                    <td>刘洋</td>
+                                    <td>
+                                        非工作状态
+                                    </td>
+                                    <td>...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div><!--end row-->
-            
-            <!--end page content-->
+            </div>
+        </div>
+        <!--end row-->
+
+        <!--end page content-->
 
 
-            <!--Start footer-->
-            <footer class="footer">
-                <span>Copyright &copy; </span>
-            </footer>
-            <!--end footer-->
+        <!--Start footer-->
+        <footer class="footer">
+            <span>Copyright &copy; </span>
+        </footer>
+        <!--end footer-->
 
-        </section>
-        <!--end main content-->
-        
-        <!--Common plugins-->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/pace.min.js"></script>
-        <script src="js/jasny-bootstrap.min.js"></script>
-        <script src="js/jquery.slimscroll.min.js"></script>
-        <script src="js/jquery.nanoscroller.min.js"></script>
-        <script src="js/metismenu.min.js"></script>
-        <script src="js/float-custom.js"></script>
+    </section>
+    <!--end main content-->
 
-        <!--page script-->
-        <script src="js/jquery.datatables.min.js"></script>
-        <script src="js/datatables.responsive.min.js"></script>
-        <script src="js/jquery-ui.min.js"></script>
-        <script src="js/jquery.ui.custom.js"></script>
-        <script src="js/jayne.js"></script>        
-        <script src="js/jstree.min.js"></script>
-    	<script src="js/drawer.js"></script>
-		<!--sweet alerts-->
-		<script src="js/sweet-alert.min.js"></script>
-	    <!-- iCheck for radio and checkboxes -->
-	    <script src="js/icheck.min.js"></script>
-	    <!--<script src="js/jquery.easyui.min.js" type="text/javascript"></script>-->
-        <script>
-        	
+    <!--Common plugins-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/pace.min.js"></script>
+    <script src="js/jasny-bootstrap.min.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <script src="js/jquery.nanoscroller.min.js"></script>
+    <script src="js/metismenu.min.js"></script>
+    <script src="js/float-custom.js"></script>
+
+    <!--page script-->
+    <script src="js/jquery.datatables.min.js"></script>
+    <script src="js/datatables.responsive.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.ui.custom.js"></script>
+    <script src="js/jayne.js"></script>
+    <script src="js/jstree.min.js"></script>
+    <script src="js/drawer.js"></script>
+    <!--sweet alerts-->
+    <script src="js/sweet-alert.min.js"></script>
+    <!-- iCheck for radio and checkboxes -->
+    <script src="js/icheck.min.js"></script>
+    <!--<script src="js/jquery.easyui.min.js" type="text/javascript"></script>-->
+    <script src="js/switch.js"></script>
+    <script>
+
         var selected = [];//选择数组
         //筛选查询条件
-		function search_tab(){
-			var role = $('#role').val();
-			var branch = $('#branch').val();
-			var uid = $('#uid').val();
-			var uname = $('#uname').val();
-			alert(role);
-			alert(branch);
-			alert(uid);
-			alert(uname);
-			//此处添加查询方法
-		}
-		
-		//新增
-		function add_tab(){
-			var uname = $("input[name='uname']").val();
-			var role = $("select[name='role']").val();
-			var branch = $("select[name='branch']").val();
-			alert(uname);
-			alert(role);
-			alert(branch);
-			//此处添加新增方法
-		}
-		
-		//修改
-		function alter_tab(){
-			var al_uname = $("input[name='al_uname']").val();
-			var al_role = $("select[name='al_role']").val();
-			var al_branch = $("select[name='al_branch']").val();
-//			alert(al_uname);
-//			alert(al_role);
-//			alert(al_branch);
-			var count =0;
-			for(var i in selected){
-				var row = selected[i]+1;
-				var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
-				count++;
-				console.log(rows);
-			};
-			if(count==0){
-		        swal({
-		            title:'修改至少选中一行',
-		            timer:1000,
-		            showConfirmButton:false
-		        });
-			}else if(count>1){
-		        swal({
-		            title:'修改不可选中多行',
-		            timer:1000,
-		            showConfirmButton:false
-		        });
-			}else{
-				//此处添加修改方法
-			}
-			
-		}
-		
-		//删除
-		function delete_r() {
-			var count =0;
-			for(var i in selected){
-				var row = selected[i]+1;
-				var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
-				count++;
-			};
-			if(count==0){
-		        swal({
-		            title:'删除至少选中一行',
-		            timer:1000,
-		            showConfirmButton:false
-		        });
-			}else{
-				swal({
-					title: "确定删除吗？",
-					type: "warning",
-					showCancelButton: true,
-					confirmButtonColor: "#DD6B55",
-					confirmButtonText: "确定！",
-					cancelButtonText: '取消',
-					closeOnConfirm: false
-				},
-				function () {
-					//此处添加删除方法,如果删除成功执行：
-					swal(
-						"删除！", "该分机已经被删除。", "success"
-					);
-					console.log(selected);
-					for(var i in selected){
-						var row = selected[i]+1;
-						var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
-						count++;
-						$('#datatable').find("tr").eq(row).css('display','none');
-					};
-					for(var i in selected){
-						selected.splice(i);
-					};
-				});
-			}
+        function search_tab() {
+            var role = $('#role').val();
+            var branch = $('#branch').val();
+            var uid = $('#uid').val();
+            var uname = $('#uname').val();
+            alert(role);
+            alert(branch);
+            alert(uid);
+            alert(uname);
+            //此处添加查询方法
+        }
 
-		}
+        //新增
+        function add_tab() {
+            var uid = $("input[name='uid']").val();
+            var uname = $("input[name='uname']").val();
+            var role = $("select[name='role']").val();
+            var branch = $("select[name='branch']").val();
+            alert(uid);
+            alert(uname);
+            alert(role);
+            alert(branch);
+            //此处添加新增方法
+        }
 
-		$(document).ready(function () {
-			$('#datatable').dataTable();
+        //修改
+        function alter_tab() {
+            var al_uid = $("input[name='al_uid']").val();
+            var al_uname = $("input[name='al_uname']").val();
+            var al_role = $("select[name='al_role']").val();
+            var al_branch = $("select[name='al_branch']").val();
+            //			alert(al_uname);
+            //			alert(al_role);
+            //			alert(al_branch);
+            var count = 0;
+            for (var i in selected) {
+                var row = selected[i] + 1;
+                var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+                count++;
+                console.log(rows);
+            };
+            if (count == 0) {
+                swal({
+                    title: '修改至少选中一行',
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+            } else if (count > 1) {
+                swal({
+                    title: '修改不可选中多行',
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+            } else {
+                //此处添加修改方法
+            }
 
-			// 选择当前行，排除对于操作列的click监听
-			$('#datatable tbody').on('click', "tr", function () {
+        }
 
-				var id = $(this).index();  // id 从server端获取
+        //删除
+        function delete_r() {
+            var count = 0;
+            for (var i in selected) {
+                var row = selected[i] + 1;
+                var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+                count++;
+            };
+            if (count == 0) {
+                swal({
+                    title: '删除至少选中一行',
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+            } else {
+                swal({
+                    title: "确定删除吗？",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "确定！",
+                    cancelButtonText: '取消',
+                    closeOnConfirm: false
+                },
+                    function () {
+                        //此处添加删除方法,如果删除成功执行：
+                        swal(
+                            "删除！", "该分机已经被删除。", "success"
+                        );
+                        console.log(selected);
+                        for (var i in selected) {
+                            var row = selected[i] + 1;
+                            var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+                            count++;
+                            $('#datatable').find("tr").eq(row).css('display', 'none');
+                        };
+                        for (var i in selected) {
+                            selected.splice(i);
+                        };
+                    });
+            }
 
-				var index = $.inArray(id, selected);
+        }
 
-				if (index === -1) {
-					selected.push(id);
-				} else {
-					selected.splice(index, 1);
-				}
+        $(document).ready(function () {
+            $('#datatable').dataTable();
 
-				$(this).toggleClass('selected');
+            // 选择当前行，排除对于操作列的click监听
+            $('#datatable tbody').on('click', "tr", function () {
 
-				btnOnSelected(); // 监听是否全选，更改btn status
+                var id = $(this).index();  // id 从server端获取
 
-			});
+                var index = $.inArray(id, selected);
 
-			// 全选与取消全选
-			$('#selectAllBtn').click(function () {
+                if (index === -1) {
+                    selected.push(id);
+                } else {
+                    selected.splice(index, 1);
+                }
 
-				// flag 也可以用server选中后的id list 判断，同时在单条选中所有后，更新button状态
-				var flag = $('#selectAllBtn').text() == '全选' ? true : false
-				flag ?
-					$('#selectAllBtn').text('取消全选')
-					: $('#selectAllBtn').text('全选')
+                $(this).toggleClass('selected');
 
-				$('#datatable tbody tr').each(function (i) {
-					flag ?
-						$(this).addClass('selected')
-						: $(this).removeClass('selected')
-				})
+                btnOnSelected(); // 监听是否全选，更改btn status
 
-			})
+            });
 
-			function btnOnSelected() {
-				if ($('tbody tr').not('.selected').length == 0) {
-					$('#selectAllBtn').text('取消全选')
-				} else {
-					$('#selectAllBtn').text('全选')
-				}
-			}
-			
-			//下拉菜单初始化
+            // 全选与取消全选
+            $('#selectAllBtn').click(function () {
+
+                // flag 也可以用server选中后的id list 判断，同时在单条选中所有后，更新button状态
+                var flag = $('#selectAllBtn').text() == '全选' ? true : false
+                flag ?
+                    $('#selectAllBtn').text('取消全选')
+                    : $('#selectAllBtn').text('全选')
+
+                $('#datatable tbody tr').each(function (i) {
+                    flag ?
+                        $(this).addClass('selected')
+                        : $(this).removeClass('selected')
+                })
+
+            })
+
+            function btnOnSelected() {
+                if ($('tbody tr').not('.selected').length == 0) {
+                    $('#selectAllBtn').text('取消全选')
+                } else {
+                    $('#selectAllBtn').text('全选')
+                }
+            }
+
+            //下拉菜单初始化
             $('#role').selectmenu({
                 change: function (event, data) {
                     console.info(`选择公海:`)
@@ -489,15 +543,36 @@
                     console.log(data.item)
                 }
             });
-			// radio添加class
-			$('.i-checks').iCheck({
-				checkboxClass: 'icheckbox_square-blue',
-				radioClass: 'iradio_square-blue'
-			});
-			
-			
-		});
-        </script>
+            // radio添加class
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue'
+            });
 
-    </body>
+            var els = document.querySelectorAll('.checkbox-switch');
+            var options = {
+                size: 'small',
+                checked: true,
+                onText: '正常',
+                offText: '离职/休假/未到岗',
+                onInit: function () { },
+                onChange: function () { },
+                onRemove: function () { },
+            };
+
+            els.forEach(function (el) {
+                new Switch(el, options);
+            })
+
+
+
+
+
+
+
+        });
+    </script>
+
+</body>
+
 </html>
