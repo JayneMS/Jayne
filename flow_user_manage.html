@@ -21,11 +21,14 @@
         <!-- Treeview css -->
         <link href="css/style_1.css" rel="stylesheet" type="text/css" />
         <!--template css-->
-        <link href="css/style.css" rel="stylesheet">
-        <link href="css/jayne.css" rel="stylesheet">
-    	<link href="css/vlstyle.css" rel="stylesheet">
+	    <link href="css/jquery-ui.css" rel="stylesheet">
+	
 	    <link href="css/blue.css" rel="stylesheet">
+	    <link href="css/style.css" rel="stylesheet">
+	    <link href="css/jayne.css" rel="stylesheet">
+	    <link href="css/vlstyle.css" rel="stylesheet">
 	    <link rel="stylesheet" href="css/timeline.css">
+        
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -48,26 +51,28 @@
                             <form role="form">
                                 <div class="form-group">
 	                                <label>用户名</label>
-                                    <input type="text" class="form-control" placeholder="" required="">
+	                                <span class="require-star">*</span>
+                                    <input name="uname" type="text" class="form-control" required="">
                                 </div>
                                 <div class="form-group">
 	                                <label>角色</label>
-	                                <select name="" class="form-control" >
-	                                	<option value="">超级管理员</option>
-	                                	<option value="">管理员</option>
-	                                	<option value="">部门管理员</option>
-	                                	<option value="">坐席</option>
+	                                <select name="role" class="form-control" >
+	                                	<option>超级管理员</option>
+	                                	<option>管理员</option>
+	                                	<option>部门管理员</option>
+	                                	<option>坐席</option>
 	                                </select>
                                 </div>
                                 <div class="form-group">
-	                                <label>组织架构</label>
-	                                <select name="" class="form-control">
-	                                	<option value="">架构一</option>
-	                                	<option value="">架构二</option>
-	                                </select>
+	                                <label>部门</label>
+                                    <select name="branch" class="form-control" >
+                                        <option>信息化部门</option>
+                                        <option>移动部门</option>
+                                        <option>联通部门</option>
+                                    </select>
                                 </div>
                                 <div class="clearfix">
-                                    <button type="submit" class="btn  btn-primary pull-right">创建</button>
+                                    <a class="btn  btn-primary pull-right" onclick="add_tab()">创建</a>
                                 </div>
                             </form>
                         </div>
@@ -89,26 +94,28 @@
                             <form role="form">
                                 <div class="form-group">
 	                                <label>用户名</label>
-                                    <input type="text" class="form-control" placeholder="管理员" required="">
+	                                <span class="require-star">*</span>
+                                    <input name="al_uname" type="text" class="form-control" required="">
                                 </div>
                                 <div class="form-group">
 	                                <label>角色</label>
-	                                <select name="" class="form-control" >
-	                                	<option value="">超级管理员</option>
-	                                	<option value="">管理员</option>
-	                                	<option value="">部门管理员</option>
-	                                	<option value="">坐席</option>
+	                                <select name="al_role" class="form-control" >
+	                                	<option>超级管理员</option>
+	                                	<option>管理员</option>
+	                                	<option>部门管理员</option>
+	                                	<option>坐席</option>
 	                                </select>
                                 </div>
                                 <div class="form-group">
-	                                <label>组织架构</label>
-	                                <select name="" class="form-control" >
-	                                	<option value="">架构一</option>
-	                                	<option value="">架构二</option>
-	                                </select>
+	                                <label>部门</label>
+                                    <select name="al_branch" class="form-control" >
+                                        <option>信息化部门</option>
+                                        <option>移动部门</option>
+                                        <option>联通部门</option>
+                                    </select>
                                 </div>
                                 <div class="clearfix">
-                                    <button type="submit" class="btn  btn-primary pull-right">创建</button>
+                                    <a class="btn btn-primary pull-right" onclick="alter_tab()">创建</a>
                                 </div>
                             </form>
                         </div>
@@ -123,7 +130,6 @@
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>-->
                         <h4 class="modal-title" id="mySmallModalLabel">删除用户</h4>
                     </div>
                     <div class="modal-body">
@@ -146,8 +152,8 @@
                 <div class="row">
                     <div class="col-sm-6 flex-align-center">
                         <h4 class="inline">用户管理</h4>
-                        &nbsp;&nbsp;&nbsp;&nbsp;          
-                        <a href="#" class="btn btn-default btn-primary" data-toggle="modal" data-target="#createModal" style="margin:5px;">添加</a>
+                        <!--&nbsp;&nbsp;&nbsp;&nbsp;-->
+                        <!--<a href="#" class="btn btn-default btn-primary" data-toggle="modal" data-target="#createModal" style="margin:5px;">添加</a>-->
                     </div>
                     <div class="col-sm-6 text-right">
                         <ol class="breadcrumb">
@@ -165,84 +171,52 @@
 	            <div class="col-md-12">
 	                <div class="panel panel-default collapsed">
 	                    <div class="panel-heading">
-	                        查询条件
+	                        <p class="inline">查询条件</p>&nbsp;&nbsp;&nbsp;&nbsp;
 	                    </div>
-	
 	                    <div class="panel-body">
 	                        <div class="row">
 	                            <div class="col-sm-3">
 	                                <fieldset class="jquery-Ui-fieldset">
-	                                    <label for="simple">请选择数据公海</label>
-	                                    <select name="simple" id="simple">
-	                                        <option selected="selected">全部公海</option>
-	                                        <option>移动公海</option>
-	                                        <option>五十五中</option>
-	                                        <option>建行公海</option>
-	                                        <option>联通公海</option>
-	                                    </select>
+		                                <label  for="role">角色</label>
+		                                <select name="role" id="role">
+	                                        <option selected="selected">全部角色</option>
+		                                	<option>超级管理员</option>
+		                                	<option>管理员</option>
+		                                	<option>部门管理员</option>
+		                                	<option>坐席</option>
+		                                </select>
 	                                </fieldset>
 	                            </div>
 	
 	                            <div class="col-sm-3">
 	                                <fieldset class="jquery-Ui-fieldset">
-	                                    <label for="batch">请选择批次</label>
-	                                    <select name="batch" id="batch">
-	                                        <option selected="selected">全部批次</option>
-	                                        <option>20180902122</option>
-	                                        <option>20180902122</option>
-	                                        <option>20180902122</option>
-	                                        <option>20180902122</option>
+	                                    <label for="branch">部门</label>
+	                                    <select name="branch" id="branch">
+	                                        <option selected="selected">全部部门</option>
+	                                        <option>信息化部门</option>
+	                                        <option>移动部门</option>
+	                                        <option>联通部门</option>
 	                                    </select>
 	                                </fieldset>
 	                            </div>
-	
+	                            
 	                            <div class="col-sm-3">
 	                                <fieldset class="jquery-Ui-fieldset">
-	                                    <label for="status">请选择状态</label>
-	                                    <select name="status" id="status">
-	                                        <option selected="selected">全部状态</option>
-	                                        <option>已分配</option>
-	                                        <option>未分配</option>
-	                                        <option>已处理</option>
-	                                        <option>再分配</option>
-	                                    </select>
+	                                    <label for="uid">用户ID</label>
+	                                    <input class="input-150p black" type="" name="uid" id="uid" value="" />
 	                                </fieldset>
 	                            </div>
+	                            
 	                            <div class="col-sm-3">
-	
-	                            </div>
-	
-	                        </div>
-	
-	                        <div class="row">
-	                            <div class="col-sm-4">
 	                                <fieldset class="jquery-Ui-fieldset">
-	                                    <label for="status">请选择导入数据起止时间</label>
-	                                    <input name="daterange" type="text">
+	                                	<label for="uname">姓名</label>
+	                                    <input class="input-150p black" type="" name="uname" id="uname" value="" />
 	                                </fieldset>
-	                            </div>
-	
-	                            <div class="col-sm-4">
-	                                <fieldset class="jquery-Ui-fieldset">
-	                                    <label for="status">快速筛选时间</label>
-	                                    <div class="i-checks vl-i-checks-inline m-r-10">
-	                                        <label>
-	                                            <input type="radio" value="todayOnly" name="a">
-	                                            <i></i> 仅今日导入 </label>
-	                                    </div>
-	                                    <div class="i-checks vl-i-checks-inline">
-	                                        <label>
-	                                            <input type="radio" checked="" value="weekLatest" name="a">
-	                                            <i></i> 近一周导入 </label>
-	                                    </div>
-	                                </fieldset>
-	                            </div>
-	                            <div class="col-sm-1">
-	
 	                            </div>
 	                        </div>
 	                    </div>
-	
+	                    <a href="javascript: void(0);" class="btn btn-primary inline float-right" onclick="search_tab()">开始查询</a>
+	                    
 	                </div>
 	            </div>
 	        </div>
@@ -254,34 +228,34 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default collapsed">
-                        <div class="panel-heading">
-                          	用户设置
-                        </div>
+	                    <div class="panel-heading">
+	                        <div class="buttons">
+	                            <a id="selectAllBtn" class="btn btn-primary btn-border">全选</a>
+	                            <a href="javascript: void(0);" class="btn btn-primary" data-toggle="modal" data-target="#createModal" >新增用户</a>
+	                            <a href="javascript: void(0);" class="btn btn-teal" data-toggle="modal" data-target="#updateModal" >修改用户</a>
+	                            <a href="javascript: void(0);" class="btn btn-danger" onclick="delete_r()">删除用户</a>
+	                        </div>
+	                    </div>
                         <div class="panel-body">
                             <table id="datatable" class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
-                                        <th>用户ID</th>
+                                        <th>坐席工号</th>
                                         <th>姓名</th>
                                         <th>用户角色</th>
                                         <th>所属部门</th>
                                         <th>部门管理员</th>
                                         <th>其他信息</th>
-                                        <th>操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                    	<td>w5e45s8d5</td>
-                                    	<td>周敏</td>
-                                        <td>超级管理员</td>
-                                        <td>移动部门</td>
-                                        <td>周敏</td>
-                                        <td>...</td>
-                                        <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
-                                        </td>
+                                    	<td name="uid">w5e45s8d5</td>
+                                    	<td name="uname">周敏</td>
+                                        <td name="role">超级管理员</td>
+                                        <td name="branch">移动部门</td>
+                                        <td name="bmanager">周敏</td>
+                                        <td name="others">...</td>
                                     </tr>
                                     <tr>
                                     	<td>w55sw9851</td>
@@ -290,10 +264,6 @@
                                         <td>移动部门</td>
                                         <td>周敏</td>
                                         <td>...</td>
-                                        <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
-                                        </td>
                                     </tr>
                                     <tr>
                                     	<td>wwq95d5</td>
@@ -302,10 +272,6 @@
                                         <td>移动部门</td>
                                         <td>王林</td>
                                         <td>...</td>
-                                        <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
-                                        </td>
                                     </tr>
                                     <tr>
                                     	<td>w54e5s8d5</td>
@@ -314,10 +280,6 @@
                                         <td>信息化部门</td>
                                         <td>刘洋</td>
                                         <td>...</td>
-                                        <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
-                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -356,116 +318,137 @@
         <script src="js/jayne.js"></script>        
         <script src="js/jstree.min.js"></script>
     	<script src="js/drawer.js"></script>
+	    <!-- iCheck for radio and checkboxes -->
+	    <script src="js/icheck.min.js"></script>
+	    <!--<script src="js/jquery.easyui.min.js" type="text/javascript"></script>-->
         <script>
-        $(document).ready(function () {
-            var selected = []; //选择数组
-            $('#datatable').dataTable();
+        	
+        var selected = [];//选择数组
+        //筛选查询条件
+		function search_tab(){
+			var role = $('#role').val();
+			var branch = $('#branch').val();
+			var uid = $('#uid').val();
+			var uname = $('#uname').val();
+			alert(role);
+			alert(branch);
+			alert(uid);
+			alert(uname);
+			//此处添加查询方法
+		}
+		
+		//新增
+		function add_tab(){
+			var uname = $("input[name='uname']").val();
+			var role = $("select[name='role']").val();
+			var branch = $("select[name='branch']").val();
+			alert(uname);
+			alert(role);
+			alert(branch);
+			//此处添加新增方法
+		}
+		
+		//修改
+		function alter_tab(){
+			var al_uname = $("input[name='al_uname']").val();
+			var al_role = $("select[name='al_role']").val();
+			var al_branch = $("select[name='al_branch']").val();
+//			alert(al_uname);
+//			alert(al_role);
+//			alert(al_branch);
+			console.log(selected);
+			for(var i in selected){
+				console.log(selected[i]);
+				var row = selected[i]+1;
+				var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+//				find("td[name='uid']").
+//				var row = rows[i];
+//				var id = row.id;
+				console.log(rows);
+			}
+			
+		}
+		
+		//删除
+		function delete_r() {
+			swal({
+				title: "确定删除吗？",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "确定！",
+				cancelButtonText: '取消',
+				closeOnConfirm: false
+			},
+			function () {
+				swal(
+					"删除！", "该分机已经被删除。", "success"
+				);
+				
+				$(this).toggleClass('selected');
+				$(othis).parents("tr").css("display", "none");
+			});
 
-            // 选择当前行，排除对于操作列的click监听
-            $('#datatable tbody').on('click', "tr td:not('.td_operation')", function () {
+		}
 
-                var $parent = $(this).parent()
+		$(document).ready(function () {
+			$('#datatable').dataTable();
 
-                var id = $parent.id || $($parent).index()  // id 从server端获取
-                var index = $.inArray(id, selected);
+			// 选择当前行，排除对于操作列的click监听
+			$('#datatable tbody').on('click', "tr", function () {
 
-                if (index === -1) {
-                    selected.push(id);
-                } else {
-                    selected.splice(index, 1);
-                }
+				var id = $(this).index();  // id 从server端获取
 
-                $($parent).toggleClass('selected');
+				var index = $.inArray(id, selected);
 
-                btnOnSelected() // 监听是否全选，更改btn status
+				if (index === -1) {
+					selected.push(id);
+				} else {
+					selected.splice(index, 1);
+				}
 
-                console.log('选中行id或index:')
-                console.log(selected)
+				$(this).toggleClass('selected');
 
-            });
+				btnOnSelected(); // 监听是否全选，更改btn status
 
-            // 全选与取消全选
-            $('#selectAllBtn').click(function () {
+			});
 
-                // flag 也可以用server选中后的id list 判断，同时在单条选中所有后，更新button状态
-                var flag = $('#selectAllBtn').text() == '全选' ? true : false
-                flag ?
-                    $('#selectAllBtn').text('取消全选')
-                    : $('#selectAllBtn').text('全选')
+			// 全选与取消全选
+			$('#selectAllBtn').click(function () {
 
-                $('#datatable tbody tr').each(function (i) {
-                    flag ?
-                        $(this).addClass('selected')
-                        : $(this).removeClass('selected')
-                })
+				// flag 也可以用server选中后的id list 判断，同时在单条选中所有后，更新button状态
+				var flag = $('#selectAllBtn').text() == '全选' ? true : false
+				flag ?
+					$('#selectAllBtn').text('取消全选')
+					: $('#selectAllBtn').text('全选')
 
-            })
+				$('#datatable tbody tr').each(function (i) {
+					flag ?
+						$(this).addClass('selected')
+						: $(this).removeClass('selected')
+				})
 
-            function btnOnSelected() {
-                if ($('tbody tr').not('.selected').length == 0) {
-                    $('#selectAllBtn').text('取消全选')
-                } else {
-                    $('#selectAllBtn').text('全选')
-                }
-            }
+			})
 
-            $("#batch").selectmenu(); //下拉菜单初始化
-            $("#status").selectmenu();
-            // radio添加class
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue'
-            });
+			function btnOnSelected() {
+				if ($('tbody tr').not('.selected').length == 0) {
+					$('#selectAllBtn').text('取消全选')
+				} else {
+					$('#selectAllBtn').text('全选')
+				}
+			}
 
-
-        });
-            $(document).ready(function () {
-                //checkbox
-                $('#checkTree').jstree({
-                    'core': {
-                        'themes': {
-                            'responsive': false
-                        }
-                    },
-                    'types': {
-                        'default': {
-                            'icon': 'fa fa-folder'
-                        },	
-                        'file': {
-                            'icon': 'fa fa-file'
-                        }
-                    },
-                    'plugins': ['types', 'checkbox']
-                }); 
-//			    $('#datatable').DataTable({
-//			    	destroy:true,
-//			        searching: true ,
-//			        language: {
-//			            "sProcessing": "处理中...",
-//			            "sLengthMenu": "显示 _MENU_ 项结果",
-//			            "sZeroRecords": "没有匹配结果",
-//			            "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-//			            "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
-//			            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-//			            "sInfoPostFix": "",
-//			            "sSearch": "搜索:",
-//			            "sUrl": "",
-//			            "sEmptyTable": "表中数据为空",
-//			            "sLoadingRecords": "载入中...",
-//			            "sInfoThousands": ",",
-//			            "oPaginate": {
-//			                "sFirst": "首页",
-//			                "sPrevious": "上页",
-//			                "sNext": "下页",
-//			                "sLast": "末页"
-//			            },
-//			            "oAria": {
-//			                "sSortAscending": ": 以升序排列此列",
-//			                "sSortDescending": ": 以降序排列此列"
-//			            }
-//			        }
-//			    });
-            });
+			$("#role").selectmenu(); //下拉菜单初始化
+			$("#branch").selectmenu(); //下拉菜单初始化
+			$("#status").selectmenu();
+			// radio添加class
+			$('.i-checks').iCheck({
+				checkboxClass: 'icheckbox_square-blue',
+				radioClass: 'iradio_square-blue'
+			});
+			
+			
+		});
         </script>
 
     </body>

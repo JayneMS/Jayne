@@ -117,6 +117,22 @@
 	display: inline-block;
 }
 
+.input-150p{
+	width: 150px;
+	height: 28px;
+	border: 1px solid rgb(197,197,197);
+	border-radius: 2px;
+	padding-left: 10px;
+}
+
+.require-star{
+	color: red;
+}
+
+.black{
+	color: black;
+}
+
 .width-33{
 	width: 33%;
 }
