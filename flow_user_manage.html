@@ -23,6 +23,9 @@
         <!--template css-->
         <link href="css/style.css" rel="stylesheet">
         <link href="css/jayne.css" rel="stylesheet">
+    	<link href="css/vlstyle.css" rel="stylesheet">
+	    <link href="css/blue.css" rel="stylesheet">
+	    <link rel="stylesheet" href="css/timeline.css">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -157,6 +160,95 @@
             </div>
             <!--page header end-->
 
+	        <!--page filter start-->
+	        <div class="row">
+	            <div class="col-md-12">
+	                <div class="panel panel-default collapsed">
+	                    <div class="panel-heading">
+	                        查询条件
+	                    </div>
+	
+	                    <div class="panel-body">
+	                        <div class="row">
+	                            <div class="col-sm-3">
+	                                <fieldset class="jquery-Ui-fieldset">
+	                                    <label for="simple">请选择数据公海</label>
+	                                    <select name="simple" id="simple">
+	                                        <option selected="selected">全部公海</option>
+	                                        <option>移动公海</option>
+	                                        <option>五十五中</option>
+	                                        <option>建行公海</option>
+	                                        <option>联通公海</option>
+	                                    </select>
+	                                </fieldset>
+	                            </div>
+	
+	                            <div class="col-sm-3">
+	                                <fieldset class="jquery-Ui-fieldset">
+	                                    <label for="batch">请选择批次</label>
+	                                    <select name="batch" id="batch">
+	                                        <option selected="selected">全部批次</option>
+	                                        <option>20180902122</option>
+	                                        <option>20180902122</option>
+	                                        <option>20180902122</option>
+	                                        <option>20180902122</option>
+	                                    </select>
+	                                </fieldset>
+	                            </div>
+	
+	                            <div class="col-sm-3">
+	                                <fieldset class="jquery-Ui-fieldset">
+	                                    <label for="status">请选择状态</label>
+	                                    <select name="status" id="status">
+	                                        <option selected="selected">全部状态</option>
+	                                        <option>已分配</option>
+	                                        <option>未分配</option>
+	                                        <option>已处理</option>
+	                                        <option>再分配</option>
+	                                    </select>
+	                                </fieldset>
+	                            </div>
+	                            <div class="col-sm-3">
+	
+	                            </div>
+	
+	                        </div>
+	
+	                        <div class="row">
+	                            <div class="col-sm-4">
+	                                <fieldset class="jquery-Ui-fieldset">
+	                                    <label for="status">请选择导入数据起止时间</label>
+	                                    <input name="daterange" type="text">
+	                                </fieldset>
+	                            </div>
+	
+	                            <div class="col-sm-4">
+	                                <fieldset class="jquery-Ui-fieldset">
+	                                    <label for="status">快速筛选时间</label>
+	                                    <div class="i-checks vl-i-checks-inline m-r-10">
+	                                        <label>
+	                                            <input type="radio" value="todayOnly" name="a">
+	                                            <i></i> 仅今日导入 </label>
+	                                    </div>
+	                                    <div class="i-checks vl-i-checks-inline">
+	                                        <label>
+	                                            <input type="radio" checked="" value="weekLatest" name="a">
+	                                            <i></i> 近一周导入 </label>
+	                                    </div>
+	                                </fieldset>
+	                            </div>
+	                            <div class="col-sm-1">
+	
+	                            </div>
+	                        </div>
+	                    </div>
+	
+	                </div>
+	            </div>
+	        </div>
+	        <!--page filter end-->
+	        
+	        
             <!--start page content-->
 
             <div class="row">
@@ -263,7 +355,70 @@
         <script src="js/jquery.ui.custom.js"></script>
         <script src="js/jayne.js"></script>        
         <script src="js/jstree.min.js"></script>
+    	<script src="js/drawer.js"></script>
         <script>
+        $(document).ready(function () {
+            var selected = []; //选择数组
+            $('#datatable').dataTable();
+
+            // 选择当前行，排除对于操作列的click监听
+            $('#datatable tbody').on('click', "tr td:not('.td_operation')", function () {
+
+                var $parent = $(this).parent()
+
+                var id = $parent.id || $($parent).index()  // id 从server端获取
+                var index = $.inArray(id, selected);
+
+                if (index === -1) {
+                    selected.push(id);
+                } else {
+                    selected.splice(index, 1);
+                }
+
+                $($parent).toggleClass('selected');
+
+                btnOnSelected() // 监听是否全选，更改btn status
+
+                console.log('选中行id或index:')
+                console.log(selected)
+
+            });
+
+            // 全选与取消全选
+            $('#selectAllBtn').click(function () {
+
+                // flag 也可以用server选中后的id list 判断，同时在单条选中所有后，更新button状态
+                var flag = $('#selectAllBtn').text() == '全选' ? true : false
+                flag ?
+                    $('#selectAllBtn').text('取消全选')
+                    : $('#selectAllBtn').text('全选')
+
+                $('#datatable tbody tr').each(function (i) {
+                    flag ?
+                        $(this).addClass('selected')
+                        : $(this).removeClass('selected')
+                })
+
+            })
+
+            function btnOnSelected() {
+                if ($('tbody tr').not('.selected').length == 0) {
+                    $('#selectAllBtn').text('取消全选')
+                } else {
+                    $('#selectAllBtn').text('全选')
+                }
+            }
+
+            $("#batch").selectmenu(); //下拉菜单初始化
+            $("#status").selectmenu();
+            // radio添加class
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue'
+            });
+
+
+        });
             $(document).ready(function () {
                 //checkbox
                 $('#checkTree').jstree({
@@ -282,34 +437,34 @@
                     },
                     'plugins': ['types', 'checkbox']
                 }); 
-			    $('#datatable').DataTable({
-			    	destroy:true,
-			        searching: true ,
-			        language: {
-			            "sProcessing": "处理中...",
-			            "sLengthMenu": "显示 _MENU_ 项结果",
-			            "sZeroRecords": "没有匹配结果",
-			            "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-			            "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
-			            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-			            "sInfoPostFix": "",
-			            "sSearch": "搜索:",
-			            "sUrl": "",
-			            "sEmptyTable": "表中数据为空",
-			            "sLoadingRecords": "载入中...",
-			            "sInfoThousands": ",",
-			            "oPaginate": {
-			                "sFirst": "首页",
-			                "sPrevious": "上页",
-			                "sNext": "下页",
-			                "sLast": "末页"
-			            },
-			            "oAria": {
-			                "sSortAscending": ": 以升序排列此列",
-			                "sSortDescending": ": 以降序排列此列"
-			            }
-			        }
-			    });
+//			    $('#datatable').DataTable({
+//			    	destroy:true,
+//			        searching: true ,
+//			        language: {
+//			            "sProcessing": "处理中...",
+//			            "sLengthMenu": "显示 _MENU_ 项结果",
+//			            "sZeroRecords": "没有匹配结果",
+//			            "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+//			            "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+//			            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+//			            "sInfoPostFix": "",
+//			            "sSearch": "搜索:",
+//			            "sUrl": "",
+//			            "sEmptyTable": "表中数据为空",
+//			            "sLoadingRecords": "载入中...",
+//			            "sInfoThousands": ",",
+//			            "oPaginate": {
+//			                "sFirst": "首页",
+//			                "sPrevious": "上页",
+//			                "sNext": "下页",
+//			                "sLast": "末页"
+//			            },
+//			            "oAria": {
+//			                "sSortAscending": ": 以升序排列此列",
+//			                "sSortDescending": ": 以降序排列此列"
+//			            }
+//			        }
+//			    });
             });
         </script>
 
