@@ -20,11 +20,17 @@
         <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
         <!-- Treeview css -->
         <link href="css/style_1.css" rel="stylesheet" type="text/css" />
-        <!--template css-->
-        <link href="css/style.css" rel="stylesheet">
-        <link href="css/jayne.css" rel="stylesheet">
         <!--sweetalert css-->
         <link href="css/sweet-alert.css" rel="stylesheet">
+        <!--template css-->
+	    <link href="css/jquery-ui.css" rel="stylesheet">
+	
+	    <link href="css/blue.css" rel="stylesheet">
+	    <link href="css/style.css" rel="stylesheet">
+	    <link href="css/jayne.css" rel="stylesheet">
+	    <link href="css/vlstyle.css" rel="stylesheet">
+	    <link rel="stylesheet" href="css/timeline.css">
+        
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -323,38 +329,119 @@
         <script src="js/jquery.ui.custom.js"></script>
         <!--sweet alerts-->
         <script src="js/sweet-alert.min.js"></script>
+        <!--drawer alerts-->
+    	<script src="js/drawer.js"></script>
+	    <!-- iCheck for radio and checkboxes -->
+	    <script src="js/icheck.min.js"></script>
         <script>
-            $(document).ready(function () {
-			    $('#datatable').DataTable({
-			    	destroy:true,
-			        searching: true ,
-			        language: {
-			            "sProcessing": "处理中...",
-			            "sLengthMenu": "显示 _MENU_ 项结果",
-			            "sZeroRecords": "没有匹配结果",
-			            "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-			            "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
-			            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-			            "sInfoPostFix": "",
-			            "sSearch": "搜索:",
-			            "sUrl": "",
-			            "sEmptyTable": "表中数据为空",
-			            "sLoadingRecords": "载入中...",
-			            "sInfoThousands": ",",
-			            "oPaginate": {
-			                "sFirst": "首页",
-			                "sPrevious": "上页",
-			                "sNext": "下页",
-			                "sLast": "末页"
-			            },
-			            "oAria": {
-			                "sSortAscending": ": 以升序排列此列",
-			                "sSortDescending": ": 以降序排列此列"
-			            }
-			        }
-			    });
-            });
-            
+		$(document).ready(function () {
+			$('#datatable').DataTable({
+				destroy: true,
+				searching: true,
+				language: {
+					"sProcessing": "处理中...",
+					"sLengthMenu": "显示 _MENU_ 项结果",
+					"sZeroRecords": "没有匹配结果",
+					"sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+					"sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+					"sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+					"sInfoPostFix": "",
+					"sSearch": "搜索:",
+					"sUrl": "",
+					"sEmptyTable": "表中数据为空",
+					"sLoadingRecords": "载入中...",
+					"sInfoThousands": ",",
+					"oPaginate": {
+						"sFirst": "首页",
+						"sPrevious": "上页",
+						"sNext": "下页",
+						"sLast": "末页"
+					},
+					"oAria": {
+						"sSortAscending": ": 以升序排列此列",
+						"sSortDescending": ": 以降序排列此列"
+					}
+				}
+			});
+		});
+
+		function delete_r(othis) {
+			swal({
+				title: "确定删除吗？",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "确定！",
+				cancelButtonText: '取消',
+				closeOnConfirm: false
+			},
+				function () {
+					swal(
+						"删除！", "该分机已经被删除。", "success"
+					);
+					$(othis).parents("tr").css("display", "none");
+				});
+
+		}
+
+		$(document).ready(function () {
+			var selected = []; //选择数组
+			$('#datatable').dataTable();
+
+			// 选择当前行，排除对于操作列的click监听
+			$('#datatable tbody').on('click', "tr", function () {
+
+				var id = $(this).index();  // id 从server端获取
+
+				var index = $.inArray(id, selected);
+
+				if (index === -1) {
+					selected.push(id);
+				} else {
+					selected.splice(index, 1);
+				}
+
+				$(this).toggleClass('selected');
+
+				btnOnSelected(); // 监听是否全选，更改btn status
+
+			});
+
+			// 全选与取消全选
+			$('#selectAllBtn').click(function () {
+
+				// flag 也可以用server选中后的id list 判断，同时在单条选中所有后，更新button状态
+				var flag = $('#selectAllBtn').text() == '全选' ? true : false
+				flag ?
+					$('#selectAllBtn').text('取消全选')
+					: $('#selectAllBtn').text('全选')
+
+				$('#datatable tbody tr').each(function (i) {
+					flag ?
+						$(this).addClass('selected')
+						: $(this).removeClass('selected')
+				})
+
+			})
+
+			function btnOnSelected() {
+				if ($('tbody tr').not('.selected').length == 0) {
+					$('#selectAllBtn').text('取消全选')
+				} else {
+					$('#selectAllBtn').text('全选')
+				}
+			}
+
+			$("#batch").selectmenu(); //下拉菜单初始化
+			$("#status").selectmenu();
+			// radio添加class
+			$('.i-checks').iCheck({
+				checkboxClass: 'icheckbox_square-blue',
+				radioClass: 'iradio_square-blue'
+			});
+
+
+		});
             function delete_r(othis){
             	swal({    
             		title: "确定删除吗？",    
