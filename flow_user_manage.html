@@ -20,6 +20,8 @@
         <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
         <!-- Treeview css -->
         <link href="css/style_1.css" rel="stylesheet" type="text/css" />
+        <!--sweetalert css-->
+        <link href="css/sweet-alert.css" rel="stylesheet">
         <!--template css-->
 	    <link href="css/jquery-ui.css" rel="stylesheet">
 	
@@ -214,8 +216,8 @@
 	                                </fieldset>
 	                            </div>
 	                        </div>
+	                        <a href="javascript: void(0);" class="btn btn-primary inline float-right" onclick="search_tab()">开始查询</a>
 	                    </div>
-	                    <a href="javascript: void(0);" class="btn btn-primary inline float-right" onclick="search_tab()">开始查询</a>
 	                    
 	                </div>
 	            </div>
@@ -318,6 +320,8 @@
         <script src="js/jayne.js"></script>        
         <script src="js/jstree.min.js"></script>
     	<script src="js/drawer.js"></script>
+		<!--sweet alerts-->
+		<script src="js/sweet-alert.min.js"></script>
 	    <!-- iCheck for radio and checkboxes -->
 	    <script src="js/icheck.min.js"></script>
 	    <!--<script src="js/jquery.easyui.min.js" type="text/javascript"></script>-->
@@ -356,38 +360,72 @@
 //			alert(al_uname);
 //			alert(al_role);
 //			alert(al_branch);
-			console.log(selected);
+			var count =0;
 			for(var i in selected){
-				console.log(selected[i]);
 				var row = selected[i]+1;
 				var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
-//				find("td[name='uid']").
-//				var row = rows[i];
-//				var id = row.id;
+				count++;
 				console.log(rows);
+			};
+			if(count==0){
+		        swal({
+		            title:'修改至少选中一行',
+		            timer:1000,
+		            showConfirmButton:false
+		        });
+			}else if(count>1){
+		        swal({
+		            title:'修改不可选中多行',
+		            timer:1000,
+		            showConfirmButton:false
+		        });
+			}else{
+				//此处添加修改方法
 			}
 			
 		}
 		
 		//删除
 		function delete_r() {
-			swal({
-				title: "确定删除吗？",
-				type: "warning",
-				showCancelButton: true,
-				confirmButtonColor: "#DD6B55",
-				confirmButtonText: "确定！",
-				cancelButtonText: '取消',
-				closeOnConfirm: false
-			},
-			function () {
-				swal(
-					"删除！", "该分机已经被删除。", "success"
-				);
-				
-				$(this).toggleClass('selected');
-				$(othis).parents("tr").css("display", "none");
-			});
+			var count =0;
+			for(var i in selected){
+				var row = selected[i]+1;
+				var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+				count++;
+			};
+			if(count==0){
+		        swal({
+		            title:'删除至少选中一行',
+		            timer:1000,
+		            showConfirmButton:false
+		        });
+			}else{
+				swal({
+					title: "确定删除吗？",
+					type: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#DD6B55",
+					confirmButtonText: "确定！",
+					cancelButtonText: '取消',
+					closeOnConfirm: false
+				},
+				function () {
+					//此处添加删除方法,如果删除成功执行：
+					swal(
+						"删除！", "该分机已经被删除。", "success"
+					);
+					console.log(selected);
+					for(var i in selected){
+						var row = selected[i]+1;
+						var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+						count++;
+						$('#datatable').find("tr").eq(row).css('display','none');
+					};
+					for(var i in selected){
+						selected.splice(i);
+					};
+				});
+			}
 
 		}
 
@@ -437,10 +475,20 @@
 					$('#selectAllBtn').text('全选')
 				}
 			}
-
-			$("#role").selectmenu(); //下拉菜单初始化
-			$("#branch").selectmenu(); //下拉菜单初始化
-			$("#status").selectmenu();
+			
+			//下拉菜单初始化
+            $('#role').selectmenu({
+                change: function (event, data) {
+                    console.info(`选择公海:`)
+                    console.log(data.item)
+                }
+            });
+            $('#branch').selectmenu({
+                change: function (event, data) {
+                    console.info(`选择公海:`)
+                    console.log(data.item)
+                }
+            });
 			// radio添加class
 			$('.i-checks').iCheck({
 				checkboxClass: 'icheckbox_square-blue',
