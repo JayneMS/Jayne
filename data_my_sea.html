@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>数据公海</title>
+    <title>我的公海</title>
 
     <!-- Common plugins -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -80,6 +80,7 @@
         .fa-ellipsis-v {
             color: steelblue;
         }
+
         .drawer-contents {
             box-shadow: 3px 3px 3px #eeee;
         }
@@ -96,7 +97,7 @@
             <div class="drawer-heading">
                 <h2 class="drawer-title">
                     <i class="fa fa-ellipsis-v"></i>
-                   		 数据详情
+                    数据详情
                     <a class="drawer-a" href="#drawerExample" data-toggle="drawer" aria-foldedopen="false" aria-controls="drawerExample">返回</a>
 
                     <a class="drawer-a" data-toggle="drawer" aria-foldedopen="false" aria-controls="drawerExample"> 编辑 </a>
@@ -177,7 +178,10 @@
                         <aside>
                             <p class="things">数据再分配</p>
                             <p class="brief">
-                                    该条数据，由<span class="text-yellow">李明</span>分配给坐席<span class="text-yellow">1008</span> </p>
+                                该条数据，由
+                                <span class="text-yellow">李明</span>分配给坐席
+                                <span class="text-yellow">1008</span>
+                            </p>
                         </aside>
                     </section>
                     <section>
@@ -201,7 +205,9 @@
                         <aside>
                             <p class="things">坐席提交回收</p>
                             <p class="brief">
-                                理由<span class="text-yellow">客户家庭地址错误</span> </p>
+                                理由
+                                <span class="text-yellow">客户家庭地址错误</span>
+                            </p>
                         </aside>
                     </section>
                     <section>
@@ -213,7 +219,10 @@
                         <aside>
                             <p class="things">分配坐席</p>
                             <p class="brief">
-                                该条数据，由<span class="text-yellow">李明</span>分配给坐席<span class="text-yellow">1003</span> </p>
+                                该条数据，由
+                                <span class="text-yellow">李明</span>分配给坐席
+                                <span class="text-yellow">1003</span>
+                            </p>
                         </aside>
                     </section>
                 </article>
@@ -248,7 +257,7 @@
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-6">
-                    <h4>数据公海</h4>
+                    <h4>我的公海</h4>
                 </div>
                 <div class="col-sm-6 text-right">
                     <ol class="breadcrumb">
@@ -258,7 +267,7 @@
                             </a>
                         </li>
                         <li>客户信息管理</li>
-                        <li>数据公海</li>
+                        <li>我的公海</li>
                     </ol>
                 </div>
             </div>
@@ -268,186 +277,181 @@
         <!--page filter start-->
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-default collapsed">
-                    <div class="panel-heading">
-                        查询条件
-                    </div>
-
+                <div class="panel panel-default">
                     <div class="panel-body">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <fieldset class="jquery-Ui-fieldset">
-                                    <label for="simple">请选择数据公海</label>
-                                    <select name="simple" id="simple">
-                                        <option selected="selected">全部公海</option>
-                                        <option>移动公海</option>
-                                        <option>五十五中</option>
-                                        <option>建行公海</option>
-                                        <option>联通公海</option>
-                                    </select>
-                                </fieldset>
-                            </div>
+                        <div class="tabs">
+                            <!-- Nav tabs -->
+                            <ul class="list-inline tabs-nav" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#published" aria-controls="published" role="tab" data-toggle="tab">已分配</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#retry" aria-controls="retry" role="tab" data-toggle="tab">回收站</a>
+                                </li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="published">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="panel panel-default collapsed">
+                                                <div class="panel-heading">
+                                                    查询条件
+                                                </div>
 
-                            <div class="col-sm-3">
-                                <fieldset class="jquery-Ui-fieldset">
-                                    <label for="batch">请选择批次</label>
-                                    <select name="batch" id="batch">
-                                        <option selected="selected">全部批次</option>
-                                        <option>20180902122</option>
-                                        <option>20180902122</option>
-                                        <option>20180902122</option>
-                                        <option>20180902122</option>
-                                    </select>
-                                </fieldset>
-                            </div>
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <fieldset class="jquery-Ui-fieldset">
+                                                                <label for="simple">请选择数据公海</label>
+                                                                <select name="simple" id="simple">
+                                                                    <option selected="selected">全部公海</option>
+                                                                    <option>移动公海</option>
+                                                                    <option>五十五中</option>
+                                                                    <option>建行公海</option>
+                                                                    <option>联通公海</option>
+                                                                </select>
+                                                            </fieldset>
+                                                        </div>
 
-                            <div class="col-sm-3">
-                                <fieldset class="jquery-Ui-fieldset">
-                                    <label for="status">请选择状态</label>
-                                    <select name="status" id="status">
-                                        <option selected="selected">全部状态</option>
-                                        <option>已分配</option>
-                                        <option>未分配</option>
-                                        <option>已处理</option>
-                                        <option>再分配</option>
-                                    </select>
-                                </fieldset>
-                            </div>
-                            <div class="col-sm-3">
+                                                        <div class="col-sm-3">
+                                                            <fieldset class="jquery-Ui-fieldset">
+                                                                <label for="batch">请选择批次</label>
+                                                                <select name="batch" id="batch">
+                                                                    <option selected="selected">全部批次</option>
+                                                                    <option>20180902122</option>
+                                                                    <option>20180902122</option>
+                                                                    <option>20180902122</option>
+                                                                    <option>20180902122</option>
+                                                                </select>
+                                                            </fieldset>
+                                                        </div>
 
-                            </div>
+                                                        <div class="col-sm-3">
+                                                            <fieldset class="jquery-Ui-fieldset">
+                                                                <label for="status">请选择状态</label>
+                                                                <select name="status" id="status">
+                                                                    <option selected="selected">全部状态</option>
+                                                                    <option value="-1">待拨打</option>
+                                                                    <option value="0">已拨打</option>
+                                                                    <option value="1">已回收</option>
+                                                                    <option value="2">退回</option>
+                                                                    <option value="3">待分配</option>
+                                                                </select>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="col-sm-3">
 
-                        </div>
+                                                        </div>
 
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <fieldset class="jquery-Ui-fieldset">
-                                    <label for="status">请选择导入数据起止时间</label>
-                                    <input name="daterange" type="text">
-                                </fieldset>
-                            </div>
+                                                    </div>
 
-                            <div class="col-sm-4">
-                                <fieldset class="jquery-Ui-fieldset">
-                                    <label for="status">快速筛选时间</label>
-                                    <div class="i-checks vl-i-checks-inline m-r-10">
-                                        <label>
-                                            <input type="radio" value="todayOnly" name="a">
-                                            <i></i> 仅今日导入 </label>
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <fieldset class="jquery-Ui-fieldset">
+                                                                <label for="status">数据id</label>
+                                                                <input type="text">
+                                                            </fieldset>
+                                                        </div>
+
+                                                        <div class="col-sm-4">
+                                                            <fieldset class="jquery-Ui-fieldset">
+                                                                <label for="status">操作时间</label>
+                                                                <input name="daterange" type="text">
+                                                            </fieldset>
+                                                        </div>
+
+                                                        <div class="col-sm-1">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="i-checks vl-i-checks-inline">
-                                        <label>
-                                            <input type="radio" checked="" value="weekLatest" name="a">
-                                            <i></i> 近一周导入 </label>
+                                    <!--page filter end-->
+
+                                    <!--start page content-->
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="panel panel-default collapsed">
+                                                <div class="panel-heading">
+                                                    <p>当前批次： 移动数据-20180102122</p>
+                                                    <div class="buttons">
+                                                        <a id="selectAllBtn" class="btn btn-primary btn-border">全选</a>
+                                                        <div class="operation-btns"></div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="panel-body">
+                                                    <table id="datatable" class="table table-striped dt-responsive nowrap">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>数据id</th>
+                                                                <th>所属公海</th>
+                                                                <th>批次</th>
+                                                                <th>当前状态</th>
+                                                                <th>导入时间</th>
+                                                                <th>最后操作时间</th>
+                                                                <th>导入者</th>
+                                                            </tr>
+                                                        </thead>
+
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>2018002122212</td>
+                                                                <td>移动公海</td>
+                                                                <td>201800001</td>
+                                                                <td>未处理</td>
+                                                                <td>2018-1-1 16:02</td>
+                                                                <td>2018-2-1 09:01</td>
+                                                                <td>李小龙</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2018002122212</td>
+                                                                <td>移动公海</td>
+                                                                <td>201800001</td>
+                                                                <td>未处理</td>
+                                                                <td>2018-1-1 16:02</td>
+                                                                <td>2018-2-1 09:01</td>
+                                                                <td>李小龙</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2018002122212</td>
+                                                                <td>移动公海</td>
+                                                                <td>201800001</td>
+                                                                <td>未处理</td>
+                                                                <td>2018-1-1 16:02</td>
+                                                                <td>2018-2-1 09:01</td>
+                                                                <td>李小龙</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </fieldset>
-                            </div>
-                            <div class="col-sm-1">
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="retry">
+                                    <h4>Heading</h4>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porta lacus ipsum, tempus consequat turpis auctor sit amet.
+                                    Pellentesque porta mollis nisi, pulvinar convallis tellus tristique nec.
+                                    <br> Nam aliquet consequat quam sit amet dignissim. Quisque vel massa est. Donec dictum nisl
+                                    dolor, ac malesuada tellus efficitur non. Pellentesque pellentesque odio neque, eget
+                                    imperdiet eros vehicula lacinia.
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <!--page filter end-->
-
-        <!--start page content-->
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-default collapsed">
-                    <div class="panel-heading">
-                        <p>当前批次： 移动数据-20180102122</p>
-                        <div class="buttons">
-                            <a id="selectAllBtn" class="btn btn-primary btn-border">全选</a>
-                            <a href="javascript: void(0);" class="btn btn-primary">批量分配</a>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-teal dropdown-toggle" data-toggle="dropdown" aria-expanded="false">导入外呼
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="#">预测外呼</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">自动外呼</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <a href="javascript: void(0);" class="btn btn-danger">批量删除</a>
-
-                        </div>
-                    </div>
-
-                    <div class="panel-body">
-                        <table id="datatable" class="table table-striped dt-responsive nowrap">
-                            <thead>
-                                <tr>
-                                    <th>数据id</th>
-                                    <th>所属公海</th>
-                                    <th>批次</th>
-                                    <th>当前状态</th>
-                                    <th>导入时间</th>
-                                    <th>最后操作时间</th>
-                                    <th>导入者</th>
-                                    <th>操作</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td>2018002122212</td>
-                                    <td>移动公海</td>
-                                    <td>201800001</td>
-                                    <td>未处理</td>
-                                    <td>2018-1-1 16:02</td>
-                                    <td>2018-2-1 09:01</td>
-                                    <td>李小龙</td>
-                                    <td class="td_operation">
-                                        <a href="#" class="" data-toggle="modal" data-target="#publishModal" style="margin:5px;">分配</a>
-                                        <a href="#drawerExample" data-toggle="drawer" aria-foldedopen="false" aria-controls="drawerExample">查看</a>
-
-                                        <a href="#" class="" data-toggle="modal" data-target="#deleteModal" style="margin:5px;">删除</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2018002122212</td>
-                                    <td>移动公海</td>
-                                    <td>201800001</td>
-                                    <td>未处理</td>
-                                    <td>2018-1-1 16:02</td>
-                                    <td>2018-2-1 09:01</td>
-                                    <td>李小龙</td>
-                                    <td class="td_operation">
-                                        <a href="#" class="" data-toggle="modal" data-target="#publishModal" style="margin:5px;">分配</a>
-                                        <a href="#drawerExample" data-toggle="drawer" aria-foldedopen="false" aria-controls="drawerExample">查看</a>
-
-                                        <a href="#" class="" data-toggle="modal" data-target="#deleteModal" style="margin:5px;">删除</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2018002122212</td>
-                                    <td>移动公海</td>
-                                    <td>201800001</td>
-                                    <td>未处理</td>
-                                    <td>2018-1-1 16:02</td>
-                                    <td>2018-2-1 09:01</td>
-                                    <td>李小龙</td>
-                                    <td>
-                                        <a href="#" class="" data-toggle="modal" data-target="#publishModal" style="margin:5px;">分配</a>
-                                        <a href="#drawerExample" data-toggle="drawer" aria-foldedopen="false" aria-controls="drawerExample">查看</a>
-
-                                        <a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
         </div>
+
+
         <!--end row-->
 
 
@@ -494,11 +498,10 @@
             $('#datatable').dataTable();
 
             // 选择当前行，排除对于操作列的click监听
-            $('#datatable tbody').on('click', "tr td:not('.td_operation')", function () {
+            $('#datatable tbody').on('click', "tr", function () {
 
-                var $parent = $(this).parent()
+                var id = $(this).index();  // id 从server端获取
 
-                var id = $parent.id || $($parent).index()  // id 从server端获取
                 var index = $.inArray(id, selected);
 
                 if (index === -1) {
@@ -507,13 +510,9 @@
                     selected.splice(index, 1);
                 }
 
-                $($parent).toggleClass('selected');
+                $(this).toggleClass('selected');
 
                 btnOnSelected() // 监听是否全选，更改btn status
-
-                console.log('选中行id或index:')
-                console.log(selected)
-
             });
 
             // 全选与取消全选
@@ -542,12 +541,17 @@
             }
 
             $("#batch").selectmenu(); //下拉菜单初始化
-            $("#status").selectmenu();
+            $("#status").selectmenu({
+                change: function (event, data) {
+                    filterStatus(data.item.value)
+                }
+            });
             // radio添加class
             $('.i-checks').iCheck({
                 checkboxClass: 'icheckbox_square-blue',
                 radioClass: 'iradio_square-blue'
             });
+
             $('input[name="daterange"]').daterangepicker(
                 {
                     locale: {
@@ -590,24 +594,43 @@
 
                 });
 
-            // $("body").not($('.drawer')).on('click', function(){
-            //     console.log('not')
+            setTimeout(() => {
+                btnStatus()
+            }, 2000)
 
-            //     $('.drawer').drawer('hide')
+            function filterStatus(option) {
+                switch (option) {
+                    case '1':   // 已回收
+                        $('.operation-btns')
+                            .html('')
+                            .append(
+                            '<a id="distributeBtn" href="javascript: void(0);" class="btn btn-primary">再分配</a>' +
+                            '<a id="deleteBtn" href="javascript: void(0);" class="btn btn-danger">删除</a>'
+                            )
+
+                        break
+                    case '2':   // 退回
+                        $('.operation-btns')
+                            .html('')
+                            .append(
+                            '<a id="deleteBtn" href="javascript: void(0);" class="btn btn-danger">删除</a>'
+                            )
+                        break
+                    case '-1':  // 待拨打
+                        $('.operation-btns')
+                            .html('')
+                            .append(
+                            '<a id="recycleBtn" href="javascript: void(0);" class="btn btn-teal">回收</a>'
+                            )
+                        break
+                    default:
+                        $('.operation-btns')
+                            .html('')
+                        break
+                }
+            }
 
 
-            // })
-
-            // $("html, body").click(function(e) {
-            //     if ($(e.target).hasClass('drawer')) {
-            //         return false;
-            //     }
-            //     console.log('d');
-            // });
-
-            //     $('#myDrawer').drawer({
-            //     toggle: false
-            // });
 
 
         });

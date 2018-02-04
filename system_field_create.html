@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>字段模板设置</title>
+    <title>新建字段模板</title>
 
     <!-- Common plugins -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -51,11 +51,11 @@
                     <div class="modal-form">
                         <form role="form">
                             <div class="form-group">
-                                <label>请输入名称</label>
+                                <label>请输入模板名称</label>
                                 <input type="text" class="field-name" placeholder="">
                             </div>
                             <div class="form-group">
-                                <label>请选择</label>
+                                <label>请选择应用公海</label>
                                 <select name="" class="form-control">
                                     <option value="">移动数据1</option>
                                     <option value="">移动数据2</option>
@@ -101,8 +101,6 @@
             <div class="row">
                 <div class="col-sm-6 flex-align-center">
                     <h4 class="inline">表字段设置与维护</h4>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="./system_field_create.html" class="btn btn-default btn-primary" style="margin:5px;">新建模板</a>
                 </div>
                 <div class="col-sm-6 text-right">
                     <ol class="breadcrumb">
@@ -113,6 +111,7 @@
                         </li>
                         <li>系统设置</li>
                         <li>字段模板设置</li>
+                        <li>新建字段模板</li>
                     </ol>
                 </div>
             </div>
@@ -120,58 +119,37 @@
         <!--page header end-->
 
         <!--start page content-->
+
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default collapsed">
                     <div class="panel-heading">
-                        字段模板列表
+                        新建字段模板 &nbsp;&nbsp;&nbsp;
+                        <a href="#" id="addRow" class="btn btn-default btn-primary" data-toggle="modal" data-target="#" style="margin:5px;">新建字段</a>
                     </div>
                     <div class="panel-body">
-                        <div class="buttons">
-                            <a href="javascript: void(0);" class="btn btn-primary">修改</a>
-                            <a href="javascript: void(0);" class="btn btn-danger">删除</a>
-                        </div>
-                        <table id="fieldTemplateList" class="table table-striped dt-responsive nowrap">
+                        <table id="datatable" class="table table-striped dt-responsive nowrap">
                             <thead>
                                 <tr>
-                                    <th>模板名称</th>
-                                    <th>所属公海</th>
-                                    <th>字段个数</th>
-                                    <th>创建人</th>
-                                    <th>创建时间</th>
+                                    <th>字段名称</th>
+                                    <th>字段类型</th>
+                                    <th>字段关联值</th>
+                                    <th>是否必填</th>
+                                    <th>是否查询</th>
+                                    <th>排序</th>
+                                    <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>移动模板1</td>
-                                    <td>移动数据公海</td>
-                                    <td>7</td>
-                                    <td>王玲</td>
-                                    <td>2018-01-21</td>
-                                </tr>
-                                <tr>
-                                    <td>移动模板1</td>
-                                    <td>移动数据公海</td>
-                                    <td>7</td>
-                                    <td>王玲</td>
-                                    <td>2018-01-21</td>
-                                </tr>
-                                <tr>
-                                    <td>移动模板1</td>
-                                    <td>移动数据公海</td>
-                                    <td>7</td>
-                                    <td>王玲</td>
-                                    <td>2018-01-21</td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-
         <!--end row-->
-
+        <span class="tip red">*如字段类型为下拉菜单、单选按钮、多选按钮，需设置字段关联值，请用';'隔开</span>
         <a href="#" id="savefield" class="btn btn-default btn-primary  pull-right" data-toggle="modal" data-target="#createModal"
             style="margin-top:-10px;">创建并应用</a>
         <!--end page content-->
@@ -212,27 +190,28 @@
 
         $(document).ready(function () {
 
-            $('#fieldTemplateList').DataTable(languageConfig);
+            $('#datatable').DataTable(languageConfig);
 
-            var selected = []; //选择数组
-            $('#fieldTemplateList tbody').on('click', "tr", function () {
+            //add row
+            var table = $('#datatable').DataTable();
+            $('#addRow').on('click', function () {
+                console.log(table.row)
+                table.row.add([
+                    '<input class="fieldname' + counter + '" style="width:100px">',
+                    '<select class="fieldtype' + counter + '" style="width:100px"><option value="普通文本">普通文本</option vlaue="电话文本"><option>电话文本</option><option vlaue="下拉菜单">下拉菜单</option><option vlaue="单选按钮">单选按钮</option><option vlaue="多选按钮">多选按钮</option><option vlaue="是否">是否</option><option vlaue="日期类型">日期类型</option></select>',
+                    '<input class="fieldrelated' + counter + '" style="width:100px">',
+                    '<select class="isrequired' + counter + '"><option value="1">是</option><option value="0">否</option></select>',
+                    '<select class="issearched' + counter + '"><option value="1">是</option><option value="0">否</option></select>',
+                    '<input class="sort' + counter + '" style="width:100px">',
+                    '<a href="#" class="sort' + counter + '" onclick="delete_r(this)" style="margin:5px;">删除</a>'
+                ]).draw();
 
+                $('.fieldname' + counter).focus()
+                $('.fieldname' + counter).click(function () {
+                    this.focus()
+                })
 
-                var id = $(this).index();  // id 从server端获取
-
-                var index = $.inArray(id, selected);
-
-                if (index === -1) {
-                    selected.push(id);
-                } else {
-                    selected.splice(index, 1);
-                }
-
-                $(this)
-                    .toggleClass('selected')
-                    .siblings()
-                    .removeClass('selected')
-
+                counter++;
             });
 
         });

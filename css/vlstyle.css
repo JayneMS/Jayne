@@ -91,3 +91,18 @@ tr.odd.selected,
 tr.even.selected {
     background-color: #abb9d3!important;
 }
+
+
+/* a tag add actived */
+.metisMenu.nav > li > a.active,
+.light-navigation .nav-thrid-level.nav li a.active{
+    color: #23b7e5!important;
+}
+
+.active-a {
+    color: #23b7e5!important;
+}
+
+.operation-btns {
+    display: inline-block;
+}
