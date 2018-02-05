@@ -53,10 +53,11 @@
                             <form role="form">
                                 <div class="form-group">
 	                                <label>电话号段</label>
-                                    <input type="text" class="form-control" placeholder="" required="">
+	                                <span class="require-star">*</span>
+                                    <input type="text" class="form-control" name="numfield" required="">
                                 </div>
                                 <div class="clearfix">
-                                    <button type="submit" class="btn  btn-primary pull-right">创建</button>
+                                    <button type="submit" class="btn  btn-primary pull-right" onclick="add_tab()">创建</button>
                                 </div>
                             </form>
                         </div>
@@ -78,10 +79,11 @@
                             <form role="form">
                                 <div class="form-group">
 	                                <label>电话号段</label>
-                                    <input type="text" class="form-control" placeholder="" required="">
+	                                <span class="require-star">*</span>
+                                    <input type="text" class="form-control" name="al_numfield" required="">
                                 </div>
                                 <div class="clearfix">
-                                    <button type="submit" class="btn  btn-primary pull-right">创建</button>
+                                    <button type="submit" class="btn  btn-primary pull-right" onclick="alter_tab()">创建</button>
                                 </div>
                             </form>
                         </div>
@@ -99,8 +101,6 @@
                 <div class="row">
                     <div class="col-sm-6 flex-align-center">
                         <h4 class="inline">数据池维护</h4>
-                        &nbsp;&nbsp;&nbsp;&nbsp;          
-                        <a href="#" class="btn btn-default btn-primary" data-toggle="modal" data-target="#createModal" style="margin:5px;">添加</a>
                     </div>
                     <div class="col-sm-6 text-right">
                         <ol class="breadcrumb">
@@ -113,50 +113,63 @@
             </div>
             <!--page header end-->
 
+	        <!--page filter start-->
+	        <div class="row">
+	            <div class="col-md-12">
+	                <div class="panel panel-default collapsed">
+	                    <div class="panel-heading">
+	                        <p class="inline">查询条件</p>
+                        	<a class="vl-a" id="resetBtn">重置查询条件</a>
+	                    </div>
+	                    <div class="panel-body">
+	                        <div class="row">
+	                            <div class="col-sm-3">
+	                                <fieldset class="jquery-Ui-fieldset">
+	                                    <label>电话号段</label>
+	                                    <input class="input-150p black" type="" name="numfield" id="numfield" value="" />
+	                                </fieldset>
+	                            </div>
+	                        </div>
+	                        <a href="javascript: void(0);" class="btn btn-primary inline float-right" onclick="search_tab()">开始查询</a>
+	                    </div>
+	                    
+	                </div>
+	            </div>
+	        </div>
+	        <!--page filter end-->
+	        
             <!--start page content-->
 
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default collapsed">
-                        <div class="panel-heading">
-                          	数据池维护
-                        </div>
+	                    <div class="panel-heading">
+	                        <div class="buttons">
+	                            <a id="selectAllBtn" class="btn btn-primary btn-border">全选</a>
+	                            <a href="javascript: void(0);" class="btn btn-primary" data-toggle="modal" data-target="#createModal" >新增</a>
+	                            <a href="javascript: void(0);" class="btn btn-teal" data-toggle="modal" data-target="#updateModal" >修改</a>
+	                            <a href="javascript: void(0);" class="btn btn-danger" onclick="delete_r()">删除</a>
+	                        </div>
+	                    </div>
                         <div class="panel-body">
                             <table id="datatable" class="table table-striped dt-responsive nowrap">
                                 <thead>
                                     <tr>
                                         <th>电话号段</th>
-                                        <th>操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                     	<td>1332541</td>
-                                        <td>
-                            				<a href="#" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" onclick="delete_r(this)" style="margin:5px;">删除</a>
-                                        </td>
                                     </tr>
                                     <tr>
                                     	<td>1302014</td>
-                                        <td>
-                            				<a href="#" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" onclick="delete_r(this)" style="margin:5px;">删除</a>
-                                        </td>
                                     </tr>
                                     <tr>
                                     	<td>1332145</td>
-                                        <td>
-                            				<a href="#" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" onclick="delete_r(this)" style="margin:5px;">删除</a>
-                                        </td>
                                     </tr>
                                     <tr>
                                     	<td>1314214</td>
-                                        <td>
-                            				<a href="#" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" onclick="delete_r(this)" style="margin:5px;">删除</a>
-                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -192,6 +205,7 @@
         <script src="js/datatables.responsive.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/jquery.ui.custom.js"></script>
+        <script src="js/jayne.js"></script>        
         <!--sweet alerts-->
         <script src="js/sweet-alert.min.js"></script>
         <!--drawer alerts-->
@@ -199,60 +213,107 @@
 	    <!-- iCheck for radio and checkboxes -->
 	    <script src="js/icheck.min.js"></script>
         <script>
-		$(document).ready(function () {
-			$('#datatable').DataTable({
-				destroy: true,
-				searching: true,
-				language: {
-					"sProcessing": "处理中...",
-					"sLengthMenu": "显示 _MENU_ 项结果",
-					"sZeroRecords": "没有匹配结果",
-					"sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-					"sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
-					"sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-					"sInfoPostFix": "",
-					"sSearch": "搜索:",
-					"sUrl": "",
-					"sEmptyTable": "表中数据为空",
-					"sLoadingRecords": "载入中...",
-					"sInfoThousands": ",",
-					"oPaginate": {
-						"sFirst": "首页",
-						"sPrevious": "上页",
-						"sNext": "下页",
-						"sLast": "末页"
-					},
-					"oAria": {
-						"sSortAscending": ": 以升序排列此列",
-						"sSortDescending": ": 以降序排列此列"
-					}
-				}
-			});
-		});
-
-		function delete_r(othis) {
-			swal({
-				title: "确定删除吗？",
-				type: "warning",
-				showCancelButton: true,
-				confirmButtonColor: "#DD6B55",
-				confirmButtonText: "确定！",
-				cancelButtonText: '取消',
-				closeOnConfirm: false
-			},
+        var selected = [];//选择数组
+        //筛选查询条件
+		function search_tab(){
+			var numfield = $('#numfield').val().trim();
+			alert(numfield);
+			//此处添加查询方法
+		}
+		
+		//新增
+		function add_tab(){
+			var numfield = $("input[name='numfield']").val().trim();
+			alert(numfield);
+			//此处添加新增方法
+		}
+		
+		//修改
+		function alter_tab(){
+			var al_numfield = $("input[name='al_numfield']").val().trim();
+//			alert(al_numfield);
+			var count =0;
+			for(var i in selected){
+				var row = selected[i]+1;
+				var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+				count++;
+				console.log(rows);
+			};
+			if(count==0){
+		        swal({
+		            title:'修改至少选中一行',
+		            timer:1000,
+		            showConfirmButton:false
+		        });
+			}else if(count>1){
+		        swal({
+		            title:'修改不可选中多行',
+		            timer:1000,
+		            showConfirmButton:false
+		        });
+			}else{
+				//此处添加修改方法
+			}
+			
+		}
+		
+		//删除
+		function delete_r() {
+			var count =0;
+			for(var i in selected){
+				var row = selected[i]+1;
+				var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+				count++;
+			};
+			if(count==0){
+		        swal({
+		            title:'删除至少选中一行',
+		            timer:1000,
+		            showConfirmButton:false
+		        });
+			}else{
+				swal({
+					title: "确定删除吗？",
+					type: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#DD6B55",
+					confirmButtonText: "确定！",
+					cancelButtonText: '取消',
+					closeOnConfirm: false
+				},
 				function () {
+					//此处添加删除方法,如果删除成功执行：
 					swal(
 						"删除！", "该分机已经被删除。", "success"
 					);
-					$(othis).parents("tr").css("display", "none");
+					console.log(selected);
+					for(var i in selected){
+						var row = selected[i]+1;
+						var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+						count++;
+						$('#datatable').find("tr").eq(row).css('display','none');
+					};
+					for(var i in selected){
+						selected.splice(i);
+					};
 				});
+			}
 
 		}
 
 		$(document).ready(function () {
-			var selected = []; //选择数组
 			$('#datatable').dataTable();
 
+			//重置全部选择
+            $('#resetBtn').click(function () {
+                resetFilter()
+            })
+
+            function resetFilter() {
+
+                $('input[name="numfield"]').val('')
+            }
+            
 			// 选择当前行，排除对于操作列的click监听
 			$('#datatable tbody').on('click', "tr", function () {
 
@@ -296,35 +357,15 @@
 					$('#selectAllBtn').text('全选')
 				}
 			}
-
-			$("#batch").selectmenu(); //下拉菜单初始化
-			$("#status").selectmenu();
+			
 			// radio添加class
 			$('.i-checks').iCheck({
 				checkboxClass: 'icheckbox_square-blue',
 				radioClass: 'iradio_square-blue'
 			});
-
-
+			
+			
 		});
-            function delete_r(othis){
-            	swal({    
-            		title: "确定删除吗？",    
-            		type: "warning",   
-            		showCancelButton: true,    
-            		confirmButtonColor: "#DD6B55",   
-            		confirmButtonText: "确定！",
-            		cancelButtonText:'取消',
-            		closeOnConfirm: false 
-            	}, 
-            	function(){   
-            		swal(
-            			"删除！", "该分机已经被删除。","success"
-            		);
-            		$(othis).parents("tr").css("display","none");
-            	});
-            	
-            }
         </script>
 
     </body>

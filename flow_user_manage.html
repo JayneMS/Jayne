@@ -173,7 +173,8 @@
 	            <div class="col-md-12">
 	                <div class="panel panel-default collapsed">
 	                    <div class="panel-heading">
-	                        <p class="inline">查询条件</p>&nbsp;&nbsp;&nbsp;&nbsp;
+	                        <p class="inline">查询条件</p>
+                        	<a class="vl-a" id="resetBtn">重置查询条件</a>
 	                    </div>
 	                    <div class="panel-body">
 	                        <div class="row">
@@ -233,9 +234,9 @@
 	                    <div class="panel-heading">
 	                        <div class="buttons">
 	                            <a id="selectAllBtn" class="btn btn-primary btn-border">全选</a>
-	                            <a href="javascript: void(0);" class="btn btn-primary" data-toggle="modal" data-target="#createModal" >新增用户</a>
-	                            <a href="javascript: void(0);" class="btn btn-teal" data-toggle="modal" data-target="#updateModal" >修改用户</a>
-	                            <a href="javascript: void(0);" class="btn btn-danger" onclick="delete_r()">删除用户</a>
+	                            <a href="javascript: void(0);" class="btn btn-primary" data-toggle="modal" data-target="#createModal" >新增</a>
+	                            <a href="javascript: void(0);" class="btn btn-teal" data-toggle="modal" data-target="#updateModal" >修改</a>
+	                            <a href="javascript: void(0);" class="btn btn-danger" onclick="delete_r()">删除</a>
 	                        </div>
 	                    </div>
                         <div class="panel-body">
@@ -318,22 +319,22 @@
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/jquery.ui.custom.js"></script>
         <script src="js/jayne.js"></script>        
-        <script src="js/jstree.min.js"></script>
     	<script src="js/drawer.js"></script>
 		<!--sweet alerts-->
 		<script src="js/sweet-alert.min.js"></script>
 	    <!-- iCheck for radio and checkboxes -->
 	    <script src="js/icheck.min.js"></script>
-	    <!--<script src="js/jquery.easyui.min.js" type="text/javascript"></script>-->
         <script>
         	
         var selected = [];//选择数组
+        
+        
         //筛选查询条件
 		function search_tab(){
-			var role = $('#role').val();
-			var branch = $('#branch').val();
-			var uid = $('#uid').val();
-			var uname = $('#uname').val();
+			var role = $('#role').val().trim();
+			var branch = $('#branch').val().trim();
+			var uid = $('#uid').val().trim();
+			var uname = $('#uname').val().trim();
 			alert(role);
 			alert(branch);
 			alert(uid);
@@ -343,7 +344,7 @@
 		
 		//新增
 		function add_tab(){
-			var uname = $("input[name='uname']").val();
+			var uname = $("input[name='uname']").val().trim();
 			var role = $("select[name='role']").val();
 			var branch = $("select[name='branch']").val();
 			alert(uname);
@@ -354,7 +355,7 @@
 		
 		//修改
 		function alter_tab(){
-			var al_uname = $("input[name='al_uname']").val();
+			var al_uname = $("input[name='al_uname']").val().trim();
 			var al_role = $("select[name='al_role']").val();
 			var al_branch = $("select[name='al_branch']").val();
 //			alert(al_uname);
@@ -431,7 +432,25 @@
 
 		$(document).ready(function () {
 			$('#datatable').dataTable();
+			
+			
+			//重置全部选择
+            $('#resetBtn').click(function () {
+                resetFilter()
+            })
 
+            function resetFilter() {
+
+                $('#role').val('全部角色')
+                $('#role').selectmenu("refresh", true)
+
+                $('#branch').val('全部部门')
+                $('#branch').selectmenu("refresh", true)
+
+                $('input[name="uid"]').val('')
+                $('input[name="uname"]').val('')
+            }
+            
 			// 选择当前行，排除对于操作列的click监听
 			$('#datatable tbody').on('click', "tr", function () {
 
@@ -479,13 +498,13 @@
 			//下拉菜单初始化
             $('#role').selectmenu({
                 change: function (event, data) {
-                    console.info(`选择公海:`)
+                    console.info('选择角色:')
                     console.log(data.item)
                 }
             });
             $('#branch').selectmenu({
                 change: function (event, data) {
-                    console.info(`选择公海:`)
+                    console.info('选择部门:')
                     console.log(data.item)
                 }
             });
