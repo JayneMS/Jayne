@@ -229,7 +229,40 @@
             </div>
         </div>
     </div>
-    <!--modal create start-->
+    <div class="modal fade height-500" data-backdrop="static" id="distributeDialog" tabindex="-1" role="dialog" aria-labelledby="distributeDialog">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="fa fa-times-circle"></span>
+                    </button>
+                    <h3 class="modal-title" id="myModalLabel">分配设置</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-form">
+                        <form role="form">
+
+                            <p>您共选择xxx条数据</p>
+                            <fieldset class="jquery-Ui-fieldset">
+                                <label for="queue">请选择数分配队列</label>
+                                <select name="queue" id="queue" style="z-index:99999">
+                                    <option selected="selected">队列</option>
+                                    <option>移动队列1</option>
+                                    <option>移动队列2</option>
+                                    <option>移动队列3</option>
+                                </select>
+                            </fieldset>
+
+                            <div class="clearfix">
+                                <button type="submit" class="btn  btn-primary pull-right">确认</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal 外呼 start-->
     <div class="modal fade height-500" data-backdrop="static" id="callParameter" tabindex="-1" role="dialog" aria-labelledby="callParameter">
         <div class="modal-dialog " role="document">
             <div class="modal-content">
@@ -309,7 +342,7 @@
             </div>
         </div>
     </div>
-    <!--modal create end-->
+    <!--modal 外呼 end-->
 
     <!--modal delete-->
     <div class="modal fade modal-delete" id="deleteModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -405,6 +438,7 @@
                                         <option value="4">已拨打</option>
                                         <option value="5">已回收</option>
                                         <option value="6">退回</option>
+                                        <option value="7">已删除</option>
                                     </select>
                                 </fieldset>
                             </div>
@@ -477,7 +511,7 @@
                             <a id="selectAllBtn" href="javascript: void(0);" class="btn btn-primary btn-border">全选本页</a>
 
                             <div class="operation-btns"></div>
-                            <a href="javascript: void(0);" class="btn btn-danger float-right">批量删除</a>
+                            <a href="javascript: void(0);" class="btn btn-danger float-right">删除</a>
                             <a href="#drawerExample" class="btn btn-info float-right" data-toggle="drawer" aria-foldedopen="false" aria-controls="drawerExample">查看</a>
                         </div>
                     </div>
@@ -725,6 +759,17 @@
                 }
             });
 
+            // 分配选择队列
+            $('#queue').selectmenu({
+                classes: {
+                    "ui-selectmenu-menu": "zIndex9999"
+                },
+                change: function (event, data) {
+                    console.info(`选择队列:`)
+                    console.log(data.item)
+                }
+            })
+
             // radio添加class
             $('.i-checks').iCheck({
                 checkboxClass: 'icheckbox_square-blue',
@@ -767,24 +812,16 @@
                     case '0':
                         $('.operation-btns')
                             .html('')
-                            .append('<a href="javascript: void(0);" class="btn btn-primary">分配</a>' +
+                            .append('<a id="distributeBtn" data-toggle="modal" data-target="#distributeDialog" href="javascript: void(0);" class="btn btn-primary">分配</a>' +
                             ' <a href="javascript: void(0);" class="btn btn-teal" data-toggle="modal" data-target="#callParameter">预测外呼</a>')
                         break
                     case '5':   // 已回收
                         $('.operation-btns')
                             .html('')
                             .append(
-                            '<a id="distributeBtn" href="javascript: void(0);" class="btn btn-primary">再分配</a>' +
-                            '<a id="deleteBtn" href="javascript: void(0);" class="btn btn-danger">删除</a>'
+                            '<a id="distributeBtn" href="javascript: void(0);" class="btn btn-primary">再分配</a>'
                             )
 
-                        break
-                    case '6':   // 退回
-                        $('.operation-btns')
-                            .html('')
-                            .append(
-                            '<a id="deleteBtn" href="javascript: void(0);" class="btn btn-danger">删除</a>'
-                            )
                         break
                     case '3':  // 待拨打
                         $('.operation-btns')
