@@ -15,6 +15,8 @@
         <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/nanoscroller.css">
         <link rel="stylesheet" href="css/metismenu.min.css">
+        <!--sweetalert css-->
+        <link href="css/sweet-alert.css" rel="stylesheet">
         <!-- dataTables -->
         <link href="css/jquery.datatables.min.css" rel="stylesheet" type="text/css">
         <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -52,27 +54,36 @@
 					<div class="modal-form">
 						<form role="form">
 							<div class="form-group">
+								<label>序号</label>
+	                            <span class="require-star">*</span>
+								<input type="text" class="form-control" name='number' required="">
+							</div>
+							<div class="form-group">
 								<label>上下文（流程块）</label>
-								<input type="text" class="form-control" placeholder="" required="">
+	                            <span class="require-star">*</span>
+								<input type="text" class="form-control" name='context' required="">
 							</div>
 							<div class="form-group">
 								<label>exten（匹配标识）</label>
-								<input type="text" class="form-control" placeholder="" required="">
+	                            <span class="require-star">*</span>
+								<input type="text" class="form-control" name='exten'  required="">
 							</div>
 							<div class="form-group">
 								<label>priority（优先级）</label>
-								<input type="text" class="form-control" placeholder="" required="">
+	                            <span class="require-star">*</span>
+								<input type="text" class="form-control" name='priority'  required="">
 							</div>
 							<div class="form-group">
 								<label>app（命令）</label>
-								<input type="text" class="form-control" placeholder="" required="">
+	                            <span class="require-star">*</span>
+								<input type="text" class="form-control" name='app' required="">
 							</div>
 							<div class="form-group">
 								<label>appdata（命令内容）</label>
-								<input type="text" class="form-control" placeholder="">
+								<input type="text" class="form-control" name='appdata' >
 							</div>
 							<div class="clearfix">
-								<button type="submit" class="btn  btn-primary pull-right">创建</button>
+								<button type="submit" class="btn  btn-primary pull-right" onclick="add_tab()">创建</button>
 							</div>
 						</form>
 					</div>
@@ -95,27 +106,36 @@
 					<div class="modal-form">
 						<form role="form">
 							<div class="form-group">
+								<label>序号</label>
+	                            <span class="require-star">*</span>
+								<input type="text" class="form-control" name="al_number" required="">
+							</div>
+							<div class="form-group">
 								<label>上下文（流程块）</label>
-								<input type="text" class="form-control" placeholder="" required="">
+	                            <span class="require-star">*</span>
+								<input type="text" class="form-control" name="al_context" required="">
 							</div>
 							<div class="form-group">
 								<label>exten（匹配标识）</label>
-								<input type="text" class="form-control" placeholder="" required="">
+	                            <span class="require-star">*</span>
+								<input type="text" class="form-control" name="al_exten"  required="">
 							</div>
 							<div class="form-group">
 								<label>priority（优先级）</label>
-								<input type="text" class="form-control" placeholder="" required="">
+	                            <span class="require-star">*</span>
+								<input type="text" class="form-control" name="al_priority"  required="">
 							</div>
 							<div class="form-group">
 								<label>app（命令）</label>
-								<input type="text" class="form-control" placeholder="" required="">
+	                            <span class="require-star">*</span>
+								<input type="text" class="form-control" name="al_app"  required="">
 							</div>
 							<div class="form-group">
 								<label>appdata（命令内容）</label>
-								<input type="text" class="form-control" placeholder="">
+								<input type="text" class="form-control" name="al_appdata" >
 							</div>
 							<div class="clearfix">
-								<button type="submit" class="btn  btn-primary pull-right">创建</button>
+								<button type="submit" class="btn  btn-primary pull-right" onclick="alter_tab()">创建</button>
 							</div>
 						</form>
 					</div>
@@ -133,10 +153,6 @@
 			<div class="row">
 				<div class="col-sm-6 flex-align-center">
 					<h4 class="inline">拨号方案</h4>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<a class="btn btn-primary" data-toggle="modal" data-target="#createModal" style="margin:5px;">添加</a>
-					<a class="btn btn-primary" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-					<a class="btn btn-primary" onclick="delete_r(this)" style="margin:5px;">删除</a>
 					<span class="red bottom">
 						*用于控制电话按键流程走向
 					</span>
@@ -156,140 +172,89 @@
 		</div>
 		<!--page header end-->
 
-		<!--page filter start-->
-		<div class="row">
-			<div class="col-md-12">
-				<div class="panel panel-default collapsed">
-					<div class="panel-heading">
-						查询条件
-					</div>
-
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-sm-3">
-								<fieldset class="jquery-Ui-fieldset">
-									<label for="simple">请选择数据公海</label>
-									<select name="simple" id="simple">
-										<option selected="selected">全部公海</option>
-										<option>移动公海</option>
-										<option>五十五中</option>
-										<option>建行公海</option>
-										<option>联通公海</option>
-									</select>
-								</fieldset>
-							</div>
-
-							<div class="col-sm-3">
-								<fieldset class="jquery-Ui-fieldset">
-									<label for="batch">请选择批次</label>
-									<select name="batch" id="batch">
-										<option selected="selected">全部批次</option>
-										<option>20180902122</option>
-										<option>20180902122</option>
-										<option>20180902122</option>
-										<option>20180902122</option>
-									</select>
-								</fieldset>
-							</div>
-
-							<div class="col-sm-3">
-								<fieldset class="jquery-Ui-fieldset">
-									<label for="status">请选择状态</label>
-									<select name="status" id="status">
-										<option selected="selected">全部状态</option>
-										<option>已分配</option>
-										<option>未分配</option>
-										<option>已处理</option>
-										<option>再分配</option>
-									</select>
-								</fieldset>
-							</div>
-							<div class="col-sm-3">
-
-							</div>
-
-						</div>
-
-						<div class="row">
-							<div class="col-sm-4">
-								<fieldset class="jquery-Ui-fieldset">
-									<label for="status">请选择导入数据起止时间</label>
-									<input name="daterange" type="text">
-								</fieldset>
-							</div>
-
-							<div class="col-sm-4">
-								<fieldset class="jquery-Ui-fieldset">
-									<label for="status">快速筛选时间</label>
-									<div class="i-checks vl-i-checks-inline m-r-10">
-										<label>
-											<input type="radio" value="todayOnly" name="a">
-											<i></i> 仅今日导入 </label>
-									</div>
-									<div class="i-checks vl-i-checks-inline">
-										<label>
-											<input type="radio" checked="" value="weekLatest" name="a">
-											<i></i> 近一周导入 </label>
-									</div>
-								</fieldset>
-							</div>
-							<div class="col-sm-1">
-
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<!--page filter end-->
+		
+        <!--page filter start-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default collapsed">
+                    <div class="panel-heading">
+                        <p class="inline">查询条件</p>
+                        <a class="vl-a" id="resetBtn">重置查询条件</a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                    <label>序号</label>
+                                    <input class="input-150p black" type="" name="number" id="number" value="" />
+                                </fieldset>
+                            </div>
+                            
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                	<label>上下文(流程块)</label>
+                                    <input class="input-150p black" type="" name="context" id="context" value="" />
+                                </fieldset>
+                            </div>
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                    <label>exten(匹配标识)</label>
+                                    <input class="input-150p black" type="" name="exten" id="exten" value="" />
+                                </fieldset>
+                            </div>
+                            
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                	<label>priority(优先级)</label>
+                                    <input class="input-150p black" type="" name="priority" id="priority" value="" />
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                    <label>app(命令)</label>
+                                    <input class="input-150p black" type="" name="app" id="app" value="" />
+                                </fieldset>
+                            </div>
+                            
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                	<label>appdata(命令内容)</label>
+                                    <input class="input-150p black" type="" name="appdata" id="appdata" value="" />
+                                </fieldset>
+                            </div>
+                        </div>
+                        <a href="javascript: void(0);" class="btn btn-primary inline float-right" onclick="search_tab()">开始查询</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!--page filter end-->
+	        
 
 		<!--start page content-->
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-default collapsed">
-					<div class="panel-heading">
-						<div class="buttons">
-							<a id="selectAllBtn" class="btn btn-primary btn-border">全选</a>
-							<a href="javascript: void(0);" class="btn btn-primary">批量分配</a>
-							<div class="btn-group">
-								<button type="button" class="btn btn-teal dropdown-toggle" data-toggle="dropdown" aria-expanded="false">导入外呼
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li>
-										<a href="#">预测外呼</a>
-									</li>
-									<li>
-										<a href="#">自动外呼</a>
-									</li>
-								</ul>
-							</div>
-							<a href="javascript: void(0);" class="btn btn-danger">批量删除</a>
-						</div>
-					</div>
+                    <div class="panel-heading">
+                        <div class="buttons">
+                            <a id="selectAllBtn" class="btn btn-primary btn-border">全选</a>
+                            <a href="javascript: void(0);" class="btn btn-primary" data-toggle="modal" data-target="#createModal" >新增</a>
+                            <a href="javascript: void(0);" class="btn btn-teal" data-toggle="modal" data-target="#updateModal" >修改</a>
+                            <a href="javascript: void(0);" class="btn btn-danger" onclick="delete_r()">删除</a>
+                        </div>
+                    </div>
 					<div class="panel-body">
-						<!--<div class="width-100">
-                        		<div class="width-60 inline">
-				                    <form method="get" action="/" class="form-horizontal">
-			                            <div class=" form-group left-30p">
-			                                <div class="inline float-left">
-			                                	上下文
-			                                	<input type="text" name="" id="" value="" class="inline" />
-			                                </div>
-			                            </div>
-				                    </form>
-                        		</div>          
-	                            <a class="btn btn-primary top-button left-button" >筛选</a>
-                        	</div>-->
-
+						
 						<table id="datatable" class="table table-striped dt-responsive nowrap">
 							<thead>
 								<tr>
 									<th>序号</th>
 									<th>上下文（流程块）</th>
 									<th>exten（匹配标识）</th>
-									<th>prority（优先级）</th>
+									<th>priority（优先级）</th>
 									<th>app（命令）</th>
 									<th>appdata（命令内容）</th>
 								</tr>
@@ -308,8 +273,8 @@
 									<td>haier</td>
 									<td>h</td>
 									<td>2</td>
-									<td>S</ettd>
-										<td>haier,t,,,30,queue.agi</td>
+									<td>S</td>
+									<td>haier,t,,,30,queue.agi</td>
 								</tr>
 								<tr>
 									<td>2444</td>
@@ -370,66 +335,151 @@
 	<script src="js/datatables.responsive.min.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
 	<script src="js/jquery.ui.custom.js"></script>
+    <script src="js/jayne.js"></script>        
 	<script src="js/drawer.js"></script>
 	<!--sweet alerts-->
 	<script src="js/sweet-alert.min.js"></script>
     <!-- iCheck for radio and checkboxes -->
     <script src="js/icheck.min.js"></script>
 	<script>
-		$(document).ready(function () {
-			$('#datatable').DataTable({
-				destroy: true,
-				searching: true,
-				language: {
-					"sProcessing": "处理中...",
-					"sLengthMenu": "显示 _MENU_ 项结果",
-					"sZeroRecords": "没有匹配结果",
-					"sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-					"sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
-					"sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-					"sInfoPostFix": "",
-					"sSearch": "搜索:",
-					"sUrl": "",
-					"sEmptyTable": "表中数据为空",
-					"sLoadingRecords": "载入中...",
-					"sInfoThousands": ",",
-					"oPaginate": {
-						"sFirst": "首页",
-						"sPrevious": "上页",
-						"sNext": "下页",
-						"sLast": "末页"
-					},
-					"oAria": {
-						"sSortAscending": ": 以升序排列此列",
-						"sSortDescending": ": 以降序排列此列"
-					}
-				}
-			});
-		});
-
-		function delete_r(othis) {
-			swal({
-				title: "确定删除吗？",
-				type: "warning",
-				showCancelButton: true,
-				confirmButtonColor: "#DD6B55",
-				confirmButtonText: "确定！",
-				cancelButtonText: '取消',
-				closeOnConfirm: false
-			},
+        	
+        var selected = [];//选择数组
+        //筛选查询条件
+		function search_tab(){
+			var number = $('#number').val().trim();
+			var context = $('#context').val().trim();
+			var exten = $('#exten').val().trim();
+			var priority = $('#priority').val().trim();
+			var app = $('#app').val().trim();
+			var appdata = $('#appdata').val().trim();
+			alert(number);
+			alert(context);
+			alert(exten);
+			alert(priority);
+			alert(app);
+			alert(appdata);
+			//此处添加查询方法
+		}
+		
+		//新增
+		function add_tab(){
+			var number = $("input[name='number']").val().trim();
+			var context = $("input[name='context']").val().trim();
+			var exten = $("input[name='exten']").val().trim();
+			var priority = $("input[name='priority']").val().trim();
+			var app = $("input[name='app']").val().trim();
+			var appdata = $("input[name='appdata']").val().trim();
+			alert(number);
+			alert(context);
+			alert(exten);
+			alert(priority);
+			alert(app);
+			alert(appdata);
+			//此处添加新增方法
+		}
+		
+		//修改
+		function alter_tab(){
+			var al_number = $("input[name='al_number']").val().trim();
+			var al_context = $("input[name='al_context']").val().trim();
+			var al_exten = $("input[name='al_exten']").val().trim();
+			var al_priority = $("input[name='al_priority']").val().trim();
+			var al_app = $("input[name='al_app']").val().trim();
+			var al_appdata = $("input[name='al_appdata']").val().trim();
+//			alert(number);
+//			alert(context);
+//			alert(exten);
+//			alert(priority);
+//			alert(app);
+//			alert(appdata);
+			var count =0;
+			console.log(selected);
+			console.log(count);
+			for(var i in selected){
+				var row = selected[i]+1;
+				var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+				count++;
+				console.log(rows);
+			};
+			if(count==0){
+		        swal({
+		            title:'修改至少选中一行',
+		            timer:1000,
+		            showConfirmButton:false
+		        });
+			}else if(count>1){
+		        swal({
+		            title:'修改不可选中多行',
+		            timer:1000,
+		            showConfirmButton:false
+		        });
+			}else{
+				//此处添加修改方法
+			}
+			
+		}
+		
+		//删除
+		function delete_r() {
+			var count =0;
+			for(var i in selected){
+				var row = selected[i]+1;
+				var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+				count++;
+			};
+			if(count==0){
+		        swal({
+		            title:'删除至少选中一行',
+		            timer:1000,
+		            showConfirmButton:false
+		        });
+			}else{
+				swal({
+					title: "确定删除吗？",
+					type: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#DD6B55",
+					confirmButtonText: "确定！",
+					cancelButtonText: '取消',
+					closeOnConfirm: false
+				},
 				function () {
+					//此处添加删除方法,如果删除成功执行：
 					swal(
 						"删除！", "该分机已经被删除。", "success"
 					);
-					$(othis).parents("tr").css("display", "none");
+					console.log(selected);
+					for(var i in selected){
+						var row = selected[i]+1;
+						var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+						count++;
+						$('#datatable').find("tr").eq(row).css('display','none');
+					};
+					for(var i in selected){
+						selected.splice(i);
+					};
 				});
+			}
 
 		}
 
 		$(document).ready(function () {
-			var selected = []; //选择数组
 			$('#datatable').dataTable();
 
+			//重置全部选择
+            $('#resetBtn').click(function () {
+                resetFilter()
+            })
+            function resetFilter() {
+
+                $('input[name="number"]').val('')
+                $('input[name="context"]').val('')
+                $('input[name="exten"]').val('')
+                $('input[name="priority"]').val('')
+                $('input[name="app"]').val('')
+                $('input[name="appdata"]').val('')
+            }
+            
 			// 选择当前行，排除对于操作列的click监听
 			$('#datatable tbody').on('click', "tr", function () {
 
@@ -473,16 +523,14 @@
 					$('#selectAllBtn').text('全选')
 				}
 			}
-
-			$("#batch").selectmenu(); //下拉菜单初始化
-			$("#status").selectmenu();
+			
 			// radio添加class
 			$('.i-checks').iCheck({
 				checkboxClass: 'icheckbox_square-blue',
 				radioClass: 'iradio_square-blue'
 			});
-
-
+			
+			
 		});
 
 	</script>

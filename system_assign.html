@@ -19,11 +19,18 @@
         <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
         <!-- Treeview css -->
         <link href="css/style_1.css" rel="stylesheet" type="text/css" />
-        <!--template css-->
-        <link href="css/style.css" rel="stylesheet">
-        <link href="css/jayne.css" rel="stylesheet">
         <!--sweetalert css-->
         <link href="css/sweet-alert.css" rel="stylesheet">
+        <!--template css-->
+	    <link href="css/jquery-ui.css" rel="stylesheet">
+	
+	    <link href="css/blue.css" rel="stylesheet">
+	    <link href="css/switch.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/jayne.css" rel="stylesheet">
+	    <link href="css/vlstyle.css" rel="stylesheet">
+	    <link rel="stylesheet" href="css/timeline.css">
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -155,32 +162,14 @@
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/jquery.ui.custom.js"></script>
         <script src="js/jstree.min.js"></script>
+	    <script src="js/jayne.js"></script>
+	    <script src="js/drawer.js"></script>
         <!--sweet alerts-->
         <script src="js/sweet-alert.min.js"></script>
+	    <!-- iCheck for radio and checkboxes -->
+	    <script src="js/icheck.min.js"></script>
+	    <script src="js/switch.js"></script>
         <script>
-			var counter = 0;
-        
-            $(document).ready(function () {
-            	
-                //checkbox
-                $('#checkTree').jstree({
-                    'core': {
-                        'themes': {
-                            'responsive': false
-                        }
-                    },
-                    'types': {
-                        'default': {
-                            'icon': 'fa fa-folder'
-                        },	
-                        'file': {
-                            'icon': 'fa fa-file'
-                        }
-                    },
-                    'plugins': ['types', 'checkbox']
-                });
-            });
-            
             
         </script>
 
