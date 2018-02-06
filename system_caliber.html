@@ -58,27 +58,27 @@
                             <form role="form">
                                 <div class="form-group">
 	                                <label>来源名称</label>
-                                    <input type="email" class="form-control" placeholder="" required="">
+                                    <input type="email" class="form-control" name="name" required="">
                                 </div>
                                 <div class="form-group">
 	                                <label>分配规则</label>
-	                                <select name="" class="form-control" >
-	                                	<option value="">平均规则</option>
-	                                	<option value="">坐席分配规则</option>
+	                                <select name="role" class="form-control" >
+	                                	<option>平均规则</option>
+	                                	<option>坐席分配规则</option>
 	                                </select>
                                 </div>
                                 <div class="form-group">
 	                                <label>关联口径</label>
-	                                <select name="" class="form-control" >
-	                                	<option value="">移动口径1</option>
-	                                	<option value="">移动口径2</option>
-	                                	<option value="">联通口径1</option>
-	                                	<option value="">建行口径1</option>
+	                                <select name="caliber" class="form-control" >
+	                                	<option>移动口径1</option>
+	                                	<option>移动口径2</option>
+	                                	<option>联通口径1</option>
+	                                	<option>建行口径1</option>
 	                                </select>
                                 </div>
                                 <div class="clearfix modal-footer no-border">
                         			<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="submit" class="btn  btn-primary pull-right">创建</button>
+                                    <button type="submit" class="btn  btn-primary pull-right" onclick="add_tab()">创建</button>
                                 </div>
                             </form>
                         </div>
@@ -100,27 +100,27 @@
                             <form role="form">
                                 <div class="form-group">
 	                                <label>来源名称</label>
-                                    <input type="email" class="form-control"  required="">
+                                    <input class="form-control" name="al_name"  required="">
                                 </div>
                                 <div class="form-group">
 	                                <label>分配规则</label>
-	                                <select name="" class="form-control" >
-	                                	<option value="">平均规则</option>
-	                                	<option value="">坐席分配规则</option>
+	                                <select name="al_role" class="form-control" >
+	                                	<option>平均规则</option>
+	                                	<option>坐席分配规则</option>
 	                                </select>
                                 </div>
                                 <div class="form-group">
 	                                <label>关联口径</label>
-	                                <select name="" class="form-control" >
-	                                	<option value="">移动口径1</option>
-	                                	<option value="">移动口径2</option>
-	                                	<option value="">联通口径1</option>
-	                                	<option value="">建行口径1</option>
+	                                <select name="al_caliber" class="form-control" >
+	                                	<option>移动口径1</option>
+	                                	<option>移动口径2</option>
+	                                	<option>联通口径1</option>
+	                                	<option>建行口径1</option>
 	                                </select>
                                 </div>
                                 <div class="clearfix modal-footer no-border">
                         			<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="submit" class="btn  btn-primary pull-right">提交</button>
+                                    <a  class="btn  btn-primary pull-right" onclick="alter_tab()">提交</a>
                                 </div>
                             </form>
                         </div>
@@ -158,8 +158,6 @@
                 <div class="row">
                     <div class="col-sm-6 flex-align-center">
                         <h4 class="inline">口径录入</h4>
-                        &nbsp;&nbsp;&nbsp;&nbsp;          
-                        <a href="#" class="btn btn-default btn-primary" data-toggle="modal" data-target="#createModal" style="margin:5px;">新建口径</a>
                     </div>
                     <div class="col-sm-6 text-right">
                         <ol class="breadcrumb">
@@ -172,13 +170,51 @@
             </div>
             <!--page header end-->
 
+	        <!--page filter start-->
+	        <div class="row">
+	            <div class="col-md-12">
+	                <div class="panel panel-default collapsed">
+	                    <div class="panel-heading">
+	                        <p class="inline">查询条件</p>
+	                        <a class="vl-a" id="resetBtn">重置查询条件</a>
+	                    </div>
+	                    <div class="panel-body">
+	                        <div class="row">
+	
+	                            <div class="col-sm-3">
+	                                <fieldset class="jquery-Ui-fieldset">
+	                                    <label for="uid">知识库</label>
+	                                    <input class="input-150p black" type="" name="library" id="library" value="" />
+	                                </fieldset>
+	                            </div>
+	
+	                            <div class="col-sm-3">
+	                                <fieldset class="jquery-Ui-fieldset">
+	                                    <label for="uname">关键词</label>
+	                                    <input class="input-150p black" type="" name="key" id="key" value="" />
+	                                </fieldset>
+	                            </div>
+	                        </div>
+	                        <a href="javascript: void(0);" class="btn btn-primary inline float-right" onclick="search_tab()">开始查询</a>
+	                    </div>
+	
+	                </div>
+	            </div>
+	        </div>
+	        <!--page filter end-->
+        
             <!--start page content-->
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default collapsed">
-                        <div class="panel-heading">
-                          	口径设置
-                        </div>
+	                    <div class="panel-heading">
+	                        <div class="buttons">
+	                            <a id="selectAllBtn" class="btn btn-primary btn-border">全选</a>
+	                            <a href="javascript: void(0);" class="btn btn-primary" data-toggle="modal" data-target="#createModal">新增</a>
+	                            <a href="javascript: void(0);" class="btn btn-teal" data-toggle="modal" data-target="#updateModal">修改</a>
+	                            <a href="javascript: void(0);" class="btn btn-danger" onclick="delete_r()">删除</a>
+	                        </div>
+	                    </div>
                         <div class="panel-body">
                             <table id="datatable" class="table table-striped dt-responsive nowrap">
                                 <thead>
@@ -186,7 +222,6 @@
                                         <th>知识库</th>
                                         <th>关键词</th>
                                         <th>类型</th>
-                                        <th>操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -200,10 +235,6 @@
 	                                    		<option class="choose-survey" value="调查">调查</option>
 	                                    	</select>
                                     	</td>
-                                        <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" class="" data-toggle="modal" onclick="delete_r(this)" style="margin:5px;">删除</a>
-                                        </td>
                                     </tr>
                                     <tr>
                                     	<td>联通客户调查</td>
@@ -215,10 +246,6 @@
 	                                    		<option class="choose-survey" value="调查">调查</option>
 	                                    	</select>
                                     	</td>
-                                        <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" class="" data-toggle="modal" onclick="delete_r(this)" style="margin:5px;">删除</a>
-                                        </td>
                                     </tr>
                                     <tr>
                                     	<td>海尔XXX部门</td>
@@ -230,10 +257,6 @@
 	                                    		<option class="choose-survey" value="调查">调查</option>
 	                                    	</select>
                                     	</td>
-                                        <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" class="" data-toggle="modal" onclick="delete_r(this)" style="margin:5px;">删除</a>
-                                        </td>
                                     </tr>
                                     <tr>
                                     	<td>海尔XXX部门</td>
@@ -245,10 +268,6 @@
 	                                    		<option class="choose-survey" value="调查">调查</option>
 	                                    	</select>
                                     	</td>
-                                        <td>
-                            				<a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                            				<a href="#" class="" data-toggle="modal" onclick="delete_r(this)" style="margin:5px;">删除</a>
-                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -306,7 +325,6 @@
         <!--end main content-->
 
 
-
         <!--Common plugins-->
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -319,6 +337,11 @@
         <script src="js/jquery.datatables.min.js"></script>
         <script src="js/datatables.responsive.min.js"></script>
         <!--page script-->
+	    <script src="js/jquery-ui.min.js"></script>
+	    <script src="js/jquery.ui.custom.js"></script>
+	    <script src="js/jayne.js"></script>
+	    <script src="js/drawer.js"></script>
+
         <!--editor wysihtml5 and summernote-->
         <script src="js/wysihtml5-0.3.0.js"></script>
         <script src="js/bootstrap-wysihtml5.js"></script>
@@ -328,9 +351,190 @@
 	    <!-- iCheck for radio and checkboxes -->
 	    <script src="js/icheck.min.js"></script>
 	    <script src="js/switch.js"></script>
-	    <script src="js/drawer.js"></script>
 
         <script>
+        	
+        	
+        var selected = [];//选择数组
+        //筛选查询条件
+        function search_tab() {
+            var library = $('#library').val().trim();
+            var key = $('#key').val().trim();
+            alert(library);
+            alert(key);
+            //此处添加查询方法
+        }
+
+        //新增
+        function add_tab() {
+            var name = $("input[name='name']").val().trim();
+            var role = $("select[name='role']").val();
+            var caliber = $("select[name='caliber']").val();
+            alert(name);
+            alert(role);
+            alert(caliber);
+            //此处添加新增方法
+        }
+
+        //修改
+        function alter_tab() {
+            var al_name = $("input[name='al_name']").val().trim();
+            var al_role = $("select[name='al_role']").val();
+            var al_caliber = $("select[name='al_caliber']").val();
+//            			alert(al_name);
+//            			alert(al_role);
+//            			alert(al_caliber);
+            var count = 0;
+            for (var i in selected) {
+                var row = selected[i] + 1;
+                var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+                count++;
+                console.log(rows);
+            };
+            if (count == 0) {
+                swal({
+                    title: '修改至少选中一行',
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+            } else if (count > 1) {
+                swal({
+                    title: '修改不可选中多行',
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+            } else {
+                //此处添加修改方法
+            }
+
+        }
+
+        //删除
+        function delete_r() {
+            var count = 0;
+            for (var i in selected) {
+                var row = selected[i] + 1;
+                var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+                count++;
+            };
+            if (count == 0) {
+                swal({
+                    title: '删除至少选中一行',
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+            } else {
+                swal({
+                    title: "确定删除吗？",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "确定！",
+                    cancelButtonText: '取消',
+                    closeOnConfirm: false
+                },
+                    function () {
+                        //此处添加删除方法,如果删除成功执行：
+                        swal(
+                            "删除！", "已经被删除。", "success"
+                        );
+                        console.log(selected);
+                        for (var i in selected) {
+                            var row = selected[i] + 1;
+                            var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+                            count++;
+                            $('#datatable').find("tr").eq(row).css('display', 'none');
+                        };
+                        for (var i in selected) {
+                            selected.splice(i);
+                        };
+                    });
+            }
+
+        }
+
+        $(document).ready(function () {
+            $('#datatable').dataTable();
+
+
+			//重置全部选择
+            $('#resetBtn').click(function () {
+                resetFilter()
+            })
+
+            function resetFilter() {
+
+                $('input[name="library"]').val('')
+                $('input[name="key"]').val('')
+            }
+            
+            // 选择当前行，排除对于操作列的click监听
+            $('#datatable tbody').on('click', "tr", function () {
+
+                var id = $(this).index();  // id 从server端获取
+
+                var index = $.inArray(id, selected);
+
+                if (index === -1) {
+                    selected.push(id);
+                } else {
+                    selected.splice(index, 1);
+                }
+
+                $(this).toggleClass('selected');
+
+                btnOnSelected(); // 监听是否全选，更改btn status
+
+            });
+
+            // 全选与取消全选
+            $('#selectAllBtn').click(function () {
+
+                // flag 也可以用server选中后的id list 判断，同时在单条选中所有后，更新button状态
+                var flag = $('#selectAllBtn').text() == '全选' ? true : false
+                flag ?
+                    $('#selectAllBtn').text('取消全选')
+                    : $('#selectAllBtn').text('全选')
+
+                $('#datatable tbody tr').each(function (i) {
+                    flag ?
+                        $(this).addClass('selected')
+                        : $(this).removeClass('selected')
+                })
+
+            })
+
+            function btnOnSelected() {
+                if ($('tbody tr').not('.selected').length == 0) {
+                    $('#selectAllBtn').text('取消全选')
+                } else {
+                    $('#selectAllBtn').text('全选')
+                }
+            }
+
+            // radio添加class
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue'
+            });
+
+            var els = document.querySelectorAll('.checkbox-switch');
+            var options = {
+                size: 'small',
+                checked: true,
+                onText: '正常',
+                offText: '离职/休假/未到岗',
+                onInit: function () { },
+                onChange: function () { },
+                onRemove: function () { },
+            };
+
+            els.forEach(function (el) {
+                new Switch(el, options);
+            })
+
+        });
+
             
             $(document).ready(function () {
                 //wysihtml5
@@ -360,34 +564,6 @@
 
                 });
                 
-			    $('#datatable').DataTable({
-			    	destroy:true,
-			        searching: true ,
-			        language: {
-			            "sProcessing": "处理中...",
-			            "sLengthMenu": "显示 _MENU_ 项结果",
-			            "sZeroRecords": "没有匹配结果",
-			            "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-			            "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
-			            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-			            "sInfoPostFix": "",
-			            "sSearch": "搜索:",
-			            "sUrl": "",
-			            "sEmptyTable": "表中数据为空",
-			            "sLoadingRecords": "载入中...",
-			            "sInfoThousands": ",",
-			            "oPaginate": {
-			                "sFirst": "首页",
-			                "sPrevious": "上页",
-			                "sNext": "下页",
-			                "sLast": "末页"
-			            },
-			            "oAria": {
-			                "sSortAscending": ": 以升序排列此列",
-			                "sSortDescending": ": 以降序排列此列"
-			            }
-			        }
-			    });
 			    
 			    $('.choose-type').change(function(e){
 			    	if($(this).val()=='文本'){
@@ -399,7 +575,8 @@
 			    	}
 			    });
             });
-            
+			 
+
         </script>
 
     </body>

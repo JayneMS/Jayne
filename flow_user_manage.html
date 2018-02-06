@@ -271,9 +271,9 @@
                     <div class="panel-heading">
                         <div class="buttons">
                             <a id="selectAllBtn" class="btn btn-primary btn-border">全选</a>
-                            <a href="javascript: void(0);" class="btn btn-primary" data-toggle="modal" data-target="#createModal">新增用户</a>
-                            <a href="javascript: void(0);" class="btn btn-teal" data-toggle="modal" data-target="#updateModal">修改用户</a>
-                            <a href="javascript: void(0);" class="btn btn-danger" onclick="delete_r()">删除用户</a>
+                            <a href="javascript: void(0);" class="btn btn-primary" data-toggle="modal" data-target="#createModal">新增</a>
+                            <a href="javascript: void(0);" class="btn btn-teal" data-toggle="modal" data-target="#updateModal">修改</a>
+                            <a href="javascript: void(0);" class="btn btn-danger" onclick="delete_r()">删除</a>
                         </div>
                     </div>
                     <div class="panel-body">
@@ -408,7 +408,7 @@
         //修改
         function alter_tab() {
             var al_uid = $("input[name='al_uid']").val().trim();
-            var al_uname = $("input[name='al_uname']").val();
+            var al_uname = $("input[name='al_uname']").val().trim();
             var al_role = $("select[name='al_role']").val();
             var al_branch = $("select[name='al_branch']").val();
             //			alert(al_uname);
@@ -466,7 +466,7 @@
                     function () {
                         //此处添加删除方法,如果删除成功执行：
                         swal(
-                            "删除！", "该分机已经被删除。", "success"
+                            "删除！", "已经被删除。", "success"
                         );
                         console.log(selected);
                         for (var i in selected) {
