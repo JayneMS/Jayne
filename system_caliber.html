@@ -25,11 +25,17 @@
         <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
         <!-- Treeview css -->
         <link href="css/style_1.css" rel="stylesheet" type="text/css" />
-        <!--template css-->
-        <link href="css/style.css" rel="stylesheet">
-        <link href="css/jayne.css" rel="stylesheet">
         <!--sweetalert css-->
         <link href="css/sweet-alert.css" rel="stylesheet">
+        <!--template css-->
+	    <link href="css/jquery-ui.css" rel="stylesheet">
+	
+	    <link href="css/blue.css" rel="stylesheet">
+	    <link href="css/switch.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/jayne.css" rel="stylesheet">
+	    <link href="css/vlstyle.css" rel="stylesheet">
+	    <link rel="stylesheet" href="css/timeline.css">
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -317,8 +323,12 @@
         <script src="js/wysihtml5-0.3.0.js"></script>
         <script src="js/bootstrap-wysihtml5.js"></script>
         <script src="js/summernote.min.js"></script>
-        <!--sweet alerts-->
-        <script src="js/sweet-alert.min.js"></script>
+	    <!--sweet alerts-->
+	    <script src="js/sweet-alert.min.js"></script>
+	    <!-- iCheck for radio and checkboxes -->
+	    <script src="js/icheck.min.js"></script>
+	    <script src="js/switch.js"></script>
+	    <script src="js/drawer.js"></script>
 
         <script>
             
@@ -389,24 +399,6 @@
 			    	}
 			    });
             });
-            function delete_r(othis){
-            	swal({    
-            		title: "确定删除吗？",    
-            		type: "warning",   
-            		showCancelButton: true,    
-            		confirmButtonColor: "#DD6B55",   
-            		confirmButtonText: "确定！",
-            		cancelButtonText:'取消',
-            		closeOnConfirm: false 
-            	}, 
-            	function(){   
-            		swal(
-            			"删除！", "该口径已经被删除。","success"
-            		);
-            		$(othis).parents("tr").css("display","none");
-            	});
-            	
-            }
             
         </script>
 
