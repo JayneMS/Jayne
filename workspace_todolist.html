@@ -65,6 +65,9 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <h4 class="inline">我的待办任务</h4>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="#" class="btn btn-primary shift calendar-title"  style="display: none;">日历视角</a>
+                        <a href="#" class="btn btn-primary shift list-title">列表视角</a>
                     </div>
                     <div class="col-sm-6 text-right">
                         <ol class="breadcrumb">
@@ -76,54 +79,59 @@
                 </div>
             </div>
             <!--page header end-->
+            
+            
+        <!--page filter start-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default collapsed">
+                    <div class="panel-heading">
+                        <p class="inline">查询条件</p>
+                        <a class="vl-a" id="resetBtn">重置查询条件</a>
+                    </div>
+                    <div class="panel-body">
+                        <div class=" form-group left-30p">
+                    		<div class="row">
+                            	<div class="inline width-33">
+	                                <label>请选择状态</label>
+		                            <div class="inline float-left left-30p">
+		                                <div class="radio inline-75p">
+		                                    <input id="status" type="radio" name="status" value="全部任务" checked="">全部任务
+		                                </div>
+		                                <div class="radio inline-75p">
+		                                    <input id="status" type="radio" name="status" value="已完成" >已完成
+		                                </div>
+		                                <div class="radio inline-75p">
+		                                    <input id="status" type="radio" name="status" value="未完成" >未完成
+		                                </div>
+		                                <div class="radio inline-75p">
+		                                    <input id="status" type="radio" name="status" value="进行中" >进行中
+		                                </div>
+		                            </div>
+		                        </div>
+                            </div>
+	
+	                        <div class="row">	
+                            	<div class="inline width-33">
+                                    <label>请选择导入数据起止时间</label>
+                                    <input name="daterange" id="daterange" type="text">
+                            	</div>	
+	                        </div>
+                        </div>
+                        
+                        <a href="javascript: void(0);" class="btn btn-primary inline float-right" onclick="search_tab()">开始查询</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--page filter end-->
+
+            
             <!--start page content-->
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default collapsed">
                         <div class="panel-body">
-                        	<div class="width-100">
-                        		<div class="width-60 inline">
-				                    <form method="get" action="/" class="form-horizontal">
-			                            <div class=" form-group left-30p">
-			                                <!--<fieldset class="jquery-Ui-fieldset">-->
-				                                <div class="inline float-left">
-				                                    <div class="radio inline-75p">
-				                                        <input id="optionsRadios1" type="radio" name="optionsRadios" value="option1" checked="">全部任务
-				                                    </div>
-				                                    <div class="radio inline-75p">
-				                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" >已完成
-				                                    </div>
-				                                    <div class="radio inline-75p">
-				                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" >未完成
-				                                    </div>
-				                                    <div class="radio inline-75p">
-				                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" >进行中
-				                                    </div>
-				                                </div>
-			                                <!--</fieldset>-->
-			                            </div>
-				                    </form>
-		                            <div>
-		                                <fieldset class="jquery-Ui-fieldset">
-		                                	<div class="inline width-33">
-			                                    <label for="status">请选择导入数据起止时间</label>
-			                                    <input class="" name="daterange" type="text">
-		                                	</div>	
-			                                <div class="inline left-30p">
-			                                    <div class="radio inline-75p">
-			                                        <input id="optionsRadios1" type="radio" name="optionsRadios" value="option1" checked="">全部任务
-			                                    </div>
-			                                    <div class="radio inline-75p">
-			                                        <input id="optionsRadios2" type="radio" name="optionsRadios" value="option2" >已完成
-			                                    </div>
-			                                </div>
-		                                </fieldset>
-		                            </div>
-                        		</div>          
-	                            <a href="#" class="btn btn-primary top-button left-button " >筛选</a>
-	                            <a href="#" class="btn btn-primary top-button right-button shift calendar-title"  style="display: none;">日历视角</a>
-	                            <a href="#" class="btn btn-primary top-button right-button shift list-title">列表视角</a>
-                        	</div>
                             <table id="datatable" class="table table-striped dt-responsive nowrap list-table" style="display: none;">
                                 <thead>
                                     <tr>
@@ -248,6 +256,13 @@
         <script src="js/fullcalendar.min.js"></script>
         <script src="js/icheck.min.js"></script>
         <script>
+	        function search_tab() {
+	            var status = $('#status').val().trim();
+	            var daterange = $('#daterange').val().trim();
+	            alert(status);
+	            alert(daterange);
+	            //此处添加查询方法
+	        }
 			$(function() {
 				$.timeliner({
 					startOpen:['#20170831EX','#20170931EX']
