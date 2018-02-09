@@ -82,7 +82,7 @@
             
             
         <!--page filter start-->
-        <div class="row">
+        <div class="row filter" style="display: none;">
             <div class="col-md-12">
                 <div class="panel panel-default collapsed">
                     <div class="panel-heading">
@@ -277,6 +277,7 @@
 				//日历视角切换
 				$('.list-table').css('display','none');
 				$('.list-title').css('display','inline-block');
+				$('.filter').css('display','none');
 				$('.calendar-title').css('display','none');
 				$('.calendar').css('display','block');
 			});
@@ -284,6 +285,7 @@
 				//列表视角切换
 				$('.list-table').css('display','table');
 				$('.list-title').css('display','none');
+				$('.filter').css('display','block');
 				$('.calendar-title').css('display','inline-block');
 				$('.calendar').css('display','none');
 				
