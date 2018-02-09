@@ -23,6 +23,7 @@
         <!--template css-->
         <link href="css/style.css" rel="stylesheet">
         <link href="css/jayne.css" rel="stylesheet">
+        <link href="css/vlstyle.css" rel="stylesheet">
 		<!-- datapicker css-->
     	<link href="css/daterangepicker.css" rel="stylesheet">
     	<!-- calender css-->
@@ -114,7 +115,7 @@
 	                        <div class="row">	
                             	<div class="inline width-33">
                                     <label>请选择导入数据起止时间</label>
-                                    <input name="daterange" id="daterange" type="text">
+                                    <input name="daterange" id="daterange" type="text" >
                             	</div>	
 	                        </div>
                         </div>
@@ -128,11 +129,11 @@
 
             
             <!--start page content-->
-            <div class="row">
+            <div class="row list-table" style="display: none;">
                 <div class="col-md-12">
                     <div class="panel panel-default collapsed">
                         <div class="panel-body">
-                            <table id="datatable" class="table table-striped dt-responsive nowrap list-table" style="display: none;">
+                            <table id="datatable" class="table table-striped dt-responsive nowrap" >
                                 <thead>
                                     <tr>
                                         <th>我的任务</th>
@@ -189,9 +190,19 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <!--<div id="" style="display: none;">-->
+                            
+                        </div>
+                    </div>
+                </div>
+            </div><!--end row-->
+             
+            <!--start page content-->
+            <div class="row calendar-div">
+                <div class="col-md-12">
+                    <div class="panel panel-default collapsed">
+                        <div class="panel-body">
                             	
-                           	<div class="calendar">
+                           	<div class="">
                                 <div class="col-md-3">
                                     <div id='external-events'>
                                         <h4>拖拽一个事件放入日历中</h4>
@@ -212,8 +223,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--</div>-->
-
                         </div>
                     </div>
                 </div>
@@ -246,133 +255,126 @@
         <script src="js/datatables.responsive.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/jquery.ui.custom.js"></script>
+        <script src="js/moment.min.js"></script>
         <script src="js/moment-with-locales.js"></script>
         <script src="js/bootstrap-datetimepicker.min.js"></script>
         <script type="text/javascript" src="js/colorbox.js"></script>
         <script type="text/javascript" src="js/timeliner.min.js"></script>
     	<script src="js/daterangepicker.js"></script>
-    	<script src="js/moment.min.js"></script>
+    	<script src="js/drawer.js"></script>
         <!--ichecks-->
         <script src="js/fullcalendar.min.js"></script>
         <script src="js/icheck.min.js"></script>
+	    <script src="js/jayne.js"></script>
+	    <script src="js/tableConfig.js"></script>
         <script>
-	        function search_tab() {
-	            var status = $('#status').val().trim();
-	            var daterange = $('#daterange').val().trim();
-	            alert(status);
-	            alert(daterange);
-	            //此处添加查询方法
-	        }
-			$(function() {
-				$.timeliner({
-					startOpen:['#20170831EX','#20170931EX']
+	        $(document).ready(function(){
+	        	
+		        function search_tab() {
+		            var status = $('#status').val().trim();
+		            var daterange = $('#daterange').val().trim();
+		            alert(status);
+		            alert(daterange);
+		            //此处添加查询方法
+		        }
+				$('.calendar-title').click(function(){
+					//日历视角切换
+					$('.list-table').css('display','none');
+					$('.list-title').css('display','inline-block');
+					$('.filter').css('display','none');
+					
+					$('.calendar-title').css('display','none');
+					$('.calendar-div').css('display','block');
 				});
-   
-                $('#datetimepicker1').datetimepicker();
-	            $('#datetimepicker11').datetimepicker({
-	                daysOfWeekDisabled: [0, 6]
+				$('.list-title').click(function(){
+					//列表视角切换
+					$('.list-table').css('display','block');
+					$('.list-title').css('display','none');
+					$('.filter').css('display','block');
+					
+					$('.calendar-title').css('display','inline-block');
+					$('.calendar-div').css('display','none');
+					
+				});
+	
+	            	
+	            $('input[name="daterange"]').daterangepicker(dateRangeConfig,
+	                function (start, end) {
+	                    console.log(start.format('YYYY-MM-DD'))
+	                    console.log(end.format('YYYY-MM-DD'))
+	                }
+	            );
+	            
+				$(function() {
+					$.timeliner({
+						startOpen:['#20170831EX','#20170931EX']
+					});
+	   
+	                $('#datetimepicker1').datetimepicker();
+		            $('#datetimepicker11').datetimepicker({
+		                daysOfWeekDisabled: [0, 6]
+		            });
+				});
+	            //icheck for checkbox
+	             $('.i-checks').iCheck({
+	                checkboxClass: 'icheckbox_square-blue',
+	                radioClass: 'iradio_square-blue'
 	            });
-			});
-			$('.calendar-title').click(function(){
-				//日历视角切换
-				$('.list-table').css('display','none');
-				$('.list-title').css('display','inline-block');
-				$('.filter').css('display','none');
-				$('.calendar-title').css('display','none');
-				$('.calendar').css('display','block');
-			});
-			$('.list-title').click(function(){
-				//列表视角切换
-				$('.list-table').css('display','table');
-				$('.list-title').css('display','none');
-				$('.filter').css('display','block');
-				$('.calendar-title').css('display','inline-block');
-				$('.calendar').css('display','none');
-				
-			});
-            $('input[name="daterange"]').daterangepicker(
-                {
-                    locale: {
-                        format: 'YYYY-MM-DD',
-                        cancelLabel: '取消',
-                        applyLabel: '选择',
-                        "fromLabel": "从",
-                        "toLabel": "至",
-                        "customRangeLabel": "Custom",
-                        "weekLabel": "周",
-                        "daysOfWeek": [
-                            "日",
-                            "一",
-                            "二",
-                            "三",
-                            "四",
-                            "五",
-                            "六"
-                        ],
-                        "monthNames": [
-                            "一月",
-                            "二月",
-                            "三月",
-                            "四月",
-                            "五月",
-                            "六月",
-                            "七月",
-                            "八月",
-                            "九月",
-                            "十月",
-                            "十一月",
-                            "十二月"
-                        ],
-                        "firstDay": 1
-                    },
-                    startDate: '2018-01-01',
-                    endDate: moment()
-                });
-                            
-            $(document).ready(function(){
-                
-                //icheck for checkbox
-                 $('.i-checks').iCheck({
-                    checkboxClass: 'icheckbox_square-blue',
-                    radioClass: 'iradio_square-blue'
-                });
-
-                /* initialize the external events
-                 -----------------------------------------------------------------*/
-                $('#external-events .fc-event').each(function () {
-
-                    // store data so the calendar knows to render an event upon drop
-                    $(this).data('event', {
-                        title: $.trim($(this).text()), // use the element's text as the event title
-                        stick: true // maintain when user navigates (see docs on the renderEvent method)
-                    });
-
-                    // make the event draggable using jQuery UI
-                    $(this).draggable({
-                        zIndex: 999,
-                        revert: true, // will cause the event to go back to its
-                        revertDuration: 0  //  original position after the drag
-                    });
-                });
-                /* initialize the calendar
-                 -----------------------------------------------------------------*/
-                $('#calendar').fullCalendar({
-                    header: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'month,agendaWeek,agendaDay'
-                    },
-                    editable: true,
-                    droppable: true, // this allows things to be dropped onto the calendar
-                    drop: function () {
-                        // is the "remove after drop" checkbox checked?
-                        if ($('#drop-remove').is(':checked')) {
-                            // if so, remove the element from the "Draggable Events" list
-                            $(this).remove();
-                        }
-                    }
-                });
-            });
+	
+	            /* initialize the external events
+	             -----------------------------------------------------------------*/
+	            $('#external-events .fc-event').each(function () {
+	
+	                // store data so the calendar knows to render an event upon drop
+	                $(this).data('event', {
+	                    title: $.trim($(this).text()), // use the element's text as the event title
+	                    stick: true // maintain when user navigates (see docs on the renderEvent method)
+	                });
+	
+	                // make the event draggable using jQuery UI
+	                $(this).draggable({
+	                    zIndex: 999,
+	                    revert: true, // will cause the event to go back to its
+	                    revertDuration: 0  //  original position after the drag
+	                });
+	            });
+	            /* initialize the calendar
+	             -----------------------------------------------------------------*/
+	            $('#calendar').fullCalendar({
+	                header: {
+	                    left: 'prev,next today',
+	                    center: 'title',
+	                    right: 'month,agendaWeek,agendaDay'
+	                },
+	                editable: true,
+	                droppable: true, // this allows things to be dropped onto the calendar
+	                drop: function () {
+	                    // is the "remove after drop" checkbox checked?
+	                    if ($('#drop-remove').is(':checked')) {
+	                        // if so, remove the element from the "Draggable Events" list
+	                        $(this).remove();
+	                    }
+	                }
+	            });
+	            
+	            if (navigator.userAgent.indexOf("MSIE")>0) {
+	            	$('input[name="daterange"]').attr('placeholder','XXXX-XX-XX - XXXX-XX-XX');
+	            }
+	
+	            $('#resetBtn').click(function () {
+	                resetFilter()
+	            })
+	
+	            function resetFilter() {
+	                $('#recycleFilter').iCheck('uncheck');
+	                $('#recycleFilter').iCheck('uncheck');
+	                $('#recycleFilter').iCheck('uncheck');
+	                $('#recycleFilter').iCheck('uncheck');
+	                $('input[name="daterange"]').val('')
+	            }
+	
+	
+	        });
         </script>
 
     </body>
