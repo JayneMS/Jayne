@@ -426,6 +426,7 @@
 		    var nodes=$("#checkTree").jstree("get_checked"); //使用get_checked方法 
 		    $.each(nodes, function(i, n) { 
 		    	ids += $(n).attr("id")+","; 
+		    	console.log(ids);
 		    }); 
 		    alert(ids); 
 			
