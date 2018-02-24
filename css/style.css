@@ -2418,10 +2418,12 @@ Misc pages styles like 404, login, register etc.
   height: 100%;
   display: table;
   position: relative;
-  background-image: url(../images/pattern.png);
+  background-image: url(../images/jhk-5.jpeg);
+  background-position: right;
+  background-size: cover;
   background-color: #8cb5f4;
   background-repeat: repeat;
-  padding: 20px 0;
+  padding: 0;
 }
 
 .misc-content {
@@ -2429,6 +2431,8 @@ Misc pages styles like 404, login, register etc.
   vertical-align: middle;
   width: 100%;
   position: relative;
+  /* background: #003d8b85; */
+  background: #a0bfe691;
 }
 
 .misc-box {
