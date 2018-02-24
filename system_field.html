@@ -21,12 +21,16 @@
     <link href="css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css">
     <!-- Treeview css -->
     <link href="css/style_1.css" rel="stylesheet" type="text/css" />
-    <!--template css-->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/jayne.css" rel="stylesheet">
     <!--sweetalert css-->
     <link href="css/sweet-alert.css" rel="stylesheet">
+    <!--template css-->
+    <link href="css/jquery-ui.css" rel="stylesheet">
+    <link href="css/daterangepicker.css" rel="stylesheet">
+    <link href="css/blue.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/jayne.css" rel="stylesheet">
     <link href="css/vlstyle.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/timeline.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -101,8 +105,6 @@
             <div class="row">
                 <div class="col-sm-6 flex-align-center">
                     <h4 class="inline">表字段设置与维护</h4>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="./system_field_create.html" class="btn btn-default btn-primary" style="margin:5px;">新建模板</a>
                 </div>
                 <div class="col-sm-6 text-right">
                     <ol class="breadcrumb">
@@ -119,19 +121,60 @@
         </div>
         <!--page header end-->
 
+        <!--page filter start-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default collapsed">
+                    <div class="panel-heading">
+                        <p class="inline">查询条件</p>
+                        <a class="vl-a" id="resetBtn">重置查询条件</a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                    <label>模板名称</label>
+                                    <input class="input-150p black" type="" name="name" id="name" value="" />
+                                </fieldset>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                    <label>所属公海</label>
+                                    <input class="input-150p black" type="" name="highsea" id="highsea" value="" />
+                                </fieldset>
+                            </div>
+                            
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                    <label>创建人</label>
+                                    <input class="input-150p black" type="" name="creater" id="creater" value="" />
+                                </fieldset>
+                            </div>
+                        </div>
+                        <a href="javascript: void(0);" class="btn btn-primary inline float-right" onclick="search_tab()">开始查询</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--page filter end-->
+
         <!--start page content-->
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default collapsed">
                     <div class="panel-heading">
-                        字段模板列表
+                        <div class="buttons">
+                            <a id="selectAllBtn" class="btn btn-primary btn-border">全选</a>
+                    		<a href="./system_field_create.html" class="btn btn-primary" style="margin:5px;">新增</a>
+                            <a href="./system_field_create.html?id=" class="btn btn-teal">修改</a>
+                            <a href="javascript: void(0);" class="btn btn-danger" onclick="delete_r()">删除</a>
+                        </div>
                     </div>
                     <div class="panel-body">
-                        <div class="buttons">
-                            <a href="javascript: void(0);" class="btn btn-primary">修改</a>
-                            <a href="javascript: void(0);" class="btn btn-danger">删除</a>
-                        </div>
-                        <table id="fieldTemplateList" class="table table-striped dt-responsive nowrap">
+                        <table id="datatable" class="table table-striped dt-responsive nowrap">
                             <thead>
                                 <tr>
                                     <th>模板名称</th>
@@ -204,19 +247,166 @@
     <script src="js/jquery.ui.custom.js"></script>
     <script src="js/jayne.js"></script>
     <script src="js/jstree.min.js"></script>
+    <script src="js/drawer.js"></script>
+
     <!--sweet alerts-->
     <script src="js/sweet-alert.min.js"></script>
+    <!-- iCheck for radio and checkboxes -->
+    <script src="js/icheck.min.js"></script>
+    <script src="js/switch.js"></script>
     <script src="js/tableConfig.js"></script>
     <script>
         var counter = 0;
+        
+        var selected = [];//选择数组
+        //筛选查询条件
+        function search_tab() {
+            var name = $('#name').val().trim();
+            var highsea = $('#highsea').val().trim();
+            var creater = $('#creater').val().trim();
+            alert(name);
+            alert(highsea);
+            alert(creater);
+            //此处添加查询方法
+        }
+
+
+
+        //删除
+        function delete_r() {
+            var count = 0;
+            for (var i in selected) {
+                var row = selected[i] + 1;
+                var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+                count++;
+            };
+            if (count == 0) {
+                swal({
+                    title: '删除至少选中一行',
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+            } else {
+                swal({
+                    title: "确定删除吗？",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "确定！",
+                    cancelButtonText: '取消',
+                    closeOnConfirm: false
+                },
+                    function () {
+                        //此处添加删除方法,如果删除成功执行：
+                        swal(
+                            "删除！", "已经被删除。", "success"
+                        );
+                        console.log(selected);
+                        for (var i in selected) {
+                            var row = selected[i] + 1;
+                            var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+                            count++;
+                            $('#datatable').find("tr").eq(row).css('display', 'none');
+                        };
+                        for (var i in selected) {
+                            selected.splice(i);
+                        };
+                    });
+            }
+
+        }
+
+        $(document).ready(function () {
+            $('#datatable').dataTable();
+
+
+			//重置全部选择
+            $('#resetBtn').click(function () {
+                resetFilter()
+            })
+
+            function resetFilter() {
+
+                $('input[name="name"]').val('')
+                $('input[name="highsea"]').val('')
+                $('input[name="creater"]').val('')
+            }
+            
+            // 选择当前行，排除对于操作列的click监听
+            $('#datatable tbody').on('click', "tr", function () {
+
+
+                var id = $(this).index();  // id 从server端获取
+
+                var index = $.inArray(id, selected);
+
+                if (index === -1) {
+                    selected.push(id);
+                } else {
+                    selected.splice(index, 1);
+                }
+
+                $(this).toggleClass('selected');
+
+                btnOnSelected(); // 监听是否全选，更改btn status
+
+            });
+
+            // 全选与取消全选
+            $('#selectAllBtn').click(function () {
+
+                // flag 也可以用server选中后的id list 判断，同时在单条选中所有后，更新button状态
+                var flag = $('#selectAllBtn').text() == '全选' ? true : false
+                flag ?
+                    $('#selectAllBtn').text('取消全选')
+                    : $('#selectAllBtn').text('全选')
+
+                $('#datatable tbody tr').each(function (i) {
+                    flag ?
+                        $(this).addClass('selected')
+                        : $(this).removeClass('selected')
+                })
+
+            })
+
+            function btnOnSelected() {
+                if ($('tbody tr').not('.selected').length == 0) {
+                    $('#selectAllBtn').text('取消全选')
+                } else {
+                    $('#selectAllBtn').text('全选')
+                }
+            }
+
+            // radio添加class
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue'
+            });
+
+            var els = document.querySelectorAll('.checkbox-switch');
+            var options = {
+                size: 'small',
+                checked: true,
+                onText: '正常',
+                offText: '离职/休假/未到岗',
+                onInit: function () { },
+                onChange: function () { },
+                onRemove: function () { },
+            };
+
+            els.forEach(function (el) {
+                new Switch(el, options);
+            })
+
+        });
+
+        
 
         $(document).ready(function () {
 
             $('#fieldTemplateList').DataTable(languageConfig);
 
-            var selected = []; //选择数组
             $('#fieldTemplateList tbody').on('click', "tr", function () {
-
 
                 var id = $(this).index();  // id 从server端获取
 
@@ -237,25 +427,6 @@
 
         });
 
-
-        function delete_r(othis) {
-            swal({
-                title: "确定删除吗？",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "确定！",
-                cancelButtonText: '取消',
-                closeOnConfirm: false
-            },
-                function () {
-                    swal(
-                        "删除！", "该字段已经被删除。", "success"
-                    );
-                    $(othis).parents("tr").css("display", "none");
-                });
-
-        }
 
         function createhighsea() {
             var fieldname = new Array();

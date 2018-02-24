@@ -13,7 +13,7 @@ https://ey8mhu.axshare.com/    （随时更新）
 - workspace_called.html		工作台/被叫中心
 - flow_compentence_manage.html 流程管理/角色与权限管理
 - workspace_my_workspace.html	工作台/我的工作台
-- flow_user_manage.html	流程管理/用户管理√
+- flow_user_manage.html	流程管理/用户管理
 - data_import.html  数据导入
 - system_field.html  系统设置/字段模板设置
 - system_password.html  系统设置/密码管理
@@ -21,9 +21,9 @@ https://ey8mhu.axshare.com/    （随时更新）
 - system_caliber.html  系统设置/口径录入
 - flow_department.html  流程管理/部门管理
 - workspace_todolist.html  工作台/我的待办任务
-- teletraffic_extension.html  话务设置/分机管理√
-- teletraffic_datapool.html  话务设置/数据池维护√
-- teletraffic_dialplan.html  话务设置/拨号方案√
+- teletraffic_extension.html  话务设置/分机管理
+- teletraffic_datapool.html  话务设置/数据池维护
+- teletraffic_dialplan.html  话务设置/拨号方案
 
 
 #### 可开发模块

@@ -26,6 +26,7 @@
     <!--template css-->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/jayne.css" rel="stylesheet">
+    <link href="css/vlstyle.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -51,19 +52,20 @@
                         <form role="form">
                             <div class="form-group">
                                 <label>角色名称</label>
-                                <input id="role-name" type="text" class="form-control" placeholder="" required="">
+                                <span class="require-star">*</span>
+                                <input id="role-name" name="role-name" class="form-control" required="">
                             </div>
                             <div class="form-group">
                                 <label>角色别名</label>
-                                <input id="role-nickname" type="text" class="form-control" placeholder="">
+                                <input id="role-nickname" name="role-nickname" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>角色标志</label>
-                                <input id="role-symbol" type="text" class="form-control" placeholder="">
+                                <input id="role-symbol" name="role-symbol" class="form-control">
                             </div>
 
                             <div class="clearfix">
-                                <button type="submit" class="btn  btn-primary pull-right">创建</button>
+                                <a class="btn btn-primary pull-right" onclick="add_tab()">创建</a>
                             </div>
                         </form>
                     </div>
@@ -72,6 +74,7 @@
         </div>
     </div>
     <!--modal create-role end-->
+    
     <!--modal update-role start-->
     <div class="modal fade" data-backdrop="static" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModal">
         <div class="modal-dialog" role="document">
@@ -87,19 +90,20 @@
                         <form role="form">
                             <div class="form-group">
                                 <label>角色名称</label>
-                                <input id="role-name" type="text" class="form-control" required="">
+                                <span class="require-star">*</span>
+                                <input id="al_role-name" name="al_role-name" class="form-control" required="">
                             </div>
                             <div class="form-group">
                                 <label>角色别名</label>
-                                <input id="role-nickname" type="text" class="form-control">
+                                <input id="al_role-nickname" name="al_role-nickname" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>角色标志</label>
-                                <input id="role-symbol" type="text" class="form-control">
+                                <input id="al_role-symbol" name="al_role-symbol" class="form-control">
                             </div>
 
                             <div class="clearfix">
-                                <button type="submit" class="btn  btn-primary pull-right">创建</button>
+                                <a class="btn  btn-primary pull-right" onclick="alter_tab()">创建</a>
                             </div>
                         </form>
                     </div>
@@ -108,50 +112,8 @@
         </div>
     </div>
     <!--modal update-role end-->
-    <!--modal set-role start-->
-    <div class="modal fade" data-backdrop="static" id="setModal" tabindex="-1" role="dialog" aria-labelledby="setModal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content height-400">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="fa fa-times-circle"></span>
-                    </button>
-                    <h3 class="modal-title" id="myModalLabel">设置权限</h3>
-                </div>
-                <div class="modal-body flex-center scroll-div">
-                    <div class="modal-form flex-center">
-                        <div class="panel-body flex-center flex-column set-div">
-                            <div class="checkTree">
-                                <ul>
-                                    <li data-jstree='{"type":"file"}'>首页</li>
-                                    <li data-jstree='{"opened":true}'>客户信息管理
-                                        <ul>
-                                            <li data-jstree='{"type":"file"}'>数据录入</li>
-                                            <li data-jstree='{"type":"file"}'>数据公海</li>
-                                            <li data-jstree='{"type":"file"}'>我的公海</li>
-                                            <li data-jstree='{"type":"file"}'>预测外呼</li>
-                                            <li data-jstree='{"type":"file"}'>垃圾箱</li>
-                                        </ul>
-                                    </li>
-                                    <li data-jstree='{"opened":true}'>工作台
-                                        <ul>
-                                            <li data-jstree='{"type":"file"}'>我的工作台</li>
-                                            <li data-jstree='{"type":"file"}'>被叫页面</li>
-                                            <li data-jstree='{"type":"file"}'>待办任务</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                            <hr />
-                            <button type="button" class="btn  btn-primary pull-right">创建</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--end row-->
-        </div>
-    </div>
-    <!--modal set-role end-->
+    
+    
     <!--right side bar panel-->
     <nav id="right-sidebar-toggle" class="right_sidebar">
         <div class="nano">
@@ -164,14 +126,14 @@
                     </ul>
                     <div class="checkTree">
                         <ul>
-                            <li data-jstree='{"type":"file"}'>首页</li>
-                            <li data-jstree='{"opened":true}'>客户信息管理
+                            <li id="index" data-jstree='{"type":"file"}'>首页</li>
+                            <li id="customer" data-jstree='{"opened":true}'>客户信息管理
                                 <ul>
-                                    <li data-jstree='{"type":"file"}'>数据录入</li>
-                                    <li data-jstree='{"type":"file"}'>数据公海</li>
-                                    <li data-jstree='{"type":"file"}'>我的公海</li>
-                                    <li data-jstree='{"type":"file"}'>预测外呼</li>
-                                    <li data-jstree='{"type":"file"}'>垃圾箱</li>
+                                    <li id="customer_import" data-jstree='{"type":"file"}'>数据录入</li>
+                                    <li id="customer_import" data-jstree='{"type":"file"}'>数据公海</li>
+                                    <li id="customer_import" data-jstree='{"type":"file"}'>我的公海</li>
+                                    <li id="customer_import" data-jstree='{"type":"file"}'>预测外呼</li>
+                                    <li id="customer_import" data-jstree='{"type":"file"}'>垃圾箱</li>
                                 </ul>
                             </li>
                             <li data-jstree='{"opened":true}'>工作台
@@ -233,33 +195,13 @@
                             </li>
                         </ul>
                     </div>
-                    <button type="button" class="btn  btn-primary center-block">创建</button>
+                    <a class="btn  btn-primary center-block" onclick="set_limit()">创建</a>
                 </div>
             </div>
         </div>
     </nav>
     <!--end right side bar panel-->
 
-
-    <!--modal delete-->
-    <div class="modal fade modal-delete" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="fa fa-times-circle"></span></button>-->
-                    <h4 class="modal-title" id="mySmallModalLabel">删除角色</h4>
-                </div>
-                <div class="modal-body">
-                    您确定要删除此角色吗？
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">确定</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--end delete modal-->
 
     <!--main content start-->
     <section class="main-content">
@@ -269,8 +211,6 @@
             <div class="row">
                 <div class="col-sm-6 flex-align-center">
                     <h4 class="inline">角色与权限管理</h4>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="#" class="btn btn-default btn-primary " data-toggle="modal" data-target="#createModal" style="margin:5px;">新建角色</a>
                 </div>
                 <div class="col-sm-6 text-right">
                     <ol class="breadcrumb">
@@ -287,24 +227,66 @@
         </div>
         <!--page header end-->
 
+        <!--page filter start-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default collapsed">
+                    <div class="panel-heading">
+                        <p class="inline">查询条件</p>
+                        <a class="vl-a" id="resetBtn">重置查询条件</a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                    <label>角色名称</label>
+                                    <input class="input-150p black" name="name" id="name" />
+                                </fieldset>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                    <label>角色别名</label>
+                                    <input class="input-150p black" name="nickname" id="nickname" />
+                                </fieldset>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <fieldset class="jquery-Ui-fieldset">
+                                    <label>角色标识</label>
+                                    <input class="input-150p black" name="symbol" id="symbol" />
+                                </fieldset>
+                            </div>
+                        </div>
+                        <a href="javascript: void(0);" class="btn btn-primary inline float-right" onclick="search_tab()">开始查询</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--page filter end-->
         <!--start page content-->
 
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default collapsed">
                     <div class="panel-heading">
-                        角色与权限
+                        <div class="buttons">
+                            <a id="selectAllBtn" class="btn btn-primary btn-border">全选</a>
+                            <a href="javascript: void(0);" class="btn btn-primary" data-toggle="modal" data-target="#createModal">新增</a>
+                            <a href="javascript: void(0);" class="btn btn-teal" data-toggle="modal" data-target="#updateModal">修改</a>
+                            <a href="javascript: void(0);" class="btn btn-danger" onclick="delete_r()">删除</a>
+                            <a href="javascript: void(0);" class="btn btn-dribbble right-sidebar-toggle">设置权限</a>
+                        </div>
                     </div>
                     <div class="panel-body">
-                        <table id="" class="table table-striped dt-responsive nowrap">
-                            <!--<table id="datatable" class="table table-striped dt-responsive nowrap">-->
+                        <table id="datatable" class="table table-striped dt-responsive nowrap">
                             <thead>
                                 <tr>
                                     <th>角色名称</th>
                                     <th>角色别名</th>
                                     <th>角色标识</th>
                                     <th>人数</th>
-                                    <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -313,45 +295,24 @@
                                     <td>超管</td>
                                     <td>CJGLY</td>
                                     <td>1</td>
-                                    <td>
-                                        <a href="javascript: void(0);" class="right-sidebar-toggle">设置权限a</a>
-                                        <!--<a href="#" class="" data-toggle="modal" data-target="#setModal" style="margin:5px;">设置权限</a>-->
-                                        <a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                                        <a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
-                                    </td>
                                 </tr>
                                 <tr>
                                     <td>管理员</td>
                                     <td>管理</td>
                                     <td>GLY</td>
                                     <td>2</td>
-                                    <td>
-                                        <a href="#" class="" data-toggle="modal" data-target="#setModal" style="margin:5px;">设置权限</a>
-                                        <a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                                        <a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
-                                    </td>
                                 </tr>
                                 <tr>
                                     <td>队列班长</td>
                                     <td>班长</td>
                                     <td>BMGLY</td>
                                     <td>4</td>
-                                    <td>
-                                        <a href="#" class="" data-toggle="modal" data-target="#setModal" style="margin:5px;">设置权限</a>
-                                        <a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                                        <a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
-                                    </td>
                                 </tr>
                                 <tr>
                                     <td>坐席</td>
                                     <td>坐席</td>
                                     <td>ZX</td>
                                     <td>100</td>
-                                    <td>
-                                        <a href="#" class="" data-toggle="modal" data-target="#setModal" style="margin:5px;">设置权限</a>
-                                        <a href="#" class="" data-toggle="modal" data-target="#updateModal" style="margin:5px;">修改</a>
-                                        <a href="#" class="" data-toggle="modal" data-target=".modal-delete" style="margin:5px;">删除</a>
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -394,10 +355,221 @@
     <script src="js/jayne.js"></script>
     <script src="js/jstree.min.js"></script>
     <script src="js/flexibility.js"></script>
+    <script src="js/drawer.js"></script>
     <!--sweet alerts-->
     <script src="js/sweet-alert.min.js"></script>
-
+    <!-- iCheck for radio and checkboxes -->
+    <script src="js/icheck.min.js"></script>
+    <script src="js/switch.js"></script>
     <script>
+
+        var selected = [];//选择数组
+        //筛选查询条件
+        function search_tab() {
+            var name = $('#name').val().trim();
+            var nickname = $('#nickname').val().trim();
+            var symbol = $('#symbol').val().trim();
+            alert(name);
+            alert(nickname);
+            alert(symbol);
+            //此处添加查询方法
+        }
+
+        //新增
+        function add_tab() {
+            var role_name = $("input[name='role-name']").val().trim();
+            var role_nickname = $("input[name='role-nickname']").val().trim();
+            var role_symbol = $("input[name='role-symbol']").val().trim();
+            alert(role_name);
+            alert(role_nickname);
+            alert(role_symbol);
+            //此处添加新增方法
+        }
+
+        //修改
+        function alter_tab() {
+            var al_role_name = $("input[name='al_role-name']").val().trim();
+            var al_role_nickname = $("input[name='al_role-nickname']").val().trim();
+            var al_role_symbol = $("input[name='al_role-symbol']").val().trim();
+            alert(al_role_name);
+            alert(al_role_nickname);
+            alert(al_role_symbol);
+            var count = 0;
+            for (var i in selected) {
+                var row = selected[i] + 1;
+                var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+                count++;
+                console.log(rows);
+            };
+            if (count == 0) {
+                swal({
+                    title: '修改至少选中一行',
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+            } else if (count > 1) {
+                swal({
+                    title: '修改不可选中多行',
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+            } else {
+                //此处添加修改方法
+            }
+
+        }
+		//设置权限
+		function set_limit(){
+			
+			
+		    var ids=""; 
+		    var nodes=$("#checkTree").jstree("get_checked"); //使用get_checked方法 
+		    $.each(nodes, function(i, n) { 
+		    	ids += $(n).attr("id")+","; 
+		    	console.log(ids);
+		    }); 
+		    alert(ids); 
+			
+			
+			
+			
+            
+            var count = 0;
+            for (var i in selected) {
+                var row = selected[i] + 1;
+                var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+                count++;
+            };
+            if (count == 0) {
+                swal({
+                    title: '至少选中一行',
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+            } else if (count > 1) {
+                swal({
+                    title: '不可选中多行',
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+            } else {
+                //此处添加修改方法
+            }
+			
+		}
+        //删除
+        function delete_r() {
+            var count = 0;
+            for (var i in selected) {
+                var row = selected[i] + 1;
+                var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+                count++;
+            };
+            if (count == 0) {
+                swal({
+                    title: '删除至少选中一行',
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+            } else {
+                swal({
+                    title: "确定删除吗？",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "确定！",
+                    cancelButtonText: '取消',
+                    closeOnConfirm: false
+                },
+                    function () {
+                        //此处添加删除方法,如果删除成功执行：
+                        swal(
+                            "删除！", "已经被删除。", "success"
+                        );
+                        console.log(selected);
+                        for (var i in selected) {
+                            var row = selected[i] + 1;
+                            var rows = $('#datatable tr').eq(row).find("td").eq(0).text();
+                            count++;
+                            $('#datatable').find("tr").eq(row).css('display', 'none');
+                        };
+                        for (var i in selected) {
+                            selected.splice(i);
+                        };
+                    });
+            }
+
+        }
+
+        $(document).ready(function () {
+            $('#datatable').dataTable();
+
+
+			//重置全部选择
+            $('#resetBtn').click(function () {
+                resetFilter()
+            })
+
+            function resetFilter() {
+
+                $('input[name="name"]').val('')
+                $('input[name="nickname"]').val('')
+                $('input[name="symbol"]').val('')
+            }
+            
+            // 选择当前行，排除对于操作列的click监听
+            $('#datatable tbody').on('click', "tr", function () {
+
+                var id = $(this).index();  // id 从server端获取
+
+                var index = $.inArray(id, selected);
+
+                if (index === -1) {
+                    selected.push(id);
+                } else {
+                    selected.splice(index, 1);
+                }
+
+                $(this).toggleClass('selected');
+
+                btnOnSelected(); // 监听是否全选，更改btn status
+
+            });
+
+            // 全选与取消全选
+            $('#selectAllBtn').click(function () {
+
+                // flag 也可以用server选中后的id list 判断，同时在单条选中所有后，更新button状态
+                var flag = $('#selectAllBtn').text() == '全选' ? true : false
+                flag ?
+                    $('#selectAllBtn').text('取消全选')
+                    : $('#selectAllBtn').text('全选')
+
+                $('#datatable tbody tr').each(function (i) {
+                    flag ?
+                        $(this).addClass('selected')
+                        : $(this).removeClass('selected')
+                })
+
+            })
+
+            function btnOnSelected() {
+                if ($('tbody tr').not('.selected').length == 0) {
+                    $('#selectAllBtn').text('取消全选')
+                } else {
+                    $('#selectAllBtn').text('全选')
+                }
+            }
+
+            // radio添加class
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue'
+            });
+
+
+        });
+
 
         $(document).ready(function () {
             //checkbox

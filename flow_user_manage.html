@@ -157,24 +157,6 @@
     </div>
     <!--modal update-role end-->
 
-    <!--modal delete-->
-    <div class="modal fade modal-delete" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="mySmallModalLabel">删除用户</h4>
-                </div>
-                <div class="modal-body">
-                    您确定要删除此用户吗？
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">确定</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--end delete modal-->
 
     <!--main content start-->
     <section class="main-content">
@@ -214,7 +196,7 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <fieldset class="jquery-Ui-fieldset">
-                                    <label for="role">角色</label>
+                                    <label>角色</label>
                                     <select name="role" id="role">
                                         <option selected="selected">全部角色</option>
                                         <option>超级管理员</option>
@@ -227,7 +209,7 @@
 
                             <div class="col-sm-3">
                                 <fieldset class="jquery-Ui-fieldset">
-                                    <label for="branch">队列</label>
+                                    <label>队列</label>
                                     <select name="branch" id="branch">
                                         <option selected="selected">全部队列</option>
                                         <option>移动队列</option>
@@ -242,21 +224,20 @@
 
                             <div class="col-sm-3">
                                 <fieldset class="jquery-Ui-fieldset">
-                                    <label for="uid">坐席工号</label>
-                                    <input class="input-150p black" type="" name="uid" id="uid" value="" />
+                                    <label>坐席工号</label>
+                                    <input class="input-150p black" name="uid" id="uid" />
                                 </fieldset>
                             </div>
 
                             <div class="col-sm-3">
                                 <fieldset class="jquery-Ui-fieldset">
-                                    <label for="uname">姓名</label>
-                                    <input class="input-150p black" type="" name="uname" id="uname" value="" />
+                                    <label>姓名</label>
+                                    <input class="input-150p black" name="uname" id="uname" />
                                 </fieldset>
                             </div>
                         </div>
                         <a href="javascript: void(0);" class="btn btn-primary inline float-right" onclick="search_tab()">开始查询</a>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -271,9 +252,9 @@
                     <div class="panel-heading">
                         <div class="buttons">
                             <a id="selectAllBtn" class="btn btn-primary btn-border">全选</a>
-                            <a href="javascript: void(0);" class="btn btn-primary" data-toggle="modal" data-target="#createModal">新增用户</a>
-                            <a href="javascript: void(0);" class="btn btn-teal" data-toggle="modal" data-target="#updateModal">修改用户</a>
-                            <a href="javascript: void(0);" class="btn btn-danger" onclick="delete_r()">删除用户</a>
+                            <a href="javascript: void(0);" class="btn btn-primary" data-toggle="modal" data-target="#createModal">新增</a>
+                            <a href="javascript: void(0);" class="btn btn-teal" data-toggle="modal" data-target="#updateModal">修改</a>
+                            <a href="javascript: void(0);" class="btn btn-danger" onclick="delete_r()">删除</a>
                         </div>
                     </div>
                     <div class="panel-body">
@@ -296,9 +277,7 @@
                                     <td name="role">超级管理员</td>
                                     <td name="branch">移动队列</td>
                                     <td name="bmanager">周敏</td>
-                                    <td name="others">
-                                        正常
-                                    </td>
+                                    <td name="others">正常</td>
                                     <td name="others">...</td>
                                 </tr>
                                 <tr>
@@ -307,9 +286,7 @@
                                     <td>管理员</td>
                                     <td>移动队列</td>
                                     <td>周敏</td>
-                                    <td>
-                                        正常
-                                    </td>
+                                    <td>正常</td>
                                     <td>...</td>
                                 </tr>
                                 <tr>
@@ -318,9 +295,7 @@
                                     <td>坐席</td>
                                     <td>移动队列</td>
                                     <td>王林</td>
-                                    <td>
-                                        非工作状态
-                                    </td>
+                                    <td>非工作状态</td>
                                     <td>...</td>
                                 </tr>
                                 <tr>
@@ -329,9 +304,7 @@
                                     <td>管理员</td>
                                     <td>信息化队列</td>
                                     <td>刘洋</td>
-                                    <td>
-                                        非工作状态
-                                    </td>
+                                    <td>非工作状态 </td>
                                     <td>...</td>
                                 </tr>
                             </tbody>
@@ -408,7 +381,7 @@
         //修改
         function alter_tab() {
             var al_uid = $("input[name='al_uid']").val().trim();
-            var al_uname = $("input[name='al_uname']").val();
+            var al_uname = $("input[name='al_uname']").val().trim();
             var al_role = $("select[name='al_role']").val();
             var al_branch = $("select[name='al_branch']").val();
             //			alert(al_uname);
@@ -466,7 +439,7 @@
                     function () {
                         //此处添加删除方法,如果删除成功执行：
                         swal(
-                            "删除！", "该分机已经被删除。", "success"
+                            "删除！", "已经被删除。", "success"
                         );
                         console.log(selected);
                         for (var i in selected) {
